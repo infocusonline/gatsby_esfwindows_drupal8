@@ -24,10 +24,11 @@ const BlogPreview = () => {
     }
   `)
 
-  const blogImage = data.nodePage.relationships.field_basic_page_image[0].localFile
-    .childImageSharp.fluid
+  const blogImage =
+    data.nodePage.relationships.field_basic_page_image[0].localFile
+      .childImageSharp.fluid
 
-  console.log(blogImage)
+  console.log(blogImage, 'testing with netlify build')
 
   return (
     <Container>
@@ -41,9 +42,7 @@ const BlogPreview = () => {
           <StyledLink to={`/blog`}>{data.nodePage.title}</StyledLink>
         </ButtonCenteredFlex>
       </BlogContainer>
-      <RightSide>
-        {/* <h3>filler text/image for later</h3> */}
-      </RightSide>
+      <RightSide>{/* <h3>filler text/image for later</h3> */}</RightSide>
     </Container>
   )
 }
