@@ -33,6 +33,7 @@ const Blog = () => {
       }
     }
   `)
+  console.log('blog page data is here', data.allNodeBlog)
 
   return (
     <Layout>
@@ -101,10 +102,8 @@ const BlogPost = styled.ol`
     color: #777777;
     font-size: 0.8rem;
     font-style: italic;
-    font-family: 'lora, sans-serif'
+    font-family: 'lora, sans-serif';
   }
 `
-
-
 
 export default Blog

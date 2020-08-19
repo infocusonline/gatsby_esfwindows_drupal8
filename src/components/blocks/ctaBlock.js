@@ -4,32 +4,31 @@ import { graphql } from 'gatsby'
 export const CtaBlockQuery = graphql`
   query {
     allBlockContentCtaBlock {
-      nodes {
-        field_cta_heading
-        field_cta_link {
-          uri
-          title
-        }
-        relationships {
-          field_cta_content_type {
+      edges {
+        node {
+          field_cta_link {
+            uri
             title
           }
-        }
-        body {
-          value
+          field_cta_heading
+          relationships {
+            field_cta_content_type {
+              title
+            }
+          }
         }
       }
     }
   }
 `
 
-const CallToActions = ({ data }) => {
+const CallToActions = ({ CTADATA }) => {
   return (
     <div>
       {' '}
       <h3>CTA Heading</h3>
       <p>CTA Text goes here and here and here.</p>
-      <a href="http://example.com">Link Text</a>
+      //{CTADATA}
     </div>
   )
 }
