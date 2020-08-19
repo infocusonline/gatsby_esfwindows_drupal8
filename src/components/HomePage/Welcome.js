@@ -29,9 +29,9 @@ const Welcome = () => {
 
   const title = data.nodePage.title
   const quote = data.nodePage.body.value
-  const image =
-    data.nodePage.relationships.field_basic_page_image[0].localFile
-      .childImageSharp.fluid
+  // const image =
+  //   data.nodePage.relationships.field_basic_page_image[0].localFile
+  //     .childImageSharp.fluid
 
   return (
     <Hero>
@@ -46,6 +46,7 @@ const Hero = styled.div`
   /* border: 1px solid red; */
   padding: 4.5rem 0 0 0;
   position: relative;
+  color: #ffffff;
 `
 const Title = styled.h1`
   position: absolute;

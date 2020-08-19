@@ -28,7 +28,7 @@ const BlogPreview = () => {
     data.nodePage.relationships.field_basic_page_image[0].localFile
       .childImageSharp.fluid
 
-  console.log(blogImage, 'testing with netlify build')
+  console.log(blogImage)
 
   return (
     <Container>

@@ -2,7 +2,6 @@ import React from 'react'
 import Layout from '../components/Layout'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
-
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
 const Materials = () => {
@@ -11,6 +10,7 @@ const Materials = () => {
       allNodeMaterials {
         edges {
           node {
+            id
             title
             fields {
               slug
@@ -29,6 +29,19 @@ const Materials = () => {
           }
         }
       }
+
+      materialsAluminumPage: allNodeMaterialsAluminumContent {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+
       materialBasicPage: nodePage(
         id: { eq: "bbdf6723-50cf-5efd-aebd-35e11c82fa70" }
       ) {
@@ -50,6 +63,7 @@ const Materials = () => {
       }
     }
   `)
+
   const materialBasicImage =
     data.materialBasicPage.relationships.field_basic_page_image[0].localFile
       .childImageSharp.fluid
@@ -72,9 +86,17 @@ const Materials = () => {
             const images =
               edge.node.relationships.field_materials_images[0].localFile
                 .childImageSharp.fluid
+            const links = (
+              <Link to={`/materials/${edge.node.fields.slug}`}></Link>
+            )
+            console.log(links.props.to, 'here are linksss')
+
             return (
               <li>
-                <Link to={`/materials/${edge.node.fields.slug}`}>
+                <Link to={links.props.to}>
+                  {links.props.to === '/materials/aluminum' &&
+                    console.log('this is aluminun page')}
+                  {console.log(Link)}
                   <h1>{edge.node.title}</h1>
                   {images ? (
                     <div>

@@ -88,6 +88,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
       allNodeCustom {
         edges {
           node {

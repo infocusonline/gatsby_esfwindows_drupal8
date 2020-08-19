@@ -53,6 +53,7 @@ const Accessories = () => {
       }
     }
   `)
+
   const accessoriesImage =
     data.accessoriesBasicPage.relationships.field_basic_page_image[0].localFile
       .childImageSharp.fluid
