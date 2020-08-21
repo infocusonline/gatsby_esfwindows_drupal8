@@ -64,16 +64,17 @@ const DoorContent = () => {
   )
 }
 
+// styled components
+const ContainerPadding = styled.div`
+  padding-top: 90px;
+`
+
 const SetImg = styled(Img)`
   @media (min-width: 900px) {
     display: flex;
     flex-direction: column-reverse;
     width: 90%;
   }
-`
-
-const ContainerPadding = styled.div`
-  padding-top: 90px;
 `
 
 const Container = styled.div`

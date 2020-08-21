@@ -33,6 +33,14 @@ module.exports = {
         baseUrl: 'https://dev-esfwindows.pantheonsite.io/',
       },
     },
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sass`,
     {
@@ -46,6 +54,7 @@ module.exports = {
     'gatsby-image',
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+
     {
       resolve: `gatsby-transformer-remark`,
       options: {

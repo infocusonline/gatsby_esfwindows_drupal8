@@ -3,8 +3,7 @@ import Layout from '../components/Layout'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-
-import CtaBlock from '../components/blocks/ctaBlock'
+// import MaterialAluminum from '../pages/materials-aluminum'
 
 export const query = graphql`
   query($slug: String!) {
@@ -44,7 +43,7 @@ const Materials = ({ data }) => {
         <Img fluid={materialItemImage} />
         <About>
           <div style={{ paddingTop: '200px' }}>
-            <h1>This is {data.nodeMaterials.title}</h1>
+            <h1>{data.nodeMaterials.title}</h1>
           </div>
           <h3
             dangerouslySetInnerHTML={{ __html: data.nodeMaterials.body.value }}
@@ -67,6 +66,7 @@ const Materials = ({ data }) => {
             1.10.32.
           </p>
         </FlexContainer>
+        {/* <MaterialAluminum /> */}
       </Layout>
     </div>
   )

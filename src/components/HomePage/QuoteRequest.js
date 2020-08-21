@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 const Quote = () => {
   return (
     <QuoteContainer>
-      <StyledLink to="/contact-us">Request a quote</StyledLink>
+      <StyledLink to="/contact-us">Contact Us</StyledLink>
     </QuoteContainer>
   )
 }

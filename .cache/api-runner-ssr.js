@@ -5,6 +5,9 @@ var plugins = [{
       plugin: require('/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},
     },{
+      plugin: require('/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/node_modules/gatsby-plugin-material-ui/gatsby-ssr'),
+      options: {"plugins":[],"stylesProvider":{"injectFirst":true}},
+    },{
       plugin: require('/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
       options: {"plugins":[]},
     }]
