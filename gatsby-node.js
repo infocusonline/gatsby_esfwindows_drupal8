@@ -49,6 +49,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // creating accessories template
   const accessoriesTemplate = path.resolve('./src/templates/accessories.js')
   // creating Company/about us page
+  console.log(accessoriesTemplate, 'this is the path namem')
   const companyTemplate = path.resolve('./src/templates/company.js')
 
   const res = await graphql(`

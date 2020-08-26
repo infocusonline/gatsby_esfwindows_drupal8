@@ -16,9 +16,7 @@ class Form extends React.Component {
     event.preventDefault()
     console.log(this.state)
     const { firstName } = this.state
-    if (firstName === 'Miguel ') {
-      console.log('you typed in Miguel so i am here')
-    }
+
     navigate('/quote-received', { state: { firstName } })
   }
 
@@ -41,6 +39,8 @@ class Form extends React.Component {
                 name="contactUs"
                 method="post"
                 netlify-honeypot="bot-field"
+                data-netlify="true"
+                data-netlify-recaptcha="true"
               >
                 <input type="hidden" name="contact" value="contact" />
                 <FormGroup>
