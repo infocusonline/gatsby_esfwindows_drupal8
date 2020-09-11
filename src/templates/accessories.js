@@ -84,9 +84,7 @@ const Accessories = ({ data }) => {
                   <li>
                     <Link to={`/accessories/`}></Link>
                     <h1>{titleRelatedData}</h1>
-
                     <SetImg fluid={imageRelatedData} />
-
                     <p
                       dangerouslySetInnerHTML={{
                         __html: hardware.body.value,
@@ -114,6 +112,7 @@ const Accessories = ({ data }) => {
 
 export default Accessories
 
+// styled components
 const FlexContainer = styled.ul`
   padding: 0.6rem;
   display: flex;

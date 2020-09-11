@@ -32,7 +32,6 @@ export const query = graphql`
 `
 
 const Materials = ({ data }) => {
-  console.log('data from materials aluminum page', data)
   const materialItemImage =
     data.nodeMaterials.relationships.field_materials_images[0].localFile
       .childImageSharp.fluid
