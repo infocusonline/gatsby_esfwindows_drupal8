@@ -8,6 +8,7 @@ exports.components = {
   "component---src-pages-blog-js": () => import("./../src/pages/blog.js" /* webpackChunkName: "component---src-pages-blog-js" */),
   "component---src-pages-contact-us-js": () => import("./../src/pages/contact-us.js" /* webpackChunkName: "component---src-pages-contact-us-js" */),
   "component---src-pages-custom-js": () => import("./../src/pages/custom.js" /* webpackChunkName: "component---src-pages-custom-js" */),
+  "component---src-pages-hardware-js": () => import("./../src/pages/hardware.js" /* webpackChunkName: "component---src-pages-hardware-js" */),
   "component---src-pages-index-js": () => import("./../src/pages/index.js" /* webpackChunkName: "component---src-pages-index-js" */),
   "component---src-pages-materials-aluminum-js": () => import("./../src/pages/materials-aluminum.js" /* webpackChunkName: "component---src-pages-materials-aluminum-js" */),
   "component---src-pages-materials-js": () => import("./../src/pages/materials.js" /* webpackChunkName: "component---src-pages-materials-js" */),

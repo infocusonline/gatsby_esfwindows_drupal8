@@ -7,6 +7,25 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 const Materials = () => {
   const data = useStaticQuery(graphql`
     query {
+      materialBasicPageHeaderImage: nodePage(
+        id: { eq: "bbdf6723-50cf-5efd-aebd-35e11c82fa70" }
+      ) {
+        title
+        body {
+          value
+        }
+        relationships {
+          field_basic_page_image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1575, maxHeight: 700) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
       allNodeMaterials {
         edges {
           node {
@@ -41,32 +60,12 @@ const Materials = () => {
           }
         }
       }
-
-      materialBasicPage: nodePage(
-        id: { eq: "bbdf6723-50cf-5efd-aebd-35e11c82fa70" }
-      ) {
-        title
-        body {
-          value
-        }
-        relationships {
-          field_basic_page_image {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1575, maxHeight: 700) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
     }
   `)
 
   const materialBasicImage =
-    data.materialBasicPage.relationships.field_basic_page_image[0].localFile
-      .childImageSharp.fluid
+    data.materialBasicPageHeaderImage.relationships.field_basic_page_image[0]
+      .localFile.childImageSharp.fluid
   return (
     <div>
       <Layout>
@@ -76,7 +75,7 @@ const Materials = () => {
           <h1>Our Materials</h1>
           <p
             dangerouslySetInnerHTML={{
-              __html: data.materialBasicPage.body.value,
+              __html: data.materialBasicPageHeaderImage.body.value,
             }}
           ></p>
         </About>
@@ -89,7 +88,11 @@ const Materials = () => {
             const links = (
               <Link to={`/materials/${edge.node.fields.slug}`}></Link>
             )
-            console.log(links.props.to, 'here are linksss')
+
+            const aluLink = <Link to={'/materials/aluminum'}> </Link>
+            console.log('HERE IS THIS LINK', links.props.to)
+            // checking aluLink here
+            console.log(aluLink.props.to, '99977')
 
             return (
               <li>

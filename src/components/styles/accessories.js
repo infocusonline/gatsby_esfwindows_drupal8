@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const Container = styled.div`
   padding: 10rem 0 0;
@@ -8,7 +8,7 @@ const Container = styled.div`
   }
 `
 
-const AccessoriesStyle = styled.div`
+const RalClassicColours = styled.div`
   /*RAL Colour sample css */
   .flex {
     display: flex;
@@ -890,4 +890,4 @@ const AccessoriesStyle = styled.div`
   }
 `
 
-export { Container, AccessoriesStyle }
+export { Container, RalClassicColours }

@@ -7,6 +7,26 @@ import Img from 'gatsby-image'
 const Accessories = () => {
   const data = useStaticQuery(graphql`
     query {
+      accessoriesBasicPageImage: nodePage(
+        id: { eq: "5777f841-acbe-572d-b820-7d2b4f6caf48" }
+      ) {
+        title
+        body {
+          value
+        }
+        relationships {
+          field_basic_page_image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1080, maxHeight: 460) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+
       allNodeAccessories {
         edges {
           node {
@@ -31,39 +51,19 @@ const Accessories = () => {
           }
         }
       }
-
-      accessoriesBasicPage: nodePage(
-        id: { eq: "5777f841-acbe-572d-b820-7d2b4f6caf48" }
-      ) {
-        title
-        body {
-          value
-        }
-        relationships {
-          field_basic_page_image {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1080, maxHeight: 460) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
     }
   `)
 
   const accessoriesImage =
-    data.accessoriesBasicPage.relationships.field_basic_page_image[0].localFile
-      .childImageSharp.fluid
-  const about = data.accessoriesBasicPage.body.value
+    data.accessoriesBasicPageImage.relationships.field_basic_page_image[0]
+      .localFile.childImageSharp.fluid
+  const about = data.accessoriesBasicPageImage.body.value
   return (
     <div>
       <Layout>
         <Img fluid={accessoriesImage} />
         <About>
-          <h1>{data.accessoriesBasicPage.title}</h1>
+          <h1>{data.accessoriesBasicPageImage.title}</h1>
           <p dangerouslySetInnerHTML={{ __html: about }}></p>
         </About>
         <FlexContainer>
@@ -75,12 +75,21 @@ const Accessories = () => {
               <li key={edge.node.title}>
                 <Link to={`/accessories/${edge.node.fields.slug}`}>
                   <h2>{edge.node.title}</h2>
+
                   <SetImg fluid={images} />
                 </Link>
               </li>
             )
           })}
         </FlexContainer>
+
+        <h1>Testing link to hardware page</h1>
+
+        <div>
+          <Link to="/hardware">
+            <h2>this is a link</h2>
+          </Link>
+        </div>
       </Layout>
     </div>
   )
@@ -105,6 +114,7 @@ const About = styled.div`
 const FlexContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  /* flex-direction: row-reverse; */
   justify-content: space-around;
   padding: 0.6rem;
 
