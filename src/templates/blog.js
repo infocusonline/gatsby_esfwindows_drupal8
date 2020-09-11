@@ -28,14 +28,10 @@ export const query = graphql`
   }
 `
 
-
 const Blog = ({ data }) => {
   const post = data.nodeBlog
   const noImage = data.nodeBlog.relationships.field_blog_image
   const image = data.nodeBlog.relationships.field_blog_image
-
-
-  console.log('this is where the blog tempalte ', data)
   return (
     <Layout>
       <BlogLayout>
@@ -48,11 +44,11 @@ const Blog = ({ data }) => {
             <h1>No image</h1>
           </div>
         ) : (
-            <div>
-              <p dangerouslySetInnerHTML={{ __html: post.body.value }}></p>
-              {/* <Img fluid={image.localFile.childImageSharp.fluid} /> */}
-            </div>
-          )}
+          <div>
+            <p dangerouslySetInnerHTML={{ __html: post.body.value }}></p>
+            {/* <Img fluid={image.localFile.childImageSharp.fluid} /> */}
+          </div>
+        )}
       </BlogLayout>
     </Layout>
   )

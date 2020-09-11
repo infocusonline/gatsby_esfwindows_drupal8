@@ -33,8 +33,6 @@ const Blog = () => {
       }
     }
   `)
-  console.log('blog page data is here', data.allNodeBlog)
-
   return (
     <Layout>
       <Head title="Blog" />

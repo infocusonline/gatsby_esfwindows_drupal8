@@ -83,8 +83,6 @@ const Accessories = () => {
           })}
         </FlexContainer>
 
-        <h1>Testing link to hardware page</h1>
-
         <div>
           <Link to="/hardware">
             <h2>this is a link</h2>

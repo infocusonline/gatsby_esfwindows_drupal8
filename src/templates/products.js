@@ -23,7 +23,6 @@ export const query = graphql`
 `
 
 const Product = ({ data }) => {
-  console.log(data, 'products template ')
   const image =
     data.nodeProducts.relationships.field_products_images[0].localFile
       .childImageSharp.fluid
