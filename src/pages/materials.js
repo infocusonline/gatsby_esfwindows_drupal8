@@ -92,7 +92,7 @@ const Materials = () => {
             const aluLink = <Link to={'/materials/aluminum'}> </Link>
             console.log('HERE IS THIS LINK', links.props.to)
             // checking aluLink here
-            console.log(aluLink.props.to, '99977')
+            console.log(aluLink.props.to, '99977, "DELETE BEFORE PUSHING')
 
             return (
               <li>
