@@ -11,7 +11,7 @@ exports.components = {
   "component---src-pages-blog-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/blog.js"))),
   "component---src-pages-contact-us-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/contact-us.js"))),
   "component---src-pages-custom-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/custom.js"))),
-  "component---src-pages-hardware-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/hardware.js"))),
+  "component---src-pages-handles-doors-windows-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/handles-doors-windows.js"))),
   "component---src-pages-index-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/index.js"))),
   "component---src-pages-materials-aluminum-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/materials-aluminum.js"))),
   "component---src-pages-materials-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/materials.js"))),

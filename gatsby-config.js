@@ -28,6 +28,13 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'src',
+        path: `${__dirname}/src/`,
+      },
+    },
+    {
       resolve: 'gatsby-source-drupal',
       options: {
         baseUrl: 'https://dev-esfwindows.pantheonsite.io/',
@@ -64,7 +71,7 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 750,
-              linkImagesToOriginal: false,
+              linkImagesToOriginal: true,
             },
 
             resolve: `gatsby-remark-images-medium-zoom`,

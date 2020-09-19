@@ -5,7 +5,7 @@ date: "2019-09-18"
 ---
 
 
-![RAL COLORS](./RAL_HD.jpg)
+![RAL COLORS](../../futureGoalsFolder/RAL_HD.jpg)
 
 
 ## Future Goals

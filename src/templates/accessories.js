@@ -26,6 +26,10 @@ export const query = graphql`
       relationships {
         node__hardware {
           title
+          path {
+            alias
+          }
+
           fields {
             slug
           }
@@ -74,7 +78,8 @@ const Accessories = ({ data }) => {
 
             <FlexContainer>
               {relatedHardwareContent.map(hardware => {
-                console.log(hardware.body, 'Mapping over relation data')
+                console.log(hardware, 'Mapping over relation data')
+                console.log(hardware.path.alias, 'path name')
                 // create variables for each piece of data and display on screen
                 const titleRelatedData = hardware.title
                 const imageRelatedData =
@@ -82,14 +87,11 @@ const Accessories = ({ data }) => {
                     .childImageSharp.fluid
                 return (
                   <li>
-                    <Link to={`/accessories/`}></Link>
-                    <h1>{titleRelatedData}</h1>
+                    <Link to={`${hardware.path.alias}`}>
+                      <h1>{titleRelatedData}</h1>
+                    </Link>
+
                     <SetImg fluid={imageRelatedData} />
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: hardware.body.value,
-                      }}
-                    ></p>
                   </li>
                 )
               })}
