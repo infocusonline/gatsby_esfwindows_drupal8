@@ -89,9 +89,9 @@ const Accessories = ({ data }) => {
                   <li>
                     <Link to={`${hardware.path.alias}`}>
                       <h1>{titleRelatedData}</h1>
-                    </Link>
 
-                    <SetImg fluid={imageRelatedData} />
+                      <SetImg fluid={imageRelatedData} />
+                    </Link>
                   </li>
                 )
               })}

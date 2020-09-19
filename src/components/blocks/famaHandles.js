@@ -81,7 +81,7 @@ const FlexContainer = styled.ul`
 // 802px
 
 const SetImg = styled(Img)`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: block !important;
   padding: 10px;
   margin: 12px;
