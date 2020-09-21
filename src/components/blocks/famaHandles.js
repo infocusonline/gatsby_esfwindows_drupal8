@@ -35,6 +35,7 @@ const FamaHandlesWindows = () => {
       <h3 style={{ paddingTop: '150px', textAlign: 'center' }}>
         Fama Doors and handles
       </h3>
+
       <FlexContainer>
         {data.allBlockContentFamaDoorsAndHandles.edges.map(edge => {
           const title = edge.node.field_title

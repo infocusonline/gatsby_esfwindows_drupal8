@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
+import { LinkedinSquare } from '@styled-icons/boxicons-logos/LinkedinSquare'
 
 const Footer = () => {
   const data = useStaticQuery(graphql`
@@ -22,14 +23,18 @@ const Footer = () => {
     <Container>
       <div>
         <p>Esfwindows</p>
-        <h3>Follow us on:</h3>
+        <h3>
+          Follow us on: <LinkedinSquare />
+        </h3>
       </div>
     </Container>
   )
 }
 
 const Container = styled.footer`
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #282828;
   /* margin-top: 1rem; */
   padding-bottom: 10px;
