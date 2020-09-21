@@ -24,12 +24,19 @@ const Footer = () => {
       <div>
         <p>Esfwindows</p>
         <h3>
-          Follow us on: <LinkedinSquare />
+          Follow us on:
+          <a href="https://www.linkedin.com/company/eurostar-fenestration-llc" />{' '}
+          <LinkedinSquare />
+          <a />
         </h3>
       </div>
     </Container>
   )
 }
+
+// const Icon = styled(Icons) `
+//   width:
+// `
 
 const Container = styled.footer`
   display: flex;
