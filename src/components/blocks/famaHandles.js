@@ -17,7 +17,7 @@ const FamaHandlesWindows = () => {
               field_fama_doors_and_handles_ima {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 420, maxHeight: 240) {
+                    fluid(maxWidth: 420, maxHeight: 420) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -65,6 +65,7 @@ const FlexContainer = styled.ul`
   padding: 0.4rem;
 
   h2 {
+    font-size: 1.3em;
     text-align: center;
     color: #2d385b;
   }

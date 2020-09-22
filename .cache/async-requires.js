@@ -8,6 +8,7 @@ exports.components = {
   "component---src-pages-blog-js": () => import("./../src/pages/blog.js" /* webpackChunkName: "component---src-pages-blog-js" */),
   "component---src-pages-contact-us-js": () => import("./../src/pages/contact-us.js" /* webpackChunkName: "component---src-pages-contact-us-js" */),
   "component---src-pages-custom-js": () => import("./../src/pages/custom.js" /* webpackChunkName: "component---src-pages-custom-js" */),
+  "component---src-pages-fama-accessories-js": () => import("./../src/pages/fama-accessories.js" /* webpackChunkName: "component---src-pages-fama-accessories-js" */),
   "component---src-pages-handles-doors-windows-js": () => import("./../src/pages/handles-doors-windows.js" /* webpackChunkName: "component---src-pages-handles-doors-windows-js" */),
   "component---src-pages-index-js": () => import("./../src/pages/index.js" /* webpackChunkName: "component---src-pages-index-js" */),
   "component---src-pages-materials-aluminum-js": () => import("./../src/pages/materials-aluminum.js" /* webpackChunkName: "component---src-pages-materials-aluminum-js" */),

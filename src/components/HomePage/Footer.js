@@ -4,21 +4,6 @@ import styled from 'styled-components'
 import { LinkedinSquare } from '@styled-icons/boxicons-logos/LinkedinSquare'
 
 const Footer = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      allNodeBlog {
-        edges {
-          node {
-            id
-            title
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `)
   return (
     <Container>
       <div>

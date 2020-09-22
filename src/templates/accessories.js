@@ -79,7 +79,6 @@ const Accessories = ({ data }) => {
             <FlexContainer>
               {relatedHardwareContent.map(hardware => {
                 console.log(hardware, 'Mapping over relation data')
-                console.log(hardware.path.alias, 'path name')
                 // create variables for each piece of data and display on screen
                 const titleRelatedData = hardware.title
                 const imageRelatedData =
