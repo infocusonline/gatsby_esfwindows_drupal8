@@ -8,10 +8,6 @@ import { Link } from 'gatsby'
 import { graphql, useStaticQuery } from 'gatsby'
 
 const FamaDoorWindowHandles = () => {
-  // in this page you need to query the two blocks you will have created on drupal side. one block is the Fama for doors, and the other square image block is the Accessories. You miigh tbe able to just change the node directions since you have already created them\
-
-  // FAMAM ACCESSORIES BLOCK EXISIT****
-  // I disabled it. You will need it.
   const data = useStaticQuery(graphql`
     query {
       allNodeFamaDoorsDelete {
@@ -37,8 +33,6 @@ const FamaDoorWindowHandles = () => {
       }
     }
   `)
-  console.log('data!!!!', data.allNodeFamaDoorsDelete)
-
   return (
     <Layout>
       <FlexContainer>
@@ -55,8 +49,6 @@ const FamaDoorWindowHandles = () => {
             </div>
           )
         })}
-
-        {/* <FamaHandles /> */}
       </FlexContainer>
     </Layout>
   )
