@@ -6,6 +6,7 @@ const FamaAccessories = () => {
   return (
     <Layout>
       <FamaAccessoriesBlock />
+      <h1>where is this coming from</h1>
     </Layout>
   )
 }

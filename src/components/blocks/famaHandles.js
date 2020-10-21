@@ -51,6 +51,10 @@ const FamaHandlesWindows = () => {
           )
         })}
       </FlexContainer>
+
+      <div>
+        <h1>FAMA FOR DOORS</h1>
+      </div>
     </div>
   )
 }

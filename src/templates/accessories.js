@@ -52,7 +52,6 @@ export const query = graphql`
     }
   }
 `
-
 const Accessories = ({ data }) => {
   const title = data.nodeAccessories.title
   const body = data.nodeAccessories.body.value
@@ -87,6 +86,7 @@ const Accessories = ({ data }) => {
                 return (
                   <li>
                     <Link to={`${hardware.path.alias}`}>
+                      {console.log(hardware.path.alias, '!!!9999')}
                       <h1>{titleRelatedData}</h1>
 
                       <SetImg fluid={imageRelatedData} />

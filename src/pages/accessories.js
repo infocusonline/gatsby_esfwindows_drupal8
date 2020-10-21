@@ -74,7 +74,7 @@ const Accessories = () => {
             return (
               <li key={edge.node.title}>
                 <Link to={`/accessories/${edge.node.fields.slug}`}>
-                  <h2>{edge.node.title}</h2>
+                  <h2>{edge.node.title} </h2>
 
                   <SetImg fluid={images} />
                 </Link>

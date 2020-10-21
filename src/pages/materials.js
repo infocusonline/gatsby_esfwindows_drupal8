@@ -88,18 +88,9 @@ const Materials = () => {
             const links = (
               <Link to={`/materials/${edge.node.fields.slug}`}></Link>
             )
-
-            const aluLink = <Link to={'/materials/aluminum'}> </Link>
-            console.log('HERE IS THIS LINK', links.props.to)
-            // checking aluLink here
-            console.log(aluLink.props.to, '99977, "DELETE BEFORE PUSHING')
-
             return (
               <li>
                 <Link to={links.props.to}>
-                  {links.props.to === '/materials/aluminum' &&
-                    console.log('this is aluminun page')}
-                  {console.log(Link)}
                   <h1>{edge.node.title}</h1>
                   {images ? (
                     <div>

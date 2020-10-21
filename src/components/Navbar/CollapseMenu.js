@@ -1,7 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import { useSpring, animated } from "react-spring"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import React from 'react'
+import styled from 'styled-components'
+import { useSpring, animated } from 'react-spring'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 
 const CollapseMenu = props => {
   const data = useStaticQuery(graphql`
