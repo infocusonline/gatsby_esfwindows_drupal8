@@ -15,6 +15,8 @@ exports.components = {
   "component---src-pages-fama-for-doors-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/fama-for-doors.js"))),
   "component---src-pages-fama-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/fama.js"))),
   "component---src-pages-index-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/index.js"))),
+  "component---src-pages-manital-doors-window-handles-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/manital-doors-window-handles.js"))),
+  "component---src-pages-manital-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/manital.js"))),
   "component---src-pages-materials-aluminum-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/materials-aluminum.js"))),
   "component---src-pages-materials-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/materials.js"))),
   "component---src-pages-our-company-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/our-company.js"))),

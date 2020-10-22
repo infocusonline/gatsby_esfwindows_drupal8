@@ -1,10 +1,8 @@
 import React from 'react'
 import Layout from '../components/Layout'
-
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-
 import { graphql, useStaticQuery } from 'gatsby'
 
 const FamaDoorWindowHandles = () => {
