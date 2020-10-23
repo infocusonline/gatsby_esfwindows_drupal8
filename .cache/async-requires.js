@@ -12,6 +12,7 @@ exports.components = {
   "component---src-pages-fama-for-doors-js": () => import("./../src/pages/fama-for-doors.js" /* webpackChunkName: "component---src-pages-fama-for-doors-js" */),
   "component---src-pages-fama-js": () => import("./../src/pages/fama.js" /* webpackChunkName: "component---src-pages-fama-js" */),
   "component---src-pages-index-js": () => import("./../src/pages/index.js" /* webpackChunkName: "component---src-pages-index-js" */),
+  "component---src-pages-manital-design-js": () => import("./../src/pages/manital-design.js" /* webpackChunkName: "component---src-pages-manital-design-js" */),
   "component---src-pages-manital-doors-window-handles-js": () => import("./../src/pages/manital-doors-window-handles.js" /* webpackChunkName: "component---src-pages-manital-doors-window-handles-js" */),
   "component---src-pages-manital-js": () => import("./../src/pages/manital.js" /* webpackChunkName: "component---src-pages-manital-js" */),
   "component---src-pages-materials-aluminum-js": () => import("./../src/pages/materials-aluminum.js" /* webpackChunkName: "component---src-pages-materials-aluminum-js" */),

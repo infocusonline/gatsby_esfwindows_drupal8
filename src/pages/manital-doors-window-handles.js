@@ -11,6 +11,10 @@ const ManitalDoorsWindowHandles = () => {
         edges {
           node {
             title
+            path {
+              alias
+            }
+
             fields {
               slug
             }
@@ -42,7 +46,7 @@ const ManitalDoorsWindowHandles = () => {
           return (
             <div>
               <h2>{edge.node.title}</h2>
-              <Link to={`/manital/${edge.node.fields.slug}`}>
+              <Link to={`${edge.node.path.alias}`}>
                 <SetImg fluid={manitalDoorWindowImage} />
               </Link>
             </div>

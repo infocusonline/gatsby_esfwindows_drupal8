@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 
 const FamaHandlesWindows = () => {
+  // to add or edit any of these items go to the block section on Drupal.
+  // it is a custom block that i created
   const data = useStaticQuery(graphql`
     query {
       allBlockContentFamaDoorsAndHandles {
@@ -45,7 +47,6 @@ const FamaHandlesWindows = () => {
           return (
             <li>
               <h2>{title}</h2>
-
               <SetImg fluid={famaHandleImages} />
             </li>
           )
