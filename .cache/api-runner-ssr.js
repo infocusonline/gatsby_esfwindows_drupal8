@@ -1,6 +1,6 @@
 var plugins = [{
-      plugin: require('/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/node_modules/gatsby-plugin-prefetch-google-fonts/gatsby-ssr'),
-      options: {"plugins":[],"fonts":[{"family":"Lora","subsets":["latin"]},{"family":"Open Sans","variants":["400","700"]}]},
+      plugin: require('/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/node_modules/gatsby-plugin-google-analytics/gatsby-ssr'),
+      options: {"plugins":[],"trackingId":"G-K9QDK2N016","head":true,"anonymize":true},
     },{
       plugin: require('/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},

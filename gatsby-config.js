@@ -12,19 +12,28 @@ module.exports = {
 
   plugins: [
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        fonts: [
-          {
-            family: `Lora`,
-            subsets: [`latin`],
-          },
-          {
-            family: `Open Sans`,
-            variants: [`400`, `700`],
-          },
-        ],
+        trackingId: "G-K9QDK2N016",
+        // this option places the tracking script into the head of the DOM
+        head: true,
+        anonymize: true
       },
+     
+      // resolve: `gatsby-plugin-prefetch-google-fonts`,
+      // options: {
+      //   fonts: [
+      //     {
+      //       family: `Lora`,
+      //       subsets: [`latin`],
+      //     },
+      //     {
+      //       family: `Open Sans`,
+      //       variants: [`400`, `700`],
+      //     },
+      //   ],
+      // },
+
     },
     `gatsby-plugin-react-helmet`,
     {

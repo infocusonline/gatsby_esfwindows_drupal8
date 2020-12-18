@@ -120,7 +120,7 @@ const StyledLink = styled(Link)`
     margin-bottom: 40px;
   }
 
-  @media(max-width: 1300px ) {
+  @media (max-width: 1300px) {
     margin-bottom: 2rem;
   }
 
