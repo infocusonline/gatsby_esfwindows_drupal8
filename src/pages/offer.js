@@ -53,7 +53,6 @@ const OfferPage = () => {
   const headerOfferImage =
     data.offerHeaderImage.relationships.field_basic_page_image[0].localFile
       .childImageSharp.fluid
-  console.log(data.allNodeOfferType, 'jkhljhlj')
   return (
     <Layout>
       <About>

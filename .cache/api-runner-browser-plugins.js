@@ -1,6 +1,6 @@
 module.exports = [{
       plugin: require('../node_modules/gatsby-plugin-google-analytics/gatsby-browser.js'),
-      options: {"plugins":[],"trackingId":"G-2TGZNHY4DPS","head":true,"anonymize":true},
+      options: {"plugins":[],"trackingId":"G-2TGZNHY4DPS","head":true,"anonymize":true,"respectDNT":false,"exclude":[],"pageTransitionDelay":0},
     },{
       plugin: require('../node_modules/gatsby-plugin-material-ui/gatsby-browser.js'),
       options: {"plugins":[],"stylesProvider":{"injectFirst":true}},
