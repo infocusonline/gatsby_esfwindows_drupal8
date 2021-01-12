@@ -24,10 +24,8 @@ const WindowContent = () => {
           }
         }
       }
-      # this is query links you to the windows page
-      windowLink: nodeProducts(
-        id: { eq: "fd84c217-3940-52d0-940e-ccf456a4b887" }
-      ) {
+      # this is query links you to the offer page
+      windowLink: nodePage(id: { eq: "eeb09020-dd27-5aa3-b9c5-7a54bd934cf5" }) {
         id
         title
         fields {
@@ -50,7 +48,7 @@ const WindowContent = () => {
           <h1>{title}</h1>
           <p dangerouslySetInnerHTML={{ __html: body }}></p>
           <ButtonCenteredFlex>
-            <StyledLink to={`/products/${data.windowLink.fields.slug}`}>
+            <StyledLink to={`${data.windowLink.fields.slug}`}>
               Learn More
             </StyledLink>
           </ButtonCenteredFlex>

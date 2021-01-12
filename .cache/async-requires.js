@@ -18,6 +18,7 @@ exports.components = {
   "component---src-pages-manital-js": () => import("./../src/pages/manital.js" /* webpackChunkName: "component---src-pages-manital-js" */),
   "component---src-pages-materials-aluminum-js": () => import("./../src/pages/materials-aluminum.js" /* webpackChunkName: "component---src-pages-materials-aluminum-js" */),
   "component---src-pages-materials-js": () => import("./../src/pages/materials.js" /* webpackChunkName: "component---src-pages-materials-js" */),
+  "component---src-pages-offer-js": () => import("./../src/pages/offer.js" /* webpackChunkName: "component---src-pages-offer-js" */),
   "component---src-pages-our-company-js": () => import("./../src/pages/our-company.js" /* webpackChunkName: "component---src-pages-our-company-js" */),
   "component---src-pages-products-js": () => import("./../src/pages/products.js" /* webpackChunkName: "component---src-pages-products-js" */),
   "component---src-pages-quote-received-js": () => import("./../src/pages/quote-received.js" /* webpackChunkName: "component---src-pages-quote-received-js" */),

@@ -21,6 +21,7 @@ exports.components = {
   "component---src-pages-manital-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/manital.js"))),
   "component---src-pages-materials-aluminum-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/materials-aluminum.js"))),
   "component---src-pages-materials-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/materials.js"))),
+  "component---src-pages-offer-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/offer.js"))),
   "component---src-pages-our-company-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/our-company.js"))),
   "component---src-pages-products-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/products.js"))),
   "component---src-pages-quote-received-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/quote-received.js"))),

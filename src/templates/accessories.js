@@ -29,7 +29,6 @@ export const query = graphql`
           path {
             alias
           }
-
           fields {
             slug
           }
@@ -52,6 +51,7 @@ export const query = graphql`
     }
   }
 `
+
 const Accessories = ({ data }) => {
   const title = data.nodeAccessories.title
   const body = data.nodeAccessories.body.value
