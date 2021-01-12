@@ -49,8 +49,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // creating accessories template
   const accessoriesTemplate = path.resolve('./src/templates/accessories.js')
   // creating Company/about us page
-  console.log(accessoriesTemplate, 'this is the path namem')
-  const companyTemplate = path.resolve('./src/templates/company.js')
+  console.log(accessoriesTemplate, 'this is the path name')
+  const offertemplate = path.resolve('./src/templates/offer.js')
 
   const res = await graphql(`
     query {
@@ -123,6 +123,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeOfferType {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -136,6 +147,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeMaterials,
     allNodeCustom,
     allNodeAccessories,
+    allNodeOfferType,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -179,6 +191,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
         createPage({
           component: accessoriesTemplate,
           path: `/accessories/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      }),
+      allNodeOfferType.edges.forEach(({ node }) => {
+        createPage({
+          component: offertemplate,
+          path: `/offer/${node.fields.slug}`,
           context: {
             slug: node.fields.slug,
           },

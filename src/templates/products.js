@@ -30,7 +30,6 @@ const Product = ({ data }) => {
   return (
     <Layout>
       <Img fluid={image} />
-      <p>this is where </p>
     </Layout>
   )
 }

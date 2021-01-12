@@ -29,6 +29,7 @@ exports.components = {
   "component---src-templates-blog-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/templates/blog.js"))),
   "component---src-templates-custom-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/templates/custom.js"))),
   "component---src-templates-materials-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/templates/materials.js"))),
+  "component---src-templates-offer-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/templates/offer.js"))),
   "component---src-templates-products-js": hot(preferDefault(require("/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/templates/products.js")))
 }
 

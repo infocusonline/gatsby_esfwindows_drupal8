@@ -26,6 +26,7 @@ exports.components = {
   "component---src-templates-blog-js": () => import("./../src/templates/blog.js" /* webpackChunkName: "component---src-templates-blog-js" */),
   "component---src-templates-custom-js": () => import("./../src/templates/custom.js" /* webpackChunkName: "component---src-templates-custom-js" */),
   "component---src-templates-materials-js": () => import("./../src/templates/materials.js" /* webpackChunkName: "component---src-templates-materials-js" */),
+  "component---src-templates-offer-js": () => import("./../src/templates/offer.js" /* webpackChunkName: "component---src-templates-offer-js" */),
   "component---src-templates-products-js": () => import("./../src/templates/products.js" /* webpackChunkName: "component---src-templates-products-js" */)
 }
 
