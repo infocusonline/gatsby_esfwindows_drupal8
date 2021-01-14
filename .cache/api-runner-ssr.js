@@ -1,6 +1,6 @@
 var plugins = [{
       plugin: require('/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/node_modules/gatsby-plugin-google-analytics/gatsby-ssr'),
-      options: {"plugins":[],"trackingId":"G-2TGZNHY4DPS","head":true,"anonymize":true,"respectDNT":false,"exclude":[],"pageTransitionDelay":0},
+      options: {"plugins":[],"trackingId":"G-2TGZNHY4DPS","head":true,"anonymize":true},
     },{
       plugin: require('/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},

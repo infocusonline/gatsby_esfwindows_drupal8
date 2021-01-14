@@ -1,24 +1,24 @@
-import React from "react"
-import styled from "styled-components"
-import Logo from "../Navbar/Logo"
-import BurgerMenu from "./BurgerMenu"
-import CollapseMenu from "./CollapseMenu"
-import { useSpring, animated, config } from "react-spring"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import React from 'react'
+import styled from 'styled-components'
+import Logo from '../Navbar/Logo'
+import BurgerMenu from './BurgerMenu'
+import CollapseMenu from './CollapseMenu'
+import { useSpring, animated, config } from 'react-spring'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
-import styles from "../../styles/index.scss"
+import styles from '../../styles/index.scss'
 
 const Navbar = props => {
   const barAnimation = useSpring({
-    from: { transform: "translate3d(0, -10rem, 0" },
-    to: { transform: "translate3d(0, 0, 0)", opacity: 1 },
+    from: { transform: 'translate3d(0, -10rem, 0' },
+    to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
     delay: 20,
     config: config.wobbly,
   })
 
   const linkAnimation = useSpring({
-    from: { transform: "translate3d(0, 30px, 0)", opcaity: 0 },
-    to: { transform: "translate3d(0, 0, 0)", opcaity: 1 },
+    from: { transform: 'translate3d(0, 30px, 0)', opcaity: 0 },
+    to: { transform: 'translate3d(0, 0, 0)', opcaity: 1 },
     delay: 20,
     config: config.wobbly,
   })
