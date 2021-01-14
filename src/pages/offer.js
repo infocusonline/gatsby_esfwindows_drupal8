@@ -67,7 +67,7 @@ const OfferPage = () => {
               .childImageSharp.fluid
           return (
             <li>
-              <Link to={`/offer/${edge.node.fields.slug}`}>
+              <Link to={`/offer/pvc-offer/${edge.node.fields.slug}`}>
                 <h1>{edge.node.title}</h1>
                 {images ? (
                   <div>
