@@ -41,7 +41,7 @@ const PvcOffer = () => {
               .childImageSharp.fluid
           return (
             <div>
-              <h1>{edge.node.title} this is </h1>
+              <h1>{edge.node.title}</h1>
               <li>
                 <Link to={`/${edge.node.path.alias}`}>
                   <SetImg fluid={images} />
