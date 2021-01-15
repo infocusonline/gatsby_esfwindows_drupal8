@@ -42,7 +42,6 @@ const PvcOffer = () => {
               .childImageSharp.fluid
           return (
             <div>
-              <h1>thsi is wherljhkjbglyiv</h1>
               <h1>{edge.node.title}</h1>
               <li>
                 <Link to={`/${edge.node.path.alias}`}>
