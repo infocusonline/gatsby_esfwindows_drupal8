@@ -1,10 +1,9 @@
 import React from 'react'
-import { useStaticQuery, Link } from 'gatsby'
-import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql, useStaticQuery, Link } from 'gatsby'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 
-import Layout from '../../../components/Layout'
+import Layout from '../../components/Layout'
 
 const PvcOffer = () => {
   const data = useStaticQuery(graphql`
@@ -32,7 +31,7 @@ const PvcOffer = () => {
       }
     }
   `)
-
+  console.log(data)
   return (
     <Layout>
       <FlexContainer>
@@ -42,7 +41,7 @@ const PvcOffer = () => {
               .childImageSharp.fluid
           return (
             <div>
-              <h1>{edge.node.title}</h1>
+              <h1>{edge.node.title} this is </h1>
               <li>
                 <Link to={`/${edge.node.path.alias}`}>
                   <SetImg fluid={images} />
@@ -86,4 +85,5 @@ const SetImg = styled(Img)`
   width: 310px;
   border-radius: 2%;
 `
+
 export default PvcOffer
