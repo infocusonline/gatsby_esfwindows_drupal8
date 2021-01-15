@@ -2,7 +2,8 @@ import React from 'react'
 import Img from 'gatsby-image'
 
 import Layout from '../../../components/Layout'
-import { useStaticQuery, Link } from 'gatsby'
+import { useStaticQuery } from 'gatsby'
+import { graphql } from 'gatsby'
 
 const Window = () => {
   const data = useStaticQuery(graphql`

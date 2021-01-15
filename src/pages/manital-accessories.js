@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { useStaticQuery, Graphql, Link } from 'gatsby'
+import { useStaticQuery, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 import styled from 'styled-components'
@@ -75,6 +76,23 @@ const ManitalAccessories = () => {
     </Layout>
   )
 }
+/*
+
+// warn Using the global `graphql` tag is deprecated, and will not be supported in v3.
+Import it instead like:  import { graphql } from 'gatsby' in file:
+/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/manital-accessories.js
+warn Using the global `graphql` tag is deprecated, and will not be supported in v3.
+Import it instead like:  import { graphql } from 'gatsby' in file:
+/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/offer/pvc-offer/pvc-offer.js
+warn Using the global `graphql` tag is deprecated, and will not be supported in v3.
+Import it instead like:  import { graphql } from 'gatsby' in file:
+/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/offer/pvc-offer/sliding-windows.js
+warn Using the global `graphql` tag is deprecated, and will not be supported in v3.
+Import it instead like:  import { graphql } from 'gatsby' in file:
+/Users/migueltejeda/Desktop/esfwindows:d8:gatsby/src/pages/offer/pvc-offer/windows.js
+
+// 
+*/
 
 // styled components
 

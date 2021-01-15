@@ -2,7 +2,6 @@ import React from 'react'
 import Layout from '../components/Layout'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import styled from 'styled-components'
 
 const MaterialAluminum = () => {
   const data = useStaticQuery(graphql`
