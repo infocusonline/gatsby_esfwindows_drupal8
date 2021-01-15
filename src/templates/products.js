@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Img from 'gatsby-image'
+import Form from '../components/forms/Form'
 
 export const query = graphql`
   query($slug: String!) {
@@ -30,6 +31,8 @@ const Product = ({ data }) => {
   return (
     <Layout>
       <Img fluid={image} />
+
+      <Form />
     </Layout>
   )
 }
