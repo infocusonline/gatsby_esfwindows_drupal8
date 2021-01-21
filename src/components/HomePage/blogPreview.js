@@ -7,7 +7,7 @@ import styled from 'styled-components'
 // check in components in case this needs to be modified or added elsewhere
 // import CustomerPortal from '../HomePage/customer-portal'
 
-const BlogPreview = ({ image }) => {
+const BlogPreview = () => {
   const data = useStaticQuery(graphql`
     query {
       nodePage(id: { eq: "a343090d-aa5f-59a7-b1ec-7f31ad3a4093" }) {

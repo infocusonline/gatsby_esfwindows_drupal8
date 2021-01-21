@@ -35,7 +35,6 @@ const AluOffer = () => {
   console.log(data)
   return (
     <Layout>
-      <h1>all of items here</h1>
       <FlexContainer>
         {data.allNodeAluOfferSubItems.edges.map(edge => {
           const images =

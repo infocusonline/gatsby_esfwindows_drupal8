@@ -37,11 +37,11 @@ const PvcOffer = () => {
       <FlexContainer>
         {data.allNodePvcOfferSubItems.edges.map(edge => {
           const images =
-            edge.node.relationships.field_pvc_offer_subitems_image.localFile
+            edge.node.relationships.field_pvc_offer_subitems_image[0].localFile
               .childImageSharp.fluid
           return (
             <div>
-              <h1>{edge.node.title}</h1>
+              <h2>{edge.node.title}</h2>
               <li>
                 <Link to={`/${edge.node.path.alias}`}>
                   <SetImg fluid={images} />
@@ -56,11 +56,16 @@ const PvcOffer = () => {
 }
 
 const FlexContainer = styled.ul`
+
+
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: row-reverse; */
   justify-content: space-around;
   padding: 0.6rem;
+  margin-top: 190px;
+
+
 
   h2 {
     text-align: center;

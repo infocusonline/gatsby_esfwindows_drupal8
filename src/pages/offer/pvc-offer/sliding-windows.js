@@ -1,5 +1,6 @@
 import React from 'react'
 import { useStaticQuery } from 'gatsby'
+import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -17,8 +18,8 @@ const SlidingWindows = () => {
           field_pvc_offer_subitems_image {
             localFile {
               childImageSharp {
-                fixed(width: 1080, height: 400) {
-                  ...GatsbyImageSharpFixed
+                fluid(maxWidth: 1080, maxHeight: 550) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
@@ -27,19 +28,38 @@ const SlidingWindows = () => {
       }
     }
   `)
+
   console.log(data, 'pull data here')
   const pageBody = data.nodePvcOfferSubItems.body.value
   const pageImage =
-    data.nodePvcOfferSubItems.relationships.field_pvc_offer_subitems_image
-      .localFile.childImageSharp.fixed
+    data.nodePvcOfferSubItems.relationships.field_pvc_offer_subitems_image[1]
+      .localFile.childImageSharp.fluid
   return (
     <Layout>
-      <h1>{data.nodePvcOfferSubItems.title}</h1>
-      <div>ADD IMAGE HERE</div>
-      <Img fixed={pageImage} />
-      <p dangerouslySetInnerHTML={{ __html: pageBody }}></p>
+      <Container>
+        <h1>{data.nodePvcOfferSubItems.title}</h1>
+
+        <Img fluid={pageImage} />
+        <p dangerouslySetInnerHTML={{ __html: pageBody }}></p>
+      </Container>
     </Layout>
   )
 }
+
+const Container = styled.div`
+  margin-top: 120px;
+  padding: 60px;
+  h1 {
+    text-align: center;
+    padding-bottom: 50px;
+    margin: 0 auto;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 30px;
+    color: #2d385b;
+  }
+`
 
 export default SlidingWindows
