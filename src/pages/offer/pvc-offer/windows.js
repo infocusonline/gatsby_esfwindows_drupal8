@@ -81,10 +81,6 @@ const Window = () => {
           }
         })}
       </FlexContainer>
-
-      <div>
-        <h3>Are you Looking for more information?</h3>
-      </div>
     </Layout>
   )
 }
