@@ -23,7 +23,6 @@ const Nordic = () => {
       }
     }
   `)
-  console.log(data, 'grab data here')
   const littleImages = data.nodePvcOfferSchucoWindows.field_text[0].value
 
   return (

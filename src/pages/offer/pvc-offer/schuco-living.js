@@ -24,12 +24,10 @@ const SchucoLiving = () => {
       }
     }
   `)
-  console.log(data)
 
   const videoLink =
     data.nodePvcOfferSchucoWindows.field_schuco_window_link[0].uri
 
-  console.log(videoLink, 'this is the youtube video')
   const videoTitle =
     data.nodePvcOfferSchucoWindows.field_schuco_window_link[0].title
 
