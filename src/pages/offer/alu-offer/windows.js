@@ -50,7 +50,7 @@ const AluWindows = () => {
   return (
     <Layout>
       <Container>
-        {data.nodeAluOfferSubItems.title}
+        <h1>{data.nodeAluOfferSubItems.title}</h1>
 
         <ConatinerImg fluid={pageImage} />
       </Container>
