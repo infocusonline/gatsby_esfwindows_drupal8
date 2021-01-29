@@ -50,8 +50,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const accessoriesTemplate = path.resolve('./src/templates/accessories.js')
   // creating Company/about us page
   const companyTemplate = path.resolve('./src/templates/company.js')
-  // creating Offer template
-  // const offerTypeTemplate = path.resolve('./src/templates/offer.js')
+  // creating ALUOfferWindows template
+  const aluOfferWindowsTemplate = path.resolve('src/templates/alu-offer.js')
 
   const res = await graphql(`
     query {
@@ -124,6 +124,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeAluOfferWindows {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -137,6 +148,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeMaterials,
     allNodeCustom,
     allNodeAccessories,
+    allNodeAluOfferWindows,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -185,5 +197,14 @@ module.exports.createPages = async ({ graphql, actions }) => {
           },
         })
       })
+    allNodeAluOfferWindows.edges.forEach(({ node }) => {
+      createPage({
+        component: aluOfferWindowsTemplate,
+        path: `/alu-offer/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    })
   })
 }

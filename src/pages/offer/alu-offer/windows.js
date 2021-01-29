@@ -27,6 +27,10 @@ const AluWindows = () => {
           node {
             id
             title
+            fields {
+              slug
+            }
+
             relationships {
               field_alu_offer_windows_image {
                 localFile {
@@ -60,10 +64,9 @@ const AluWindows = () => {
           const images =
             edge.node.relationships.field_alu_offer_windows_image[0].localFile
               .childImageSharp.fixed
-          console.log(images)
           return (
             <li>
-              <Link to="/">
+              <Link to={`/alu-offer/${edge.node.fields.slug}`}>
                 <h2>{edge.node.title}</h2>
                 <SetImg fixed={images} />
               </Link>
