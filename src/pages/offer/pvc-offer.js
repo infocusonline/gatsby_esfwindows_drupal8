@@ -56,16 +56,12 @@ const PvcOffer = () => {
 }
 
 const FlexContainer = styled.ul`
-
-
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: row-reverse; */
   justify-content: space-around;
   padding: 0.6rem;
   margin-top: 190px;
-
-
 
   h2 {
     text-align: center;

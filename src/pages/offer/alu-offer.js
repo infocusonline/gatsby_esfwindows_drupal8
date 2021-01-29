@@ -43,6 +43,7 @@ const AluOffer = () => {
           return (
             <div>
               <li>
+                <h2>{edge.node.title}</h2>
                 <Link to={`/${edge.node.path.alias}`}>
                   <SetImg fluid={images} />
                 </Link>
@@ -61,6 +62,7 @@ const FlexContainer = styled.ul`
   /* flex-direction: row-reverse; */
   justify-content: space-around;
   padding: 0.6rem;
+  margin-top: 190px;
 
   h2 {
     text-align: center;
