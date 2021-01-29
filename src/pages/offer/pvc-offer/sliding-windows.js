@@ -30,6 +30,9 @@ const SlidingWindows = () => {
           node {
             id
             title
+            path {
+              alias
+            }
             fields {
               slug
             }
@@ -51,7 +54,6 @@ const SlidingWindows = () => {
   `)
 
   console.log(data, 'pull data here')
-  console.log(data.allNodePvcOfferSlidingWindows.edges)
   const pageBody = data.nodePvcOfferSubItems.body.value
   const pageImage =
     data.nodePvcOfferSubItems.relationships.field_pvc_offer_subitems_image[1]
@@ -72,7 +74,8 @@ const SlidingWindows = () => {
               edge.node.relationships.field_pvc_offer_liftslide_doors[0]
                 .localFile.childImageSharp.fluid
             return (
-              <Link to={`/${edge.node.fields.slug}`}>
+              // change the url alias when you make this page dynamic using template
+              <Link to={`/${edge.node.path.alias}`}>
                 <h2>{edge.node.title} </h2>
 
                 <SetImg fluid={images} />
@@ -87,7 +90,7 @@ const SlidingWindows = () => {
 
 const Container = styled.div`
   margin-top: 120px;
-  padding: 60px;
+  padding: 50px;
   h1 {
     text-align: center;
     padding-bottom: 50px;
