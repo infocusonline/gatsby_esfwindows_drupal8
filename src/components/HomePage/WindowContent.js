@@ -46,7 +46,8 @@ const WindowContent = () => {
         <SetImg fluid={image} alt={title} />
         <Top>
           <h1>{title}</h1>
-          <p dangerouslySetInnerHTML={{ __html: body }}></p>
+          <div dangerouslySetInnerHTML={{ __html: body }}></div>
+
           <ButtonCenteredFlex>
             <StyledLink to={`${data.windowLink.fields.slug}`}>
               Learn More

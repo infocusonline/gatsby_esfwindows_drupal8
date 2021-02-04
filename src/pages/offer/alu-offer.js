@@ -7,6 +7,24 @@ import Layout from '../../components/Layout'
 const AluOffer = () => {
   const data = useStaticQuery(graphql`
     query {
+      #body of the page
+      nodeOfferType(id: { eq: "5ed4cba3-ddf2-5841-a643-a55f63510da1" }) {
+        title
+        body {
+          value
+        }
+        relationships {
+          field_offer_type_image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 550, maxHeight: 550) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
       allNodeAluOfferSubItems {
         edges {
           node {
@@ -32,9 +50,16 @@ const AluOffer = () => {
       }
     }
   `)
+  // working on pageHeader
   console.log(data)
+  const body = data.nodeOfferType.body.value
+  const pageBodyImage =
+    data.nodeOfferType.relationships.field_offer_type_image[1].localFile
+      .childImageSharp.fluid
   return (
     <Layout>
+      <h1>{data.nodeOfferType.title}</h1>
+
       <FlexContainer>
         {data.allNodeAluOfferSubItems.edges.map(edge => {
           const images =
@@ -55,6 +80,23 @@ const AluOffer = () => {
     </Layout>
   )
 }
+
+const Title = styled.div`
+  h1 {
+    margin-top: 90px;
+  }
+`
+
+const PageHeader = styled.div`
+  margin: 0 auto;
+
+  border: 1px solid red;
+  padding: 30px;
+  console.l p {
+    margin: 0 auto;
+    padding: 10px;
+  }
+`
 
 const FlexContainer = styled.ul`
   display: flex;
