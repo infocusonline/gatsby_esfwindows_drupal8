@@ -48,7 +48,7 @@ const DoorContent = () => {
       <Container>
         <Top>
           <h1>{title}</h1>
-          <p dangerouslySetInnerHTML={{ __html: body }}></p>
+          <div dangerouslySetInnerHTML={{ __html: body }}></div>
           <ButtonCenteredFlex>
             <StyledLink
               to={`products/${data.doorLink.fields.slug}`}

@@ -52,6 +52,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const companyTemplate = path.resolve('./src/templates/company.js')
   // creating ALUOfferWindows template
   const aluOfferWindowsTemplate = path.resolve('src/templates/alu-offer.js')
+  // creating AluOfferSLIDINGDOORS template
+  const aluOfferSlidingDoorsTemplate = path.resolve(
+    './src/templates/sliding-doors.js'
+  )
 
   const res = await graphql(`
     query {
@@ -135,6 +139,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeAluOfferSlidingDoors {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -149,6 +164,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeCustom,
     allNodeAccessories,
     allNodeAluOfferWindows,
+    allNodeAluOfferSlidingDoors,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -205,6 +221,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
           slug: node.fields.slug,
         },
       })
-    })
+    }),
+      allNodeAluOfferSlidingDoors.edges.forEach(({ node }) => {
+        createPage({
+          component: aluOfferSlidingDoorsTemplate,
+          path: `/sliding-doors/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      })
   })
 }

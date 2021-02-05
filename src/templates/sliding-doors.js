@@ -1,26 +1,26 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
+
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 export const query = graphql`
   query($slug: String!) {
-    nodeAluOfferWindows(fields: { slug: { eq: $slug } }) {
+    nodeAluOfferSlidingDoors(fields: { slug: { eq: $slug } }) {
       id
       title
       body {
         value
       }
-      field_alu_offer_windows_text {
+      field_alu_offer_liftslide_door_a {
         value
       }
       fields {
         slug
       }
-
       relationships {
-        field_alu_offer_windows_image {
+        field_alu_offer_liftslide_door_i {
           localFile {
             childImageSharp {
               fluid(maxWidth: 1600, maxHeight: 700) {
@@ -34,33 +34,34 @@ export const query = graphql`
   }
 `
 
-const AluOfferTemplate = ({ data }) => {
-  console.log(data)
-  const body = data.nodeAluOfferWindows.body.value
-  const secondBody =
-    data.nodeAluOfferWindows.field_alu_offer_windows_text[1].value
-  const productIcons =
-    data.nodeAluOfferWindows.field_alu_offer_windows_text[0].value
+const SlidingDoors = ({ data }) => {
+  const body = data.nodeAluOfferSlidingDoors.body.value
   const pageImage =
-    data.nodeAluOfferWindows.relationships.field_alu_offer_windows_image[1]
-      .localFile.childImageSharp.fluid
+    data.nodeAluOfferSlidingDoors.relationships
+      .field_alu_offer_liftslide_door_i[0].localFile.childImageSharp.fluid
+
+  //   const secondPageImage =
+  //     data.nodeAluOfferSlidingDoors.relationships
+  //       .field_alu_offer_liftslide_door_i[1].localFile.childImageSharp.fluid
+
+  const secondParagraph =
+    data.nodeAluOfferSlidingDoors.field_alu_offer_liftslide_door_a[0].value
+
+  console.log(data, 'data')
   return (
     <Layout>
       <Container>
-        <h2>{data.nodeAluOfferWindows.title}</h2>
+        <h2>{data.nodeAluOfferSlidingDoors.title}</h2>
 
         <BodyContainer
           dangerouslySetInnerHTML={{ __html: body }}
         ></BodyContainer>
+
         <Img fluid={pageImage} />
 
         <BodyContainer
-          dangerouslySetInnerHTML={{ __html: secondBody }}
+          dangerouslySetInnerHTML={{ __html: secondParagraph }}
         ></BodyContainer>
-
-        <FlexContainer>
-          <div dangerouslySetInnerHTML={{ __html: productIcons }}></div>
-        </FlexContainer>
       </Container>
     </Layout>
   )
@@ -73,8 +74,6 @@ const Container = styled.div`
     padding-top: 60px;
     padding-left: 40px;
     margin-top: 90px;
-
-    font-size: 60px;
   }
 `
 
@@ -103,4 +102,5 @@ const FlexContainer = styled.div`
     margin: 0 auto;
   }
 `
-export default AluOfferTemplate
+
+export default SlidingDoors
