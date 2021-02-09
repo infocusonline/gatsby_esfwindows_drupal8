@@ -1,14 +1,14 @@
 import React from 'react'
 import { graphql, useStaticQuery, Link } from 'gatsby'
-import Img from 'gatsby-image'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 import Layout from '../../components/Layout'
 
-const AluOffer = () => {
+const Shutters = () => {
   const data = useStaticQuery(graphql`
     query {
-      #body of the page
-      nodeOfferType(id: { eq: "5ed4cba3-ddf2-5841-a643-a55f63510da1" }) {
+      # shutters indivudual heroe image from a different node type
+      nodeOfferType(id: { eq: "86b50ced-9dee-5063-ab3b-fc29193644dc" }) {
         title
         body {
           value
@@ -17,25 +17,24 @@ const AluOffer = () => {
           field_offer_type_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 550, maxHeight: 550) {
-                  ...GatsbyImageSharpFluid
+                fixed(width: 300, height: 300) {
+                  base64
                 }
               }
             }
           }
         }
       }
-      allNodeAluOfferSubItems {
+      allNodeShutters {
         edges {
           node {
             id
             title
-            path {
-              alias
+            fields {
+              slug
             }
-
             relationships {
-              field_alu_offer_sub_items_image {
+              field_shutter_image {
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 550, maxHeight: 550) {
@@ -50,30 +49,26 @@ const AluOffer = () => {
       }
     }
   `)
-  // working on pageHeader
-  console.log(data)
-  const body = data.nodeOfferType.body.value
-  const pageBodyImage =
-    data.nodeOfferType.relationships.field_offer_type_image[1].localFile
-      .childImageSharp.fluid
+  const about = data.nodeOfferType.body.value
   return (
     <Layout>
-      <h1>{data.nodeOfferType.title}</h1>
+      <Container>
+        <h1>{data.nodeOfferType.title}</h1>
+      </Container>
+      <About dangerouslySetInnerHTML={{ __html: about }}></About>
 
       <FlexContainer>
-        {data.allNodeAluOfferSubItems.edges.map(edge => {
+        {data.allNodeShutters.edges.map(edge => {
           const images =
-            edge.node.relationships.field_alu_offer_sub_items_image.localFile
+            edge.node.relationships.field_shutter_image[0].localFile
               .childImageSharp.fluid
           return (
-            <div>
-              <li>
-                <h2>{edge.node.title}</h2>
-                <Link to={`/${edge.node.path.alias}`}>
-                  <SetImg fluid={images} />
-                </Link>
-              </li>
-            </div>
+            <li>
+              <h2>{edge.node.title}</h2>
+              <Link to={`/${edge.node.fields.slug}`}>
+                <SetImg fluid={images} />
+              </Link>
+            </li>
           )
         })}
       </FlexContainer>
@@ -81,21 +76,17 @@ const AluOffer = () => {
   )
 }
 
-const Title = styled.div`
+const Container = styled.div`
   h1 {
-    margin-top: 90px;
+    margin-top: 110px;
+    text-align: center;
   }
 `
 
-const PageHeader = styled.div`
+const About = styled.div`
+  display: block;
+  padding: 50px;
   margin: 0 auto;
-
-  border: 1px solid red;
-  padding: 30px;
-  p {
-    margin: 0 auto;
-    padding: 10px;
-  }
 `
 
 const FlexContainer = styled.ul`
@@ -104,11 +95,12 @@ const FlexContainer = styled.ul`
   /* flex-direction: row-reverse; */
   justify-content: space-around;
   padding: 0.6rem;
-  margin-top: 190px;
+  margin-top: 90px;
 
   h2 {
     text-align: center;
     color: #2d385b;
+    font-size: 20px;
   }
 
   li {
@@ -130,4 +122,4 @@ const SetImg = styled(Img)`
   border-radius: 2%;
 `
 
-export default AluOffer
+export default Shutters
