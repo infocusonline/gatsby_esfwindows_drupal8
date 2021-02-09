@@ -22,7 +22,7 @@ const AluWindows = () => {
           }
         }
       }
-      allNodeAluOfferWindows {
+      allNodeAluOfferWindows(sort: { fields: title }) {
         edges {
           node {
             id

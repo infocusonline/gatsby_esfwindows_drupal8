@@ -21,7 +21,7 @@ const SlidingWindows = () => {
           }
         }
       }
-      allNodeAluOfferSlidingDoors {
+      allNodeAluOfferSlidingDoors(sort: { fields: title }) {
         edges {
           node {
             id
