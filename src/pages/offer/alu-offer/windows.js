@@ -30,7 +30,6 @@ const AluWindows = () => {
             fields {
               slug
             }
-
             relationships {
               field_alu_offer_windows_image {
                 localFile {
@@ -47,7 +46,7 @@ const AluWindows = () => {
       }
     }
   `)
-  console.log(data)
+  // console.log(data)
   const pageImage =
     data.nodeAluOfferSubItems.relationships.field_alu_offer_sub_items_image
       .localFile.childImageSharp.fluid

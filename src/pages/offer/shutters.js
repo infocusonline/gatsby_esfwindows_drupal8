@@ -18,7 +18,7 @@ const Shutters = () => {
             localFile {
               childImageSharp {
                 fixed(width: 300, height: 300) {
-                  base64
+                  ...GatsbyImageSharpFixed
                 }
               }
             }
