@@ -6,8 +6,6 @@ import CollapseMenu from './CollapseMenu'
 import { useSpring, animated, config } from 'react-spring'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
-import styles from '../../styles/index.scss'
-
 const Navbar = props => {
   const barAnimation = useSpring({
     from: { transform: 'translate3d(0, -10rem, 0' },

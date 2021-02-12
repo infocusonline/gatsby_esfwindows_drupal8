@@ -65,7 +65,7 @@ const Shutters = () => {
           return (
             <li>
               <h2>{edge.node.title}</h2>
-              <Link to={`/${edge.node.fields.slug}`}>
+              <Link to={`/shutters/${edge.node.fields.slug}`}>
                 <SetImg fluid={images} />
               </Link>
             </li>
