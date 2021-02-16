@@ -33,7 +33,7 @@ const SlidingWindows = () => {
               field_alu_offer_liftslide_door_i {
                 localFile {
                   childImageSharp {
-                    fixed(height: 325, width: 325) {
+                    fixed(height: 300, width: 360) {
                       ...GatsbyImageSharpFixed
                     }
                   }
@@ -60,8 +60,8 @@ const SlidingWindows = () => {
           return (
             <li>
               <Link to={`/sliding-doors/${edge.node.fields.slug}`}>
-                <h2>{edge.node.title}</h2>
                 <SetImg fixed={images} />
+                <h2>{edge.node.title}</h2>
               </Link>
             </li>
           )
@@ -99,7 +99,7 @@ const FlexContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: row-reverse; */
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 0.6rem;
   margin: 90px;
 
@@ -109,6 +109,7 @@ const FlexContainer = styled.ul`
 
   li {
     list-style-type: none;
+    padding: 10px;
   }
 
   h2 {
@@ -126,7 +127,8 @@ const FlexContainer = styled.ul`
 
 const SetImg = styled(Img)`
   display: block !important;
-  flex-grow: 1;
-  padding: 149px;
+  border: 1px solid red;
+  width: 100%;
+  height: auto;
 `
 export default SlidingWindows

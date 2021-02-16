@@ -54,7 +54,12 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const aluOfferSlidingDoorsTemplate = path.resolve(
     './src/templates/sliding-doors.js'
   )
+  // creating shutters template
   const shuttersTemplate = path.resolve('./src/templates/shutters.js')
+  // creating entrance door templates
+  const entranceDoorsTemplate = path.resolve(
+    './src/templates/entrance-doors.js'
+  )
 
   const res = await graphql(`
     query {
@@ -160,12 +165,23 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeEntranceDoors {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
     console.log(res.errors)
   }
-  // console.log(JSON.stringify(res, null, 3))
+  console.log(JSON.stringify(res, null, 3))
   // destructuring the queries
   const {
     allNodeBlog,
@@ -176,6 +192,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeAluOfferWindows,
     allNodeAluOfferSlidingDoors,
     allNodeShutters,
+    allNodeEntranceDoors,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -251,5 +268,14 @@ module.exports.createPages = async ({ graphql, actions }) => {
           },
         })
       })
+    allNodeEntranceDoors.edges.forEach(({ node }) => {
+      createPage({
+        component: entranceDoorsTemplate,
+        path: `/entrance-doors/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    })
   })
 }

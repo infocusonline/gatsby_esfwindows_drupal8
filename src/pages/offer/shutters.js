@@ -64,9 +64,9 @@ const Shutters = () => {
               .childImageSharp.fluid
           return (
             <li>
-              <h2>{edge.node.title}</h2>
               <Link to={`/shutters/${edge.node.fields.slug}`}>
                 <SetImg fluid={images} />
+                <h2>{edge.node.title}</h2>
               </Link>
             </li>
           )
