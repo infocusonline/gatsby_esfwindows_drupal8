@@ -118,10 +118,6 @@ const FlexContainer = styled.ul`
   padding: 0.6rem;
   margin: 90px;
 
-  div {
-    padding-bottom: 160px;
-  }
-
   li {
     list-style-type: none;
     padding: 10px;

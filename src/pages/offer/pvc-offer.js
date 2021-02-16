@@ -40,14 +40,12 @@ const PvcOffer = () => {
             edge.node.relationships.field_pvc_offer_subitems_image[0].localFile
               .childImageSharp.fluid
           return (
-            <div>
-              <h2>{edge.node.title}</h2>
-              <li>
-                <Link to={`/${edge.node.path.alias}`}>
-                  <SetImg fluid={images} />
-                </Link>
-              </li>
-            </div>
+            <li>
+              <Link to={`/${edge.node.path.alias}`}>
+                <SetImg fluid={images} />
+                <h2>{edge.node.title}</h2>
+              </Link>
+            </li>
           )
         })}
       </FlexContainer>
@@ -59,18 +57,24 @@ const FlexContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: row-reverse; */
-  justify-content: space-around;
+  justify-content: center;
   padding: 0.6rem;
-  margin-top: 190px;
-
-  h2 {
-    text-align: center;
-    color: #2d385b;
-  }
+  margin: 90px;
 
   li {
-    margin: 1rem;
     list-style-type: none;
+    padding: 10px;
+  }
+
+  h2 {
+    color: #2d385b;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
+    text-align: left;
+    padding-bottom: 15px;
+    border-bottom: solid 1px blue;
+    width: 190px;
   }
 
   a {

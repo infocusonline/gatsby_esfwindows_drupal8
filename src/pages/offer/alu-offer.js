@@ -68,9 +68,9 @@ const AluOffer = () => {
           return (
             <div>
               <li>
-                <h2>{edge.node.title}</h2>
                 <Link to={`/${edge.node.path.alias}`}>
                   <SetImg fluid={images} />
+                  <h2>{edge.node.title}</h2>
                 </Link>
               </li>
             </div>
@@ -102,18 +102,24 @@ const FlexContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: row-reverse; */
-  justify-content: space-around;
+  justify-content: center;
   padding: 0.6rem;
-  margin-top: 190px;
-
-  h2 {
-    text-align: center;
-    color: #2d385b;
-  }
+  margin: 90px;
 
   li {
-    margin: 1rem;
     list-style-type: none;
+    padding: 10px;
+  }
+
+  h2 {
+    color: #2d385b;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
+    text-align: left;
+    padding-bottom: 15px;
+    border-bottom: solid 1px blue;
+    width: 190px;
   }
 
   a {
@@ -121,7 +127,6 @@ const FlexContainer = styled.ul`
     color: #000000;
   }
 `
-
 const SetImg = styled(Img)`
   display: block !important;
   margin: 6px;

@@ -68,10 +68,10 @@ const OfferPage = () => {
           return (
             <li>
               <Link to={`/offer/${edge.node.fields.slug}`}>
-                <h1>{edge.node.title}</h1>
                 {images ? (
                   <div>
                     <SetImg fluid={images} />
+                    <h2>{edge.node.title}</h2>
                   </div>
                 ) : (
                   <div>
@@ -106,28 +106,32 @@ const About = styled.div`
 `
 
 const FlexContainer = styled.ul`
-  padding: 0.6rem;
   display: flex;
-  /* flex-direction: row; */
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 60px auto;
-
-  h1 {
-    color: #2d385b;
-    font-size: 1.2rem;
-  }
+  /* flex-direction: row-reverse; */
+  justify-content: center;
+  padding: 0.6rem;
+  margin: 90px;
 
   li {
-    margin: 1rem;
-
     list-style-type: none;
+    padding: 10px;
+  }
+
+  h2 {
+    color: #2d385b;
+    font-size: 20px;
     text-align: center;
-    font-weight: 30;
-    a {
-      text-decoration: none;
-      color: #000;
-    }
+    margin-top: 15px;
+    text-align: left;
+    padding-bottom: 15px;
+    border-bottom: solid 1px blue;
+    width: 190px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000000;
   }
 `
 

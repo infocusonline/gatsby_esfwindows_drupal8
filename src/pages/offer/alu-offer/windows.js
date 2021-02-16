@@ -66,8 +66,8 @@ const AluWindows = () => {
           return (
             <li>
               <Link to={`/alu-offer/${edge.node.fields.slug}`}>
-                <h2>{edge.node.title}</h2>
                 <SetImg fixed={images} />
+                <h2>{edge.node.title}</h2>
               </Link>
             </li>
           )
@@ -103,16 +103,13 @@ const FlexContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: row-reverse; */
-  justify-content: space-around;
+  justify-content: center;
   padding: 0.6rem;
   margin: 90px;
 
-  div {
-    padding-bottom: 160px;
-  }
-
   li {
     list-style-type: none;
+    padding: 10px;
   }
 
   h2 {
@@ -120,6 +117,10 @@ const FlexContainer = styled.ul`
     font-size: 20px;
     text-align: center;
     margin-top: 15px;
+    text-align: left;
+    padding-bottom: 15px;
+    border-bottom: solid 1px blue;
+    width: 190px;
   }
 
   a {
