@@ -181,7 +181,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   if (res.errors) {
     console.log(res.errors)
   }
-  console.log(JSON.stringify(res, null, 3))
+  // console.log(JSON.stringify(res, null, 3))
   // destructuring the queries
   const {
     allNodeBlog,
