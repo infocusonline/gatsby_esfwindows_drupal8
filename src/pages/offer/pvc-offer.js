@@ -31,7 +31,6 @@ const PvcOffer = () => {
       }
     }
   `)
-  console.log(data)
   return (
     <Layout>
       <FlexContainer>

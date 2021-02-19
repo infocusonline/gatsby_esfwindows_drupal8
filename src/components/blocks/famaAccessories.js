@@ -27,7 +27,6 @@ const FamaAccessoriesBlock = () => {
       }
     }
   `)
-  console.log(data.allNodeFamaAccessories.edges, 'fama accessories block')
 
   return (
     <div>

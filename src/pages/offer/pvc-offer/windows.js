@@ -47,7 +47,6 @@ const Window = () => {
       }
     }
   `)
-  console.log(data, 'here is the window side of the data you need to query')
 
   const pageBody = data.nodePvcOfferSubItems.body.value
   const pageImage =

@@ -35,7 +35,6 @@ const ManitalAccessories = () => {
       }
     }
   `)
-  console.log(data.allBlockContentManitalAccessories, '@@@@!!!(&&^^')
 
   return (
     <Layout>

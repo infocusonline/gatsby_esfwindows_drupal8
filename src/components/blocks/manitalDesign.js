@@ -26,10 +26,7 @@ const ManitalDesignComponent = () => {
       }
     }
   `)
-  console.log(
-    'this is the manital design block',
-    data.allBlockContentManitalDesign
-  )
+
   return (
     <FlexContainer>
       {data.allBlockContentManitalDesign.edges.map(edge => {

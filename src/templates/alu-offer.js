@@ -35,7 +35,6 @@ export const query = graphql`
 `
 
 const AluOfferTemplate = ({ data }) => {
-  console.log(data)
   const body = data.nodeAluOfferWindows.body.value
   const secondBody =
     data.nodeAluOfferWindows.field_alu_offer_windows_text[1].value

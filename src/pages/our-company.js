@@ -42,7 +42,6 @@ const Company = () => {
     }
   `)
 
-  console.log(data.aboutUsImage, '((**&*8767666')
   const aboutUsImg =
     data.aboutUsImage.relationships.field_company[0].localFile.childImageSharp
       .fixed

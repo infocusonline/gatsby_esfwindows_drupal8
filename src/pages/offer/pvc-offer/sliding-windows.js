@@ -53,7 +53,6 @@ const SlidingWindows = () => {
     }
   `)
 
-  console.log(data, 'pull data here')
   const pageBody = data.nodePvcOfferSubItems.body.value
   const pageImage =
     data.nodePvcOfferSubItems.relationships.field_pvc_offer_subitems_image[1]

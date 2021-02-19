@@ -48,14 +48,35 @@ const EntranceDoors = () => {
           }
         }
       }
+      nodeEntranceDoors(id: { eq: "7618eb1b-0e70-5fee-945a-06da257d1635" }) {
+        title
+        body {
+          value
+        }
+        relationships {
+          field_entrance_door_type {
+            localFile {
+              childImageSharp {
+                fixed(height: 300, width: 390) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `)
-  //   console.log(data.allNodeEntranceDoors, ' thiis os the data')
+  // console.log(data.nodeEntranceDoors, ' thiis os the data')
   const title = data.nodeOfferType.title
   const pageBody = data.nodeOfferType.body.value
   const pageImage =
     data.nodeOfferType.relationships.field_offer_type_image[0].localFile
       .childImageSharp.fluid
+
+  const avigardeImage =
+    data.nodeEntranceDoors.relationships.field_entrance_door_type[0].localFile
+      .childImageSharp.fixed
   return (
     <Layout>
       <Title>{title}</Title>
@@ -64,15 +85,18 @@ const EntranceDoors = () => {
       </ImageContainer>
       <Body dangerouslySetInnerHTML={{ __html: pageBody }}></Body>
       <FlexContainer>
+        {/* created custom link avidoor will need a seperate template */}
         <li>
-          <Link to={'offer/avindoor-avangarde'}>
-            Custom component of Avidoor Avangarde
+          <Link to={'/offer/avidoor-avangarde'}>
+            <Img fixed={avigardeImage} />
+            <h2>{data.nodeEntranceDoors.title}</h2>
           </Link>
         </li>
         {data.allNodeEntranceDoors.edges.map(edge => {
           const images =
             edge.node.relationships.field_entrance_door_type[0].localFile
               .childImageSharp.fixed
+
           return (
             <li>
               <Link to={`/entrance-doors/${edge.node.fields.slug}`}>

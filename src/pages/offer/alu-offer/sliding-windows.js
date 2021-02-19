@@ -45,7 +45,6 @@ const SlidingWindows = () => {
       }
     }
   `)
-  console.log(data, 'all of sliding windows content')
   return (
     <Layout>
       <Container>
