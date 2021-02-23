@@ -22,6 +22,9 @@ const AvidoorAvanrade = () => {
             body {
               value
             }
+            fields {
+              slug
+            }
             relationships {
               field_avangarde_image {
                 localFile {
@@ -59,7 +62,7 @@ const AvidoorAvanrade = () => {
                   .childImageSharp.fixed
               return (
                 <li>
-                  <Link to="this will be a template">
+                  <Link to={`/avidoor-avangarde/${edge.node.fields.slug}`}>
                     <SetImg fixed={images} />
                     <h2>{edge.node.title}</h2>
                   </Link>
@@ -87,6 +90,12 @@ const Container = styled.div`
   }
 `
 const BodyContainer = styled.div`
+  .pojemnik h4 {
+    text-decoration: underline;
+    color: #2d385b;
+    text-align: center;
+    font-size: 26px;
+  }
   max-width: 1030px;
   // padding: 120px;
   margin: 0 auto;

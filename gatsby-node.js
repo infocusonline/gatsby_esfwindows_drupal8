@@ -61,6 +61,9 @@ module.exports.createPages = async ({ graphql, actions }) => {
     './src/templates/entrance-doors.js'
   )
 
+  const avidoorAvangardeTemplate = path.resolve(
+    './src/templates/avidoor-avangarde.js'
+  )
   const res = await graphql(`
     query {
       allNodeBlog {
@@ -176,6 +179,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeAvidoorAvangardeItems {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -193,6 +207,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeAluOfferSlidingDoors,
     allNodeShutters,
     allNodeEntranceDoors,
+    allNodeAvidoorAvangardeItems,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -276,6 +291,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
           slug: node.fields.slug,
         },
       })
-    })
+    }),
+      allNodeAvidoorAvangardeItems.edges.forEach(({ node }) => {
+        createPage({
+          component: avidoorAvangardeTemplate,
+          path: `/avidoor-avangarde/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      })
   })
 }
