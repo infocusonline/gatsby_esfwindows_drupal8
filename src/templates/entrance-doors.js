@@ -58,7 +58,6 @@ const Container = styled.div`
 `
 const BodyContainer = styled.div`
   max-width: 1030px;
-  border: 1px solid red;
   // padding: 120px;
   margin: 0 auto;
 `

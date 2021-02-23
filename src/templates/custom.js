@@ -27,8 +27,6 @@ export const query = graphql`
 `
 
 const Custom = ({ data }) => {
-  console.log(data, "from 'Custom template")
-
   return (
     <div>
       <Layout>

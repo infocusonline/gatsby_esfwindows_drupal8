@@ -19,7 +19,6 @@ export const query = graphql`
 `
 
 const AvidoorAvangarde = ({ data }) => {
-  console.log(data, 'kjkjkjk')
   const pageBody = data.nodeAvidoorAvangardeItems.body.value
   return (
     <Layout>
@@ -46,26 +45,6 @@ const BodyContainer = styled.div`
   max-width: 1030px;
   // padding: 120px;
   margin: 0 auto;
-`
-
-const FlexContainer = styled.div`
-  .flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .flex li {
-    list-style-type: none;
-    margin: 0 auto;
-  }
-
-  p {
-    text-align: center;
-    width: 120px;
-    padding: 10px;
-    margin: 0 auto;
-  }
 `
 
 export default AvidoorAvangarde
