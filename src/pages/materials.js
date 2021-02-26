@@ -118,6 +118,15 @@ const Materials = () => {
               edge.node.relationships.field_materials_images[0].localFile
                 .childImageSharp.fluid
             const links = <Link to={`/${edge.node.path.alias}`}></Link>
+
+            if (links.props.to !== '/null') {
+              return (
+                <li>
+                  <Link to="/offer">Aluminum</Link>
+                  <Link to="/offer">pvc</Link>
+                </li>
+              )
+            }
             return (
               <li>
                 <Link to={links.props.to}>
