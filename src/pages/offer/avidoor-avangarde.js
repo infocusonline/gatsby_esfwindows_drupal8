@@ -42,7 +42,6 @@ const AvidoorAvanrade = () => {
     }
   `)
 
-  console.log(data)
   const body = data.nodeEntranceDoors.body.value
   return (
     <div>

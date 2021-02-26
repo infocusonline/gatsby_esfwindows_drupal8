@@ -26,13 +26,16 @@ const Materials = () => {
           }
         }
       }
-      allNodeMaterials {
+      allNodeMaterials(sort: { fields: title }) {
         edges {
           node {
             id
             title
             fields {
               slug
+            }
+            path {
+              alias
             }
             relationships {
               field_materials_images {
@@ -48,20 +51,43 @@ const Materials = () => {
           }
         }
       }
-
-      materialsAluminumPage: allNodeMaterialsAluminumContent {
-        edges {
-          node {
-            id
-            title
-            fields {
-              slug
+      # individual query to link to ALuminum to offer
+      aluminum: nodeMaterials(
+        id: { eq: "7fa597da-733f-5966-ad38-37a4dbcdd9f0" }
+      ) {
+        title
+        relationships {
+          field_materials_images {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 200, maxHeight: 200) {
+                  base64
+                }
+              }
+            }
+          }
+        }
+      }
+      aluminumCladPVC: nodeMaterials(
+        id: { eq: "daa3d026-1de0-5774-82aa-dca4565308bd" }
+      ) {
+        title
+        relationships {
+          field_materials_images {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 200, maxHeight: 200) {
+                  base64
+                }
+              }
             }
           }
         }
       }
     }
   `)
+
+  console.log(data.materialsAluminumPage)
 
   const materialBasicImage =
     data.materialBasicPageHeaderImage.relationships.field_basic_page_image[0]
@@ -79,28 +105,25 @@ const Materials = () => {
             }}
           ></p>
         </About>
+        <FlexContainer>
+          <li>
+            <Link to="/offer">Aluminum</Link>
+            <Link to="/offer">pvc</Link>
+          </li>
+        </FlexContainer>
 
         <FlexContainer>
           {data.allNodeMaterials.edges.map(edge => {
             const images =
               edge.node.relationships.field_materials_images[0].localFile
                 .childImageSharp.fluid
-            const links = (
-              <Link to={`/materials/${edge.node.fields.slug}`}></Link>
-            )
+            const links = <Link to={`/${edge.node.path.alias}`}></Link>
             return (
               <li>
                 <Link to={links.props.to}>
                   <h1>{edge.node.title}</h1>
-                  {images ? (
-                    <div>
-                      <SetImg fluid={images} />
-                    </div>
-                  ) : (
-                    <div>
-                      <p>Image not available</p>{' '}
-                    </div>
-                  )}
+
+                  <SetImg fluid={images} />
                 </Link>
               </li>
             )

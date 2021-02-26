@@ -62,19 +62,20 @@ const Accessories = ({ data }) => {
   // GRABBING RELATED DATA FROM DRUPAL
   const relatedHardwareContent =
     data.nodeAccessories.relationships.node__hardware
+  console.log(relatedHardwareContent, 'what is this')
 
   return (
     <Layout>
       <Container>
+        <Img fluid={image} />
+        <About>
+          <h1>{title}</h1>
+          <p dangerouslySetInnerHTML={{ __html: body }}></p>
+        </About>
+
         {/* conditonal statement in reactjs. look up docs if confused. */}
         {relatedHardwareContent ? (
           <div>
-            <Img fluid={image} />
-            <About>
-              <h1>{title}</h1>
-              <p dangerouslySetInnerHTML={{ __html: body }}></p>
-            </About>
-
             <FlexContainer>
               {relatedHardwareContent.map(hardware => {
                 {

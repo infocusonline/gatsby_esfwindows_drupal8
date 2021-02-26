@@ -2,13 +2,16 @@ import React from 'react'
 import Layout from '../components/Layout'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
-import Img from 'gatsby'
 
 export const query = graphql`
   query($slug: String!) {
     nodeEntranceDoors(fields: { slug: { eq: $slug } }) {
       id
       title
+      field_entrance_door_link {
+        title
+        uri
+      }
       body {
         value
       }
@@ -31,8 +34,10 @@ export const query = graphql`
 `
 
 const EntranceDoors = ({ data }) => {
-  console.log(data, 'dadtat')
   const body = data.nodeEntranceDoors.body.value
+  const link = data.nodeEntranceDoors.field_entrance_door_link[0].uri
+  const linkTitle = data.nodeEntranceDoors.field_entrance_door_link[0].title
+  // console.log(link, linkTitle)
   return (
     <div>
       <Layout>
@@ -42,6 +47,13 @@ const EntranceDoors = ({ data }) => {
           <BodyContainer
             dangerouslySetInnerHTML={{ __html: body }}
           ></BodyContainer>
+          {linkTitle && link ? (
+            <div>
+              <a target="_blank" href={link}>
+                {linkTitle}
+              </a>
+            </div>
+          ) : null}
         </Container>
       </Layout>
     </div>
