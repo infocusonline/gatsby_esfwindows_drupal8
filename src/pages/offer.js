@@ -49,6 +49,7 @@ const OfferPage = () => {
       }
     }
   `)
+  console.log('data', data.allNodeOfferType)
 
   const headerOfferImage =
     data.offerHeaderImage.relationships.field_basic_page_image[0].localFile
@@ -56,7 +57,7 @@ const OfferPage = () => {
   return (
     <Layout>
       <About>
-        <h1>Offer</h1>
+        <h1>{data.offerHeaderImage.title}</h1>
       </About>
       <Img fluid={headerOfferImage} />
 

@@ -1,22 +1,24 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import Layout from '../../components/Layout'
 import styled from 'styled-components'
-import Layout from '../../../components/Layout'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 
-const Window = () => {
+const AccessoriesAdditions = () => {
   const data = useStaticQuery(graphql`
     query {
-      nodePvcOfferSubItems(id: { eq: "03d3e3aa-a1b3-57e9-9a59-bdcb83d8400d" }) {
+      heroImage: nodeOfferType(
+        id: { eq: "d86e258a-9821-5f6c-a774-557027d27108" }
+      ) {
         title
         body {
           value
         }
         relationships {
-          field_pvc_offer_subitems_image {
+          field_offer_type_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1600, maxHeight: 700) {
+                fluid(maxWidth: 1790, maxHeight: 700) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -24,18 +26,15 @@ const Window = () => {
           }
         }
       }
-      allNodePvcOfferSchucoWindows {
+      allNodeAccessoriesAndAdditions {
         edges {
           node {
-            path {
-              alias
-            }
             title
             relationships {
-              field_schuco_windows_image {
+              field_accessories_doors_image {
                 localFile {
                   childImageSharp {
-                    fixed(width: 325, height: 325) {
+                    fixed(width: 325, height: 295) {
                       ...GatsbyImageSharpFixed
                     }
                   }
@@ -47,37 +46,31 @@ const Window = () => {
       }
     }
   `)
-
-  const pageBody = data.nodePvcOfferSubItems.body.value
-  const pageImage =
-    data.nodePvcOfferSubItems.relationships.field_pvc_offer_subitems_image[0]
-      .localFile.childImageSharp.fluid
+  console.log(data, 'grab data here')
+  const heroPageImage =
+    data.heroImage.relationships.field_offer_type_image[0].localFile
+      .childImageSharp.fluid
   return (
     <Layout>
       <Container>
-        <h1>{data.nodePvcOfferSubItems.title}</h1>
-        <ContainerImg fluid={pageImage} />
-
-        {/* <p dangerouslySetInnerHTML={{ __html: pageBody }}></p> */}
+        <h1>{data.heroImage.title}</h1>
+        <ContainerImg fluid={heroPageImage} />
       </Container>
 
       <FlexContainer>
-        {data.allNodePvcOfferSchucoWindows.edges.map(edge => {
-          const pvcSchucoImages =
-            edge.node.relationships.field_schuco_windows_image[0].localFile
+        {data.allNodeAccessoriesAndAdditions.edges.map(edge => {
+          const accessoriesAdditionImges =
+            edge.node.relationships.field_accessories_doors_image[0].localFile
               .childImageSharp.fixed
-          {
-            return (
-              <div>
-                <li>
-                  <Link to={`/offer/${edge.node.path.alias}`}>
-                    <SetImg fixed={pvcSchucoImages} />
-                    <h2>{edge.node.title}</h2>
-                  </Link>
-                </li>
-              </div>
-            )
-          }
+          return (
+            <li>
+              <Link>
+                <SetImg fixed={accessoriesAdditionImges} />
+
+                <h2>{edge.node.title}</h2>
+              </Link>
+            </li>
+          )
         })}
       </FlexContainer>
     </Layout>
@@ -99,10 +92,8 @@ const Container = styled.div`
 `
 
 const ContainerImg = styled(Img)`
-  margin-left: auto;
   order: 2;
   width: 980px;
-  height: 21vw;
   clip-path: polygon(10vw 0, 100% 0, 100% 100%, 0% 100%);
 `
 
@@ -142,4 +133,4 @@ const SetImg = styled(Img)`
   padding: 149px;
 `
 
-export default Window
+export default AccessoriesAdditions
