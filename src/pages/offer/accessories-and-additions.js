@@ -18,7 +18,7 @@ const AccessoriesAdditions = () => {
           field_offer_type_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1790, maxHeight: 700) {
+                fluid(maxWidth: 1600, maxHeight: 700) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -90,10 +90,11 @@ const Container = styled.div`
     font-size: 50px;
   }
 `
-
 const ContainerImg = styled(Img)`
+  margin-left: auto;
   order: 2;
   width: 980px;
+  height: 22vw;
   clip-path: polygon(10vw 0, 100% 0, 100% 100%, 0% 100%);
 `
 

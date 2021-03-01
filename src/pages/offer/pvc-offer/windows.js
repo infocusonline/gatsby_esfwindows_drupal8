@@ -48,7 +48,6 @@ const Window = () => {
     }
   `)
 
-  const pageBody = data.nodePvcOfferSubItems.body.value
   const pageImage =
     data.nodePvcOfferSubItems.relationships.field_pvc_offer_subitems_image[0]
       .localFile.childImageSharp.fluid
@@ -57,8 +56,6 @@ const Window = () => {
       <Container>
         <h1>{data.nodePvcOfferSubItems.title}</h1>
         <ContainerImg fluid={pageImage} />
-
-        {/* <p dangerouslySetInnerHTML={{ __html: pageBody }}></p> */}
       </Container>
 
       <FlexContainer>
