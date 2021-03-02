@@ -64,6 +64,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const avidoorAvangardeTemplate = path.resolve(
     './src/templates/avidoor-avangarde.js'
   )
+
+  const accessoriesAndAdditionWindowsTemplate = path.resolve(
+    './src/templates/accessories-and-additions-windows.js'
+  )
   const res = await graphql(`
     query {
       allNodeBlog {
@@ -190,6 +194,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeAccessoriesAndAdditionsWindow {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -208,6 +223,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeShutters,
     allNodeEntranceDoors,
     allNodeAvidoorAvangardeItems,
+    allNodeAccessoriesAndAdditionsWindow,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -296,6 +312,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
         createPage({
           component: avidoorAvangardeTemplate,
           path: `/avidoor-avangarde/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      }),
+      allNodeAccessoriesAndAdditionsWindow.edges.forEach(({ node }) => {
+        createPage({
+          component: accessoriesAndAdditionWindowsTemplate,
+          path: `/accessories-and-additions-windows/${node.fields.slug}`,
           context: {
             slug: node.fields.slug,
           },

@@ -1,27 +1,14 @@
 import React from 'react'
-import Layout from '../../../components/Layout'
-import styled from 'styled-components'
-import Img from 'gatsby-image'
 import { graphql, useStaticQuery, Link } from 'gatsby'
+import Img from 'gatsby-image'
+import styled from 'styled-components'
 
-const SlidingWindows = () => {
+import Layout from '../../../components/Layout'
+
+const AccessoriesWindows = () => {
   const data = useStaticQuery(graphql`
     query {
-      nodeAluOfferSubItems(id: { eq: "a255313f-9887-51fe-9d43-acba7fd365d2" }) {
-        title
-        relationships {
-          field_alu_offer_sub_items_image {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1200, maxHeight: 700) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-      allNodeAluOfferSlidingDoors(sort: { fields: title }) {
+      allNodeAccessoriesAndAdditionsWindow {
         edges {
           node {
             id
@@ -30,7 +17,7 @@ const SlidingWindows = () => {
               slug
             }
             relationships {
-              field_alu_offer_liftslide_door_i {
+              field_accessories_window_image {
                 localFile {
                   childImageSharp {
                     fixed(height: 300, width: 360) {
@@ -45,32 +32,32 @@ const SlidingWindows = () => {
       }
     }
   `)
-  return (
-    <Layout>
-      <Container>
-        <h1>{data.nodeAluOfferSubItems.title}</h1>
-      </Container>
 
-      <FlexContainer>
-        {data.allNodeAluOfferSlidingDoors.edges.map(edge => {
-          const images =
-            edge.node.relationships.field_alu_offer_liftslide_door_i[0]
-              .localFile.childImageSharp.fixed
-          return (
-            <li>
-              <Link to={`/sliding-doors/${edge.node.fields.slug}`}>
-                <SetImg fixed={images} />
-                <h2>{edge.node.title}</h2>
-              </Link>
-            </li>
-          )
-        })}
-      </FlexContainer>
-    </Layout>
+  console.log(data, 'data')
+  return (
+    <div>
+      <Layout>
+        <FlexContainer>
+          {data.allNodeAccessoriesAndAdditionsWindow.edges.map(edge => {
+            const images =
+              edge.node.relationships.field_accessories_window_image[0]
+                .localFile.childImageSharp.fixed
+            return (
+              <li>
+                <Link
+                  to={`/accessories-and-additions-windows/${edge.node.fields.slug}`}
+                >
+                  <SetImg fixed={images} />
+                  <h2>{edge.node.title}</h2>
+                </Link>
+              </li>
+            )
+          })}
+        </FlexContainer>
+      </Layout>
+    </div>
   )
 }
-
-// styled components
 
 const Container = styled.div`
   display: flex;
@@ -121,4 +108,5 @@ const SetImg = styled(Img)`
   width: 100%;
   height: auto;
 `
-export default SlidingWindows
+
+export default AccessoriesWindows
