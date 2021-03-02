@@ -33,7 +33,6 @@ const AccessoriesWindows = () => {
     }
   `)
 
-  console.log(data, 'data')
   return (
     <div>
       <Layout>
