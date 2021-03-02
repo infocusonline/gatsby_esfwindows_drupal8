@@ -26,7 +26,7 @@ const Materials = () => {
           }
         }
       }
-      allNodeMaterials(sort: { fields: title }) {
+      allNodeMaterials(sort: { fields: title }, skip: 2) {
         edges {
           node {
             id
@@ -60,8 +60,8 @@ const Materials = () => {
           field_materials_images {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 200, maxHeight: 200) {
-                  base64
+                fluid(maxWidth: 420, maxHeight: 240) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
@@ -76,8 +76,8 @@ const Materials = () => {
           field_materials_images {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 200, maxHeight: 200) {
-                  base64
+                fluid(maxWidth: 420, maxHeight: 240) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }
@@ -86,8 +86,17 @@ const Materials = () => {
       }
     }
   `)
+  console.log(data.aluminum, 'ljhjkhkjhk')
 
-  console.log(data.materialsAluminumPage)
+  const aluminumImageLink =
+    data.aluminum.relationships.field_materials_images[0].localFile
+      .childImageSharp.fluid
+
+  const alumiumCladPVC =
+    data.aluminumCladPVC.relationships.field_materials_images[0].localFile
+      .childImageSharp.fluid
+
+  console.log(aluminumImageLink)
 
   const materialBasicImage =
     data.materialBasicPageHeaderImage.relationships.field_basic_page_image[0]
@@ -105,15 +114,20 @@ const Materials = () => {
             }}
           ></p>
         </About>
+
         <FlexContainer>
           <li>
-            <Link to="/offer">Aluminum</Link>
-
-            <Link to="/offer">pvc</Link>
+            <Link to="/offer">
+              <h1>{data.aluminum.title}</h1>
+              <SetImg fluid={aluminumImageLink} />
+            </Link>
           </li>
-        </FlexContainer>
-
-        <FlexContainer>
+          <li>
+            <Link to="/offer">
+              <h1>{data.aluminumCladPVC.title}</h1>
+              <SetImg fluid={alumiumCladPVC} />
+            </Link>
+          </li>
           {data.allNodeMaterials.edges.map(edge => {
             const images =
               edge.node.relationships.field_materials_images[0].localFile
