@@ -66,10 +66,9 @@ const AccessoriesAdditions = () => {
             edge.node.relationships.field_accessories_doors_image[0].localFile
               .childImageSharp.fixed
           return (
-            <li>
+            <li key={edge.node.title}>
               <Link to={`/offer/${edge.node.path.alias}`}>
                 <SetImg fixed={accessoriesAdditionImges} />
-
                 <h2>{edge.node.title}</h2>
               </Link>
             </li>

@@ -86,7 +86,6 @@ const Materials = () => {
       }
     }
   `)
-  console.log(data.aluminum, 'ljhjkhkjhk')
 
   const aluminumImageLink =
     data.aluminum.relationships.field_materials_images[0].localFile
@@ -95,8 +94,6 @@ const Materials = () => {
   const alumiumCladPVC =
     data.aluminumCladPVC.relationships.field_materials_images[0].localFile
       .childImageSharp.fluid
-
-  console.log(aluminumImageLink)
 
   const materialBasicImage =
     data.materialBasicPageHeaderImage.relationships.field_basic_page_image[0]
@@ -107,14 +104,13 @@ const Materials = () => {
         <Img fluid={materialBasicImage} />
 
         <About>
-          <h1>Our Materials</h1>
-          <p
+          <h1>{data.materialBasicPageHeaderImage.title}</h1>
+          <div
             dangerouslySetInnerHTML={{
               __html: data.materialBasicPageHeaderImage.body.value,
             }}
-          ></p>
+          ></div>
         </About>
-
         <FlexContainer>
           <li>
             <Link to="/offer">
@@ -133,9 +129,8 @@ const Materials = () => {
               edge.node.relationships.field_materials_images[0].localFile
                 .childImageSharp.fluid
             const links = <Link to={`/${edge.node.path.alias}`}></Link>
-
             return (
-              <li>
+              <li key={edge.node.title}>
                 <Link to={links.props.to}>
                   <h1>{edge.node.title}</h1>
 

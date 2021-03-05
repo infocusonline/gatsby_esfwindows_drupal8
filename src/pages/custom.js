@@ -77,7 +77,7 @@ const Custom = () => {
                 .childImageSharp.fluid
             const customBody = edge.node.body.value
             return (
-              <>
+              <div key={edge.node.title}>
                 <ul>
                   <li>
                     <Link to={`/custom/${edge.node.fields.slug}`}>
@@ -97,7 +97,7 @@ const Custom = () => {
                     </Link>
                   </li>
                 </ul>
-              </>
+              </div>
             )
           })}
         </FlexContainer>

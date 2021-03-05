@@ -62,9 +62,9 @@ const Product = () => {
 
       <About>
         <h1>{data.productBasicPage.title}</h1>
-        <p
+        <div
           dangerouslySetInnerHTML={{ __html: data.productBasicPage.body.value }}
-        ></p>
+        ></div>
       </About>
 
       <FlexContainer>
@@ -74,7 +74,7 @@ const Product = () => {
               .childImageSharp.fluid
 
           return (
-            <li>
+            <li key={edge.node.title}>
               <Link to={`/products/${edge.node.fields.slug}`}>
                 <h1>{edge.node.title}</h1>
                 <SetImg fluid={productImages} />

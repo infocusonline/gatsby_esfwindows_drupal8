@@ -36,9 +36,9 @@ const SlideShow = () => {
               .childImageSharp.fluid
           const title = edge.node.title
           return (
-            <>
+            <div key={edge.node.title}>
               <Img fluid={images} alt={title} />
-            </>
+            </div>
           )
         })}
       </Carousel>

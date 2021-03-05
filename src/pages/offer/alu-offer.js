@@ -51,7 +51,6 @@ const AluOffer = () => {
     }
   `)
   // working on pageHeader
-  console.log(data)
   const body = data.nodeOfferType.body.value
   const pageBodyImage =
     data.nodeOfferType.relationships.field_offer_type_image[1].localFile
@@ -66,14 +65,12 @@ const AluOffer = () => {
             edge.node.relationships.field_alu_offer_sub_items_image.localFile
               .childImageSharp.fluid
           return (
-            <div>
-              <li>
-                <Link to={`/${edge.node.path.alias}`}>
-                  <SetImg fluid={images} />
-                  <h2>{edge.node.title}</h2>
-                </Link>
-              </li>
-            </div>
+            <li key={edge.node.id}>
+              <Link to={`/${edge.node.path.alias}`}>
+                <SetImg fluid={images} />
+                <h2>{edge.node.title}</h2>
+              </Link>
+            </li>
           )
         })}
       </FlexContainer>
@@ -84,17 +81,6 @@ const AluOffer = () => {
 const Title = styled.div`
   h1 {
     margin-top: 90px;
-  }
-`
-
-const PageHeader = styled.div`
-  margin: 0 auto;
-
-  border: 1px solid red;
-  padding: 30px;
-  p {
-    margin: 0 auto;
-    padding: 10px;
   }
 `
 

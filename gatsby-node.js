@@ -68,6 +68,11 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const accessoriesAndAdditionWindowsTemplate = path.resolve(
     './src/templates/accessories-and-additions-windows.js'
   )
+
+  // creating accessoriesAdditionsDoors template
+  const accessoriesAndAdditionDoorsTemplate = path.resolve(
+    './src/templates/accessories-and-additions-doors.js'
+  )
   const res = await graphql(`
     query {
       allNodeBlog {
@@ -205,6 +210,18 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
+      allNodeAccessoriesAndAdditionsDoors {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -224,6 +241,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeEntranceDoors,
     allNodeAvidoorAvangardeItems,
     allNodeAccessoriesAndAdditionsWindow,
+    allNodeAccessoriesAndAdditionsDoors,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -321,6 +339,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
         createPage({
           component: accessoriesAndAdditionWindowsTemplate,
           path: `/accessories-and-additions-windows/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      }),
+      allNodeAccessoriesAndAdditionsDoors.edges.forEach(({ node }) => {
+        createPage({
+          component: accessoriesAndAdditionDoorsTemplate,
+          path: `/accessories-and-additions-doors/${node.fields.slug}`,
           context: {
             slug: node.fields.slug,
           },

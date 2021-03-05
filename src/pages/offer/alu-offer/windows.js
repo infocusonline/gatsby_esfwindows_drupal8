@@ -64,7 +64,7 @@ const AluWindows = () => {
             edge.node.relationships.field_alu_offer_windows_image[0].localFile
               .childImageSharp.fixed
           return (
-            <li>
+            <li key={edge.node.title}>
               <Link to={`/alu-offer/${edge.node.fields.slug}`}>
                 <SetImg fixed={images} />
                 <h2>{edge.node.title}</h2>

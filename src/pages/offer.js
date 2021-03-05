@@ -67,7 +67,7 @@ const OfferPage = () => {
             edge.node.relationships.field_offer_type_image[0].localFile
               .childImageSharp.fluid
           return (
-            <li>
+            <li key={edge.node.title}>
               <Link to={`/offer/${edge.node.fields.slug}`}>
                 {images ? (
                   <div>
