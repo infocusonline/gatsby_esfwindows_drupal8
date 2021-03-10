@@ -73,6 +73,13 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const accessoriesAndAdditionDoorsTemplate = path.resolve(
     './src/templates/accessories-and-additions-doors.js'
   )
+
+  // Creating innovative solutions page
+
+  const innovativeSolutionsTemplate = path.resolve(
+    './src/templates/innovative-solutions.js'
+  )
+
   const res = await graphql(`
     query {
       allNodeBlog {
@@ -222,12 +229,23 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeInnovativeSolutionsSubitems {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
     console.log(res.errors)
   }
-  // console.log(JSON.stringify(res, null, 3))
+  console.log(JSON.stringify(res, null, 3))
   // destructuring the queries
   const {
     allNodeBlog,
@@ -242,6 +260,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeAvidoorAvangardeItems,
     allNodeAccessoriesAndAdditionsWindow,
     allNodeAccessoriesAndAdditionsDoors,
+    allNodeInnovativeSolutionsSubitems,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -348,6 +367,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
         createPage({
           component: accessoriesAndAdditionDoorsTemplate,
           path: `/accessories-and-additions-doors/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      }),
+      allNodeInnovativeSolutionsSubitems.edges.forEach(({ node }) => {
+        createPage({
+          component: innovativeSolutionsTemplate,
+          path: `/innovative-solutions/${node.fields.slug}`,
           context: {
             slug: node.fields.slug,
           },

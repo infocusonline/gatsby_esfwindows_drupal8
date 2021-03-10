@@ -4,40 +4,25 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 
-const AccessoriesAdditions = () => {
+const InnovativeSolutions = () => {
   const data = useStaticQuery(graphql`
     query {
-      heroImage: nodeOfferType(
-        id: { eq: "d86e258a-9821-5f6c-a774-557027d27108" }
-      ) {
-        title
-        body {
-          value
-        }
-        relationships {
-          field_offer_type_image {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1600, maxHeight: 700) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-      allNodeAccessoriesAndAdditions {
+      allNodeInnovativeSolutionsSubitems {
         edges {
           node {
+            id
             title
-            path {
-              alias
+            body {
+              value
+            }
+            fields {
+              slug
             }
             relationships {
-              field_accessories_doors_image {
+              field_innovative_sol_image {
                 localFile {
                   childImageSharp {
-                    fixed(width: 325, height: 295) {
+                    fixed(height: 300, width: 360) {
                       ...GatsbyImageSharpFixed
                     }
                   }
@@ -49,25 +34,18 @@ const AccessoriesAdditions = () => {
       }
     }
   `)
-  const heroPageImage =
-    data.heroImage.relationships.field_offer_type_image[0].localFile
-      .childImageSharp.fluid
+  console.log('innovating solutions ', data)
   return (
     <Layout>
-      <Container>
-        <h1>{data.heroImage.title}</h1>
-        <ContainerImg fluid={heroPageImage} />
-      </Container>
-
       <FlexContainer>
-        {data.allNodeAccessoriesAndAdditions.edges.map(edge => {
-          const accessoriesAdditionImges =
-            edge.node.relationships.field_accessories_doors_image[0].localFile
+        {data.allNodeInnovativeSolutionsSubitems.edges.map(edge => {
+          const images =
+            edge.node.relationships.field_innovative_sol_image[0].localFile
               .childImageSharp.fixed
           return (
-            <li key={edge.node.title}>
-              <Link to={`/offer/${edge.node.path.alias}`}>
-                <SetImg fixed={accessoriesAdditionImges} />
+            <li>
+              <Link to={`innovative-solutions/${edge.node.fields.slug}`}>
+                <SetImg fixed={images} />
                 <h2>{edge.node.title}</h2>
               </Link>
             </li>
@@ -90,13 +68,6 @@ const Container = styled.div`
     margin-left: 20px;
     font-size: 50px;
   }
-`
-const ContainerImg = styled(Img)`
-  margin-left: auto;
-  order: 2;
-  width: 980px;
-  height: 22vw;
-  clip-path: polygon(10vw 0, 100% 0, 100% 100%, 0% 100%);
 `
 
 const FlexContainer = styled.ul`
@@ -131,8 +102,8 @@ const FlexContainer = styled.ul`
 
 const SetImg = styled(Img)`
   display: block !important;
-  flex-grow: 1;
-  padding: 149px;
+  width: 100%;
+  height: auto;
 `
 
-export default AccessoriesAdditions
+export default InnovativeSolutions

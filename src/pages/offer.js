@@ -17,7 +17,7 @@ const OfferPage = () => {
           field_basic_page_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 600, maxHeight: 200) {
+                fluid(maxWidth: 2000, maxHeight: 680) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -52,7 +52,7 @@ const OfferPage = () => {
   console.log('data', data.allNodeOfferType)
 
   const headerOfferImage =
-    data.offerHeaderImage.relationships.field_basic_page_image[0].localFile
+    data.offerHeaderImage.relationships.field_basic_page_image[1].localFile
       .childImageSharp.fluid
   return (
     <Layout>
@@ -76,7 +76,7 @@ const OfferPage = () => {
                   </div>
                 ) : (
                   <div>
-                    <p>Image not available</p>{' '}
+                    <p>Image not available</p>
                   </div>
                 )}
               </Link>
