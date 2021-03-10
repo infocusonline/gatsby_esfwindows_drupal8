@@ -36,8 +36,6 @@ const InnovativeSolutions = ({ data }) => {
   return (
     <div>
       <Layout>
-        <h1>Innovative solutions tempalte</h1>
-
         <Layout>
           <Container>
             <h2> {data.nodeInnovativeSolutionsSubitems.title}</h2>
