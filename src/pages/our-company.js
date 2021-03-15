@@ -47,7 +47,6 @@ const Company = () => {
       .fixed
 
   const aboutUsBody = data.nodeCompany.body.value
-  console.log(aboutUsBody)
 
   return (
     <div>

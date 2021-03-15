@@ -30,7 +30,6 @@ export const query = graphql`
 `
 
 const InnovativeSolutions = ({ data }) => {
-  console.log(data, 'grab tempalte data here')
   const body = data.nodeInnovativeSolutionsSubitems.body.value
 
   return (

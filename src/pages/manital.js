@@ -35,7 +35,6 @@ const Manital = () => {
     }
   `)
 
-  console.log(data, 'Here is data from the manital page')
   return (
     <Layout>
       <FlexContainer>

@@ -49,7 +49,7 @@ const OfferPage = () => {
       }
     }
   `)
-  console.log('data', data.allNodeOfferType)
+  // console.log('data', data.allNodeOfferType)
 
   const headerOfferImage =
     data.offerHeaderImage.relationships.field_basic_page_image[1].localFile

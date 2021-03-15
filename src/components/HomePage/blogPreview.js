@@ -63,7 +63,7 @@ const BlogPreview = () => {
 
   const customerPortalLink =
     data.customerPortalLink.field_basic_page_link[0].uri
-  console.log(customerPortalLink, '9997876645353')
+  // console.log(customerPortalLink, '9997876645353')
 
   const linkTitle = data.customerPortalLink.field_basic_page_link[0].title
 

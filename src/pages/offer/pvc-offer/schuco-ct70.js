@@ -30,13 +30,11 @@ const Ct70 = () => {
       <Container>
         <h1>{data.nodePvcOfferSchucoWindows.title}</h1>
       </Container>
-      <ParagraphBlock>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: data.nodePvcOfferSchucoWindows.body.value,
-          }}
-        ></p>
-      </ParagraphBlock>
+      <ParagraphBlock
+        dangerouslySetInnerHTML={{
+          __html: data.nodePvcOfferSchucoWindows.body.value,
+        }}
+      ></ParagraphBlock>
       <FlexContainer>
         <div dangerouslySetInnerHTML={{ __html: littleImages }}></div>
       </FlexContainer>
@@ -65,7 +63,7 @@ const ParagraphBlock = styled.div`
 
   p {
     margin: 0 auto;
-    padding: 25px;
+    padding: 26px;
   }
 `
 

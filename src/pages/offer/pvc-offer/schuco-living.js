@@ -39,13 +39,11 @@ const SchucoLiving = () => {
         <h1>{data.nodePvcOfferSchucoWindows.title}</h1>
       </Container>
 
-      <ParagraphBlock>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: data.nodePvcOfferSchucoWindows.body.value,
-          }}
-        ></p>
-      </ParagraphBlock>
+      <ParagraphBlock
+        dangerouslySetInnerHTML={{
+          __html: data.nodePvcOfferSchucoWindows.body.value,
+        }}
+      ></ParagraphBlock>
 
       <FlexContainer>
         <div dangerouslySetInnerHTML={{ __html: littleImages }}></div>

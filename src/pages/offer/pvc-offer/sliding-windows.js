@@ -63,7 +63,7 @@ const SlidingWindows = () => {
         <h1>{data.nodePvcOfferSubItems.title}</h1>
 
         <Img fluid={pageImage} />
-        <p dangerouslySetInnerHTML={{ __html: pageBody }}></p>
+        <div dangerouslySetInnerHTML={{ __html: pageBody }}></div>
       </Container>
 
       <div>

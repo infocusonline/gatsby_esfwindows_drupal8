@@ -14,7 +14,7 @@ class Form extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    console.log(this.state)
+    // console.log(this.state)
     const { firstName } = this.state
 
     navigate('/quote-received', { state: { firstName } })
@@ -22,7 +22,7 @@ class Form extends React.Component {
 
   handleChange = event => {
     const { name, type, value } = event.target
-    console.log(event.target.value)
+    // console.log(event.target.value)
     const val = type === 'number' ? parseFloat(value) : value
     this.setState({ [name]: val })
   }

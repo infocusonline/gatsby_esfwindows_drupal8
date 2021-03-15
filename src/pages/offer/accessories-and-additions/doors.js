@@ -35,7 +35,6 @@ const Doors = () => {
       }
     }
   `)
-  console.log(data, 'get data here')
   return (
     <div>
       <Layout>

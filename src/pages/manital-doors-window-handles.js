@@ -34,7 +34,6 @@ const ManitalDoorsWindowHandles = () => {
       }
     }
   `)
-  console.log(data.allNodeManitalDoorAndWindowStyles)
   return (
     <Layout>
       <FlexContainer>

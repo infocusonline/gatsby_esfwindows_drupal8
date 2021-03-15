@@ -62,7 +62,6 @@ const Accessories = ({ data }) => {
   // GRABBING RELATED DATA FROM DRUPAL
   const relatedHardwareContent =
     data.nodeAccessories.relationships.node__hardware
-  console.log(relatedHardwareContent, 'what is this')
 
   return (
     <Layout>

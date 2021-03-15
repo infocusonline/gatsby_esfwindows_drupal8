@@ -31,14 +31,11 @@ const MaterialAluminum = () => {
     }
   `)
 
-  console.log('77878787878', data)
-
   return (
     <div>
       <Layout>
         <h1>this is the material aluminum page</h1>
         {data.allNodeMaterialsAluminumContent.edges.map(edge => {
-          console.log(edge, 'grab the image from here')
           const images =
             edge.node.relationships.field_material_link_image[0].localFile
               .childImageSharp.fluid

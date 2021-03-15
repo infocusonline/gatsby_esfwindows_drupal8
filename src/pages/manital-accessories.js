@@ -54,11 +54,11 @@ const ManitalAccessories = () => {
               <SetImg fluid={manitalAccessoriesImage} />
               <button
                 onMouseOver={() => {
-                  console.log('entered mouse over')
+                  // console.log('entered mouse over')
                   setHover(true)
                 }}
                 onMouseOut={() => {
-                  console.log('entered onMouseOut')
+                  // console.log('entered onMouseOut')
                   setHover(false)
                 }}
               >
