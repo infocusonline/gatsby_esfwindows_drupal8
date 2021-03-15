@@ -34,7 +34,6 @@ const InnovativeSolutions = () => {
       }
     }
   `)
-  console.log('innovating solutions ', data)
   return (
     <Layout>
       <FlexContainer>

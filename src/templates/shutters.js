@@ -32,7 +32,6 @@ export const query = graphql`
 `
 
 const Shutters = ({ data }) => {
-  console.log(data, 'data')
   const body = data.nodeShutters.body.value
   const pageImage =
     data.nodeShutters.relationships.field_shutter_image[0].localFile

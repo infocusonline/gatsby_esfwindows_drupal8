@@ -47,7 +47,6 @@ const SlidingDoors = ({ data }) => {
   const secondParagraph =
     data.nodeAluOfferSlidingDoors.field_alu_offer_liftslide_door_a[0].value
 
-  console.log(data, 'data')
   return (
     <Layout>
       <Container>

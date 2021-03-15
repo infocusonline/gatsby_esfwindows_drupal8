@@ -27,7 +27,6 @@ const Product = ({ data }) => {
   const image =
     data.nodeProducts.relationships.field_products_images[0].localFile
       .childImageSharp.fluid
-  console.log(data)
   return (
     <Layout>
       <Img fluid={image} />

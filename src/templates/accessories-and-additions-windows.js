@@ -30,7 +30,6 @@ export const query = graphql`
 `
 
 const AccessoriesAndAdditionsWindows = ({ data }) => {
-  console.log(data, 'data here')
   const body = data.nodeAccessoriesAndAdditionsWindow.body.value
   return (
     <div>

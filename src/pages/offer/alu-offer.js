@@ -50,11 +50,7 @@ const AluOffer = () => {
       }
     }
   `)
-  // working on pageHeader
-  const body = data.nodeOfferType.body.value
-  const pageBodyImage =
-    data.nodeOfferType.relationships.field_offer_type_image[1].localFile
-      .childImageSharp.fluid
+
   return (
     <Layout>
       <h1>{data.nodeOfferType.title}</h1>

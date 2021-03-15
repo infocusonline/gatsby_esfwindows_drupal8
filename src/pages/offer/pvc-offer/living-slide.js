@@ -18,7 +18,6 @@ const LivingSlide = () => {
       }
     }
   `)
-  console.log(data)
   const videoTitle =
     data.nodePvcOfferSlidingWindows.field_pvc_offer_sliding_windows_[0].title
 

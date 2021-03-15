@@ -152,27 +152,22 @@ const FormWrap = styled.div`
   background: white;
   box-shadow: 10%;
   color: #333;
-
   h1,
   p {
     text-align: center;
   }
-
   label {
     display: block;
     color: #2d385b;
   }
-
   input {
     width: 100%;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
   }
-
   textarea {
   }
-
   button {
     display: block;
     width: 100%;
@@ -182,7 +177,6 @@ const FormWrap = styled.div`
     padding: 10px;
     border-radius: 5px;
   }
-
   button:hover {
     cursor: pointer;
   }
