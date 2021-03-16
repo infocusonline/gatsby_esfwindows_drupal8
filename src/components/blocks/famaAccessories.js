@@ -37,12 +37,17 @@ const FamaAccessoriesBlock = () => {
         {data.allNodeFamaAccessories.edges.map(edge => {
           const famaAccessoriesImage =
             edge.node.relationships.field_fama_accessories_image[0].localFile
-              .childImageSharp.fluid
+              ?.childImageSharp?.fluid
           return (
             <div>
               <li>{edge.node.title}</li>
-
-              <SetImg fluid={famaAccessoriesImage} />
+              {famaAccessoriesImage ? (
+                <div>
+                  <SetImg fluid={famaAccessoriesImage} />
+                </div>
+              ) : (
+                <p>image not available</p>
+              )}
             </div>
           )
         })}

@@ -31,6 +31,8 @@ const Product = ({ data }) => {
     <Layout>
       <Img fluid={image} />
 
+      <h1>this is products</h1>
+
       <Form />
     </Layout>
   )

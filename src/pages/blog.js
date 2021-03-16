@@ -42,11 +42,15 @@ const Blog = () => {
           const title = edge.node.title
           const blogImage =
             edge.node.relationships.field_blog_image[0].localFile
-              .childImageSharp.fixed
+              ?.childImageSharp?.fixed
           return (
             <li key={edge.node.id}>
               <Link to={`/blog/${edge.node.fields.slug}`}>
-                <Img fixed={blogImage} alt={title} title={title} />
+                {blogImage ? (
+                  <div>
+                    <Img fixed={blogImage} alt={title} title={title} />
+                  </div>
+                ) : null}
                 <h2>{edge.node.title}</h2>
                 <p>{edge.node.date}</p>
                 <p>{date}</p>
