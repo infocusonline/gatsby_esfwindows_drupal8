@@ -14,12 +14,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "G-2TGZNHY4DPS",
+        trackingId: 'G-2TGZNHY4DPS',
         // this option places the tracking script into the head of the DOM
         head: true,
-        anonymize: true
+        anonymize: true,
       },
-     
+
       // resolve: `gatsby-plugin-prefetch-google-fonts`,
       // options: {
       //   fonts: [
@@ -33,7 +33,6 @@ module.exports = {
       //     },
       //   ],
       // },
-
     },
     `gatsby-plugin-react-helmet`,
     {

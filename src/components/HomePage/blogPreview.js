@@ -54,8 +54,8 @@ const BlogPreview = () => {
   `)
 
   const blogImage =
-    data.nodePage.relationships.field_basic_page_image[0].localFile
-      .childImageSharp.fluid
+    data.nodePage.relationships.field_basic_page_image[0]?.localFile
+      ?.childImageSharp.fluid
 
   const customerPortalImage =
     data.customerPortalLink.relationships.field_basic_page_image[0].localFile
@@ -70,14 +70,18 @@ const BlogPreview = () => {
   return (
     <Container>
       <BlogContainer>
-        <Img
-          fluid={blogImage}
-          title={data.nodePage.title}
-          alt={data.nodePage.title}
-        />
-        <ButtonCenteredFlex>
-          <StyledLink to={`/blog`}>{data.nodePage.title}</StyledLink>
-        </ButtonCenteredFlex>
+        {blogImage ? (
+          <div>
+            <Img
+              fluid={blogImage}
+              title={data.nodePage.title}
+              alt={data.nodePage.title}
+            />
+            <ButtonCenteredFlex>
+              <StyledLink to={`/blog`}>{data.nodePage.title}</StyledLink>
+            </ButtonCenteredFlex>
+          </div>
+        ) : null}
       </BlogContainer>
       <Gutter></Gutter>
       <CustomerPortalContainer>

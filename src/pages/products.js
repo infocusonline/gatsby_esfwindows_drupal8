@@ -66,7 +66,6 @@ const Product = () => {
           dangerouslySetInnerHTML={{ __html: data.productBasicPage.body.value }}
         ></div>
       </About>
-
       <FlexContainer>
         {data.allNodeProducts.edges.map(edge => {
           const productImages =

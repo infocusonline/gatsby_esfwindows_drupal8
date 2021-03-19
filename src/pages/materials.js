@@ -111,6 +111,7 @@ const Materials = () => {
             }}
           ></div>
         </About>
+
         <FlexContainer>
           <li>
             <Link to="/offer">
@@ -146,7 +147,6 @@ const Materials = () => {
 }
 
 // styled Components
-
 const About = styled.div`
   margin: 0 auto;
   width: 95%;

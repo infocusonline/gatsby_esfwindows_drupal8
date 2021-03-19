@@ -7,12 +7,33 @@ import Layout from '../../components/Layout'
 const WoodProducts = () => {
   const data = useStaticQuery(graphql`
     query {
-      allNodeOfferType2 {
+      aboutPage: nodePage(id: { eq: "a4bc2365-11b2-5dd1-834c-93e66ba7f4df" }) {
+        id
+        title
+        body {
+          value
+        }
+        relationships {
+          field_basic_page_image {
+            localFile {
+              childImageSharp {
+                fixed(width: 900, height: 520) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+          }
+        }
+      }
+      allNodeOfferType2(sort: { fields: created }) {
         edges {
           node {
             title
             fields {
               slug
+            }
+            path {
+              alias
             }
             relationships {
               field_offer_type_2_image {
@@ -31,8 +52,13 @@ const WoodProducts = () => {
     }
   `)
   console.log(data, 'our data')
+  const title = data.aboutPage.title
   return (
     <Layout>
+      <About>
+        <h1>{data.aboutPage.title}</h1>
+      </About>
+
       <FlexContainer>
         {data.allNodeOfferType2.edges.map(edge => {
           const images =
@@ -40,7 +66,7 @@ const WoodProducts = () => {
               ?.childImageSharp.fluid
           return (
             <li>
-              <Link to={edge.node.fields.slug}>
+              <Link to={`/products/${edge.node.path.alias}`}>
                 {images ? (
                   <div>
                     <SetImg fluid={images} />
@@ -63,7 +89,7 @@ const About = styled.div`
   width: 95%;
   padding: 20px;
   h1 {
-    padding-top: 1.4rem;
+    padding-top: 4.4rem;
 
     text-align: center;
   }
@@ -107,6 +133,7 @@ const FlexContainer = styled.ul`
 const SetImg = styled(Img)`
   display: block !important;
   margin: 6px;
+
   flex-grow: 1;
   width: 330px;
   border-radius: 2%;

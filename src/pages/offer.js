@@ -25,7 +25,7 @@ const OfferPage = () => {
           }
         }
       }
-      allNodeOfferType {
+      allNodeOfferType(sort: { fields: created }) {
         edges {
           node {
             id
@@ -95,6 +95,7 @@ const About = styled.div`
   width: 95%;
   padding: 20px;
   h1 {
+    margin-top: 4rem;
     padding-top: 1.4rem;
 
     text-align: center;

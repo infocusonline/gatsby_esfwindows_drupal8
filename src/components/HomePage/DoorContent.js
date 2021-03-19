@@ -55,11 +55,7 @@ const DoorContent = () => {
             </StyledLink>
           </ButtonCenteredFlex>
         </Top>
-        {image ? (
-          <div>
-            <SetImg fluid={image} alt={title} />
-          </div>
-        ) : null}
+        {image ? <SetImg fluid={image} alt={title} /> : null}
       </Container>
     </ContainerPadding>
   )

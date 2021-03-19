@@ -36,14 +36,14 @@ const WindowContent = () => {
   `)
 
   const image =
-    data.nodePage.relationships.field_basic_page_image[0].localFile
-      .childImageSharp.fluid
+    data.nodePage.relationships.field_basic_page_image[0]?.localFile
+      ?.childImageSharp?.fluid
   const title = data.nodePage.title
   const body = data.nodePage.body.value
   return (
     <>
       <Container>
-        <SetImg fluid={image} alt={title} />
+        {image ? <SetImg fluid={image} alt={title} /> : null}
         <Top>
           <h1>{title}</h1>
           <div dangerouslySetInnerHTML={{ __html: body }}></div>
