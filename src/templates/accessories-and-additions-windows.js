@@ -35,7 +35,7 @@ const AccessoriesAndAdditionsWindows = ({ data }) => {
     <div>
       <Layout>
         <Container>
-          <h2> {data.nodeAccessoriesAndAdditionsWindow.title}</h2>
+          {/* <h2> {data.nodeAccessoriesAndAdditionsWindow.title}</h2> */}
         </Container>
 
         <BodyContainer
@@ -58,6 +58,7 @@ const Container = styled.div`
 
 const BodyContainer = styled.div`
   max-width: 1030px;
+  padding-top: 150px;
   // padding: 120px;
   margin: 0 auto;
 
