@@ -28,7 +28,6 @@ const AluronWood = () => {
       }
     }
   `)
-  console.log(data, '@@@@@!')
   return (
     <div>
       <Layout>
@@ -73,7 +72,7 @@ const FlexContainer = styled.ul`
     text-align: left;
     padding-bottom: 15px;
     border-bottom: solid 1px blue;
-    width: 190px;
+    width: 220px;
   }
 
   a {

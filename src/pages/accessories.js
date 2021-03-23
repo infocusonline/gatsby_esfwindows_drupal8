@@ -64,7 +64,7 @@ const Accessories = () => {
         <Img fluid={accessoriesImage} />
         <About>
           <h1>{data.accessoriesBasicPageImage.title}</h1>
-          <p dangerouslySetInnerHTML={{ __html: about }}></p>
+          <div dangerouslySetInnerHTML={{ __html: about }}></div>
         </About>
         <FlexContainer>
           {data.allNodeAccessories.edges.map(edge => {
