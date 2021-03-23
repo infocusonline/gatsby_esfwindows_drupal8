@@ -49,10 +49,32 @@ const WoodProducts = () => {
           }
         }
       }
+      accessoriesDoorsLink: nodeOfferType(
+        id: { eq: "d86e258a-9821-5f6c-a774-557027d27108" }
+      ) {
+        id
+        title
+        relationships {
+          field_offer_type_image {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 600, maxHeight: 280) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `)
-  console.log(data, 'our data')
+  console.log(data.accessoriesDoorsLink, 'our data')
   const title = data.aboutPage.title
+
+  const accessoriesDoorsImageLink =
+    data.accessoriesDoorsLink.relationships.field_offer_type_image[0].localFile
+      .childImageSharp.fluid
+  const accessDoorsTitle = data.accessoriesDoorsLink.title
   return (
     <Layout>
       <About>
@@ -79,6 +101,12 @@ const WoodProducts = () => {
             </li>
           )
         })}
+        <li>
+          <Link to="/offer/accessories-and-additions">
+            <SetImg fluid={accessoriesDoorsImageLink} />
+            <h2>{accessDoorsTitle}</h2>
+          </Link>
+        </li>
       </FlexContainer>
     </Layout>
   )
