@@ -37,7 +37,6 @@ export const query = graphql`
 
 const AluronWood = ({ data }) => {
   const body = data.nodeAlucladWoodSubItems.body.value
-
   return (
     <Layout>
       <Container>
