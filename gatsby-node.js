@@ -80,6 +80,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
     './src/templates/innovative-solutions.js'
   )
 
+  const aluronWoodTemplate = path.resolve('./src/templates/alu-clad-wood.js')
+
   const res = await graphql(`
     query {
       allNodeBlog {
@@ -240,6 +242,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeAlucladWoodSubItems {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -261,6 +274,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeAccessoriesAndAdditionsWindow,
     allNodeAccessoriesAndAdditionsDoors,
     allNodeInnovativeSolutionsSubitems,
+    allNodeAlucladWoodSubItems,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -381,5 +395,14 @@ module.exports.createPages = async ({ graphql, actions }) => {
           },
         })
       })
+    allNodeAlucladWoodSubItems.edges.forEach(({ node }) => {
+      createPage({
+        component: aluronWoodTemplate,
+        path: `/alu-clad-wood/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    })
   })
 }

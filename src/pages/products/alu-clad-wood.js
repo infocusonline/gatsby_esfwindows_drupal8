@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 import Layout from '../../components/Layout'
 
-const AluronWood = () => {
+const AlucladWood = () => {
   const data = useStaticQuery(graphql`
     query {
       allNodeAlucladWoodSubItems {
@@ -12,6 +12,9 @@ const AluronWood = () => {
           node {
             id
             title
+            fields {
+              slug
+            }
             relationships {
               field_aluronwood_subitems {
                 localFile {
@@ -38,7 +41,7 @@ const AluronWood = () => {
                 ?.childImageSharp.fixed
             return (
               <li>
-                <Link to="/pagenot">
+                <Link to={`/alu-clad-wood/${edge.node.fields.slug}`}>
                   <SetImg fixed={images} />
                   <h2>{edge.node.title}</h2>
                 </Link>
@@ -86,4 +89,4 @@ const SetImg = styled(Img)`
   width: 100%;
   height: auto;
 `
-export default AluronWood
+export default AlucladWood

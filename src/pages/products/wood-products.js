@@ -88,7 +88,7 @@ const WoodProducts = () => {
               ?.childImageSharp.fluid
           return (
             <li>
-              <Link to={`/products/${edge.node.path.alias}`}>
+              <Link to={`/products/${edge.node.fields.slug}`}>
                 {images ? (
                   <div>
                     <SetImg fluid={images} />
