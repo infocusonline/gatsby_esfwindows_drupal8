@@ -11,11 +11,9 @@ export const query = graphql`
       body {
         value
       }
-
       fields {
         slug
       }
-
       relationships {
         field_download_file {
           uri {
@@ -40,17 +38,12 @@ export const query = graphql`
 const AluronWood = ({ data }) => {
   const body = data.nodeAlucladWoodSubItems.body.value
 
-  console.log(data, 'template data')
   return (
     <Layout>
       <Container>
         <h2>{data.nodeAlucladWoodSubItems.title}</h2>
       </Container>
       <BodyContainer dangerouslySetInnerHTML={{ __html: body }}></BodyContainer>
-
-      <div>
-        <p>Catalog:</p>
-      </div>
     </Layout>
   )
 }
@@ -71,26 +64,6 @@ const BodyContainer = styled.div`
   max-width: 1030px;
   // padding: 120px;
   margin: 0 auto;
-`
-
-const FlexContainer = styled.div`
-  .flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .flex li {
-    list-style-type: none;
-    margin: 0 auto;
-  }
-
-  p {
-    text-align: center;
-    width: 120px;
-    padding: 10px;
-    margin: 0 auto;
-  }
 `
 
 export default AluronWood
