@@ -52,12 +52,15 @@ const AccessoriesAdditions = () => {
   const heroPageImage =
     data.heroImage.relationships.field_offer_type_image[0].localFile
       .childImageSharp.fluid
+
+  const pageBio = data.heroImage.body.value
   return (
     <Layout>
       <Container>
         <h1>{data.heroImage.title}</h1>
         <ContainerImg fluid={heroPageImage} />
       </Container>
+      <Bio dangerouslySetInnerHTML={{ __html: pageBio }}></Bio>
 
       <FlexContainer>
         {data.allNodeAccessoriesAndAdditions.edges.map(edge => {
@@ -97,6 +100,14 @@ const ContainerImg = styled(Img)`
   width: 980px;
   height: 22vw;
   clip-path: polygon(10vw 0, 100% 0, 100% 100%, 0% 100%);
+`
+
+const Bio = styled.div`
+  margin: 0 auto;
+  max-width: 1080px;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  text-align: center;
 `
 
 const FlexContainer = styled.ul`

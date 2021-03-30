@@ -10,11 +10,14 @@ const AluWindows = () => {
       #this is a query for the hero image
       nodeAluOfferSubItems(id: { eq: "af3604bf-bc86-5ddc-8da8-cbccaa780455" }) {
         title
+        body {
+          value
+        }
         relationships {
           field_alu_offer_sub_items_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1200, maxHeight: 700) {
+                fluid(maxWidth: 1600, maxHeight: 760) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -46,17 +49,19 @@ const AluWindows = () => {
       }
     }
   `)
-  // console.log(data)
+  console.log(data.nodeAluOfferSubItems, 'grab image here')
   const pageImage =
     data.nodeAluOfferSubItems.relationships.field_alu_offer_sub_items_image
       .localFile.childImageSharp.fluid
+
+  const pageBio = data.nodeAluOfferSubItems.body.value
   return (
     <Layout>
       <Container>
         <h1>{data.nodeAluOfferSubItems.title}</h1>
-
-        <ConatinerImg fluid={pageImage} />
+        <ContainerImg fluid={pageImage} />
       </Container>
+      <Bio dangerouslySetInnerHTML={{ __html: pageBio }}></Bio>
 
       <FlexContainer>
         {data.allNodeAluOfferWindows.edges.map(edge => {
@@ -91,11 +96,19 @@ const Container = styled.div`
   }
 `
 
-const ConatinerImg = styled(Img)`
+const Bio = styled.div`
+  margin: 0 auto;
+  max-width: 1080px;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  text-align: center;
+`
+
+const ContainerImg = styled(Img)`
   margin-left: auto;
   order: 2;
-  width: auto;
-  height: 21vw;
+  width: 980px;
+  height: 22vw;
   clip-path: polygon(10vw 0, 100% 0, 100% 100%, 0% 100%);
 `
 

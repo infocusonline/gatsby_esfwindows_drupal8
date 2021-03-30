@@ -39,7 +39,7 @@ const ManitalAccessories = () => {
   return (
     <Layout>
       <h1 style={{ marginTop: '100px' }}>
-        testing page to view manital accesories items
+        testing page, manital accesories items
       </h1>
 
       <FlexContainer>

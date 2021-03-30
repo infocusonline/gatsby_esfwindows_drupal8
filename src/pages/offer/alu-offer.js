@@ -17,7 +17,7 @@ const AluOffer = () => {
           field_offer_type_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 550, maxHeight: 550) {
+                fluid(maxWidth: 1600, maxHeight: 700) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -38,7 +38,7 @@ const AluOffer = () => {
               field_alu_offer_sub_items_image {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 550, maxHeight: 550) {
+                    fluid(maxWidth: 800, maxHeight: 550) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -51,15 +51,25 @@ const AluOffer = () => {
     }
   `)
 
+  const heroPageImage =
+    data.nodeOfferType.relationships.field_offer_type_image?.[0]?.localFile
+      .childImageSharp.fluid
+
+  const aluOfferBio = data.nodeOfferType.body.value
   return (
     <Layout>
-      <h1>{data.nodeOfferType.title}</h1>
+      <Container>
+        <h1>{data.nodeOfferType.title}</h1>
+        <ContainerImg fluid={heroPageImage} />
+      </Container>
+      <Bio dangerouslySetInnerHTML={{ __html: aluOfferBio }}></Bio>
 
       <FlexContainer>
         {data.allNodeAluOfferSubItems.edges.map(edge => {
           const images =
             edge.node.relationships.field_alu_offer_sub_items_image.localFile
               .childImageSharp.fluid
+
           return (
             <li key={edge.node.id}>
               <Link to={`/${edge.node.path.alias}`}>
@@ -74,23 +84,44 @@ const AluOffer = () => {
   )
 }
 
-const Title = styled.div`
+const Container = styled.div`
+  display: flex;
+  margin-top: 90px;
+  /* height: 500px; */
+  margin-bottom: 80px;
+
   h1 {
     margin-top: 90px;
+    padding-left: 30px;
+    margin-left: 20px;
+    font-size: 50px;
   }
+`
+
+const Bio = styled.div`
+  margin: 0 auto;
+  max-width: 1080px;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  text-align: center;
+`
+
+const ContainerImg = styled(Img)`
+  margin-left: auto;
+  order: 2;
+  width: 980px;
+  height: 22vw;
+  clip-path: polygon(10vw 0, 100% 0, 100% 100%, 0% 100%);
 `
 
 const FlexContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  /* flex-direction: row-reverse; */
   justify-content: center;
-  padding: 0.6rem;
-  margin: 90px;
 
   li {
     list-style-type: none;
-    padding: 10px;
+    margin: 20px;
   }
 
   h2 {
@@ -110,10 +141,8 @@ const FlexContainer = styled.ul`
   }
 `
 const SetImg = styled(Img)`
-  display: block !important;
   margin: 6px;
-  flex-grow: 1;
-  width: 310px;
+  width: 330px;
   border-radius: 2%;
 `
 

@@ -51,12 +51,17 @@ const Window = () => {
   const pageImage =
     data.nodePvcOfferSubItems.relationships.field_pvc_offer_subitems_image[0]
       .localFile.childImageSharp.fluid
+
+  const pvcOfferBio = data.nodePvcOfferSubItems.body.value
   return (
     <Layout>
       <Container>
         <h1>{data.nodePvcOfferSubItems.title}</h1>
+
         <ContainerImg fluid={pageImage} />
       </Container>
+
+      <Bio dangerouslySetInnerHTML={{ __html: pvcOfferBio }}></Bio>
 
       <FlexContainer>
         {data.allNodePvcOfferSchucoWindows.edges.map(edge => {
@@ -80,7 +85,6 @@ const Window = () => {
     </Layout>
   )
 }
-
 const Container = styled.div`
   display: flex;
   margin-top: 90px;
@@ -93,6 +97,14 @@ const Container = styled.div`
     margin-left: 20px;
     font-size: 50px;
   }
+`
+
+const Bio = styled.div`
+  margin: 0 auto;
+  max-width: 1080px;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  text-align: center;
 `
 
 const ContainerImg = styled(Img)`

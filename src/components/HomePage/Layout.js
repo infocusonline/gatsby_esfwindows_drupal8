@@ -1,7 +1,7 @@
-import React, { Component } from "react"
-import Navbar from "../Navbar/Navbar"
-import Footer from "./Footer"
-import styled, { ThemeProvider, injectGlobal } from "styled-components"
+import React, { Component } from 'react'
+import Navbar from '../Navbar/Navbar'
+import Footer from './Footer'
+import styled, { ThemeProvider, injectGlobal } from 'styled-components'
 
 class Layout extends Component {
   state = {
@@ -27,7 +27,7 @@ class Layout extends Component {
 }
 
 const theme = {
-  maxWidth: "auto",
+  maxWidth: 'auto',
 }
 
 const StyledPage = styled.div`
