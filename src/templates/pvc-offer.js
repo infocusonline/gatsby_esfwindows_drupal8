@@ -1,28 +1,28 @@
 import React from 'react'
-import Layout from '../../../components/Layout'
+import Layout from '../components/Layout'
 import styled from 'styled-components'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql } from 'gatsby'
 
-const Nordic = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      nodePvcOfferSchucoWindows(
-        id: { eq: "1f371fbb-89d1-58f7-9c56-407bf1f0eed9" }
-      ) {
+export const query = graphql`
+  query($slug: String!) {
+    nodePvcOfferSchucoWindows(fields: { slug: { eq: $slug } }) {
+      title
+      body {
+        value
+      }
+      field_text {
+        value
+      }
+      field_schuco_window_link {
         title
-        body {
-          value
-        }
-        field_text {
-          value
-        }
-        field_schuco_window_link {
-          title
-          uri
-        }
+        uri
       }
     }
-  `)
+  }
+`
+
+const PvcOfferTemplate = ({ data }) => {
+  console.log(data, 'data')
   const littleImages = data.nodePvcOfferSchucoWindows.field_text[0].value
 
   return (
@@ -63,7 +63,7 @@ const ParagraphBlock = styled.div`
 
   p {
     margin: 0 auto;
-    padding: 25px;
+    padding: 26px;
   }
 `
 
@@ -87,4 +87,4 @@ const FlexContainer = styled.div`
   }
 `
 
-export default Nordic
+export default PvcOfferTemplate

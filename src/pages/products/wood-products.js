@@ -87,14 +87,14 @@ const WoodProducts = () => {
             edge.node.relationships.field_offer_type_2_image[0]?.localFile
               ?.childImageSharp.fluid
           return (
-            <li>
+            <li key={edge.node.id}>
               <Link to={`/products/${edge.node.fields.slug}`}>
                 {images ? (
                   <div>
                     <SetImg fluid={images} />
                   </div>
                 ) : (
-                  <p>Image pending</p>
+                  <p>no image</p>
                 )}
                 <h2>{edge.node.title}</h2>
               </Link>

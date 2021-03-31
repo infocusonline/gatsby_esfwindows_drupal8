@@ -10,6 +10,7 @@ const SlideShow = () => {
       allNodeHomeSlideshow {
         edges {
           node {
+            id
             title
             relationships {
               field_slide_show_image {
@@ -36,7 +37,7 @@ const SlideShow = () => {
               .childImageSharp.fluid
           const title = edge.node.title
           return (
-            <div>
+            <div key={edge.node.id}>
               <Img fluid={images} alt={title} />
             </div>
           )

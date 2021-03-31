@@ -21,8 +21,8 @@ const Product = () => {
               field_products_images {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 420, maxHeight: 420) {
-                      ...GatsbyImageSharpFluid
+                    fixed(width: 325, height: 325) {
+                      ...GatsbyImageSharpFixed
                     }
                   }
                 }
@@ -58,27 +58,27 @@ const Product = () => {
 
   return (
     <Layout>
-      <HeroImg fluid={productBasicImage} />
-
-      <About>
+      <Container>
         <h1>{data.productBasicPage.title}</h1>
-        <div
-          dangerouslySetInnerHTML={{ __html: data.productBasicPage.body.value }}
-        ></div>
-      </About>
+        <ContainerImg fluid={productBasicImage} />
+      </Container>
+      <Bio
+        dangerouslySetInnerHTML={{ __html: data.productBasicPage.body.value }}
+      ></Bio>
       <FlexContainer>
         {data.allNodeProducts.edges.map(edge => {
           const productImages =
             edge.node.relationships.field_products_images[0].localFile
-              .childImageSharp.fluid
-
+              .childImageSharp.fixed
           return (
-            <li key={edge.node.title}>
-              <Link to={`/products/${edge.node.fields.slug}`}>
-                <h1>{edge.node.title}</h1>
-                <SetImg fluid={productImages} />
-              </Link>
-            </li>
+            <div>
+              <li key={edge.node.title}>
+                <Link to={`/materials/`}>
+                  <SetImg fixed={productImages} />
+                  <h2>{edge.node.title}</h2>
+                </Link>
+              </li>
+            </div>
           )
         })}
       </FlexContainer>
@@ -92,50 +92,64 @@ const HeroImg = styled(Img)`
   margin-top: 4rem;
 `
 
-const About = styled.div`
-  margin: 0 auto;
-  width: 95%;
-  padding: 20px;
-  h1 {
-    padding-top: 1.4rem;
+const Container = styled.div`
+  display: flex;
+  margin-top: 90px;
+  /* height: 500px; */
+  margin-bottom: 80px;
 
-    text-align: center;
+  h1 {
+    margin-top: 90px;
+    padding-left: 30px;
+    margin-left: 20px;
+    font-size: 50px;
   }
-  p {
-    line-height: 1.6;
-    text-align: center;
-    color: #848484;
-  }
+`
+const ContainerImg = styled(Img)`
+  margin-left: auto;
+  order: 2;
+  width: 980px;
+  height: 21vw;
+  clip-path: polygon(10vw 0, 100% 0, 100% 100%, 0% 100%);
+`
+
+const Bio = styled.div`
+  margin: 0 auto;
+  max-width: 1080px;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  text-align: center;
 `
 
 const FlexContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 0.6rem;
+  justify-content: center;
 
   li {
-    margin: 1rem;
     list-style-type: none;
-    text-align: center;
+    margin: 20px;
   }
 
-  h1 {
+  h2 {
     color: #2d385b;
-    font-size: 1.2rem;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
+    text-align: left;
+    padding-bottom: 15px;
+    border-bottom: solid 1px blue;
+    width: 190px;
   }
 
   a {
     text-decoration: none;
-    color: #000;
+    color: #000000;
   }
 `
-
 const SetImg = styled(Img)`
-  display: block !important;
   margin: 6px;
-  flex-grow: 1;
-  width: 310px;
+  width: 330px;
   border-radius: 2%;
 `
 

@@ -109,10 +109,10 @@ const ButtonCenteredFlex = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 25px;
 `
 
 const StyledLink = styled(Link)`
-  margin-top: 50px;
   text-decoration: none;
   color: #2d385b;
   font-weight: bold;

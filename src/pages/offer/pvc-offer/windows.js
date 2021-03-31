@@ -27,6 +27,9 @@ const Window = () => {
       allNodePvcOfferSchucoWindows {
         edges {
           node {
+            fields {
+              slug
+            }
             path {
               alias
             }
@@ -57,12 +60,9 @@ const Window = () => {
     <Layout>
       <Container>
         <h1>{data.nodePvcOfferSubItems.title}</h1>
-
         <ContainerImg fluid={pageImage} />
       </Container>
-
       <Bio dangerouslySetInnerHTML={{ __html: pvcOfferBio }}></Bio>
-
       <FlexContainer>
         {data.allNodePvcOfferSchucoWindows.edges.map(edge => {
           const pvcSchucoImages =
@@ -72,7 +72,7 @@ const Window = () => {
             return (
               <div>
                 <li>
-                  <Link to={`/offer/${edge.node.path.alias}`}>
+                  <Link to={`/pvc-offer/${edge.node.fields.slug}`}>
                     <SetImg fixed={pvcSchucoImages} />
                     <h2>{edge.node.title}</h2>
                   </Link>

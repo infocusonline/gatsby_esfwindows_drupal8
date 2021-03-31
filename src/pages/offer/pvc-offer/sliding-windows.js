@@ -40,8 +40,8 @@ const SlidingWindows = () => {
               field_pvc_offer_liftslide_doors {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 400, maxHeight: 400) {
-                      ...GatsbyImageSharpFluid
+                    fixed(width: 325, height: 325) {
+                      ...GatsbyImageSharpFixed
                     }
                   }
                 }
@@ -61,28 +61,27 @@ const SlidingWindows = () => {
     <Layout>
       <Container>
         <h1>{data.nodePvcOfferSubItems.title}</h1>
-
         <Img fluid={pageImage} />
-        <div dangerouslySetInnerHTML={{ __html: pageBody }}></div>
       </Container>
+      <Bio dangerouslySetInnerHTML={{ __html: pageBody }}></Bio>
 
-      <div>
-        <FlexContainer>
-          {data.allNodePvcOfferSlidingWindows.edges.map(edge => {
-            const images =
-              edge.node.relationships.field_pvc_offer_liftslide_doors[0]
-                .localFile.childImageSharp.fluid
-            return (
-              // change the url alias when you make this page dynamic using template
-              <Link to={`/${edge.node.path.alias}`}>
-                <h2>{edge.node.title} </h2>
-
-                <SetImg fluid={images} />
-              </Link>
-            )
-          })}
-        </FlexContainer>
-      </div>
+      <FlexContainer>
+        {data.allNodePvcOfferSlidingWindows.edges.map(edge => {
+          const images =
+            edge.node.relationships.field_pvc_offer_liftslide_doors[0].localFile
+              .childImageSharp.fixed
+          return (
+            <div>
+              <li>
+                <Link to={`/pvc-sliding-doors/${edge.node.fields.slug}`}>
+                  <SetImg fixed={images} />
+                  <h2>{edge.node.title} </h2>
+                </Link>
+              </li>
+            </div>
+          )
+        })}
+      </FlexContainer>
     </Layout>
   )
 }
@@ -103,20 +102,25 @@ const Container = styled.div`
   }
 `
 
+const Bio = styled.div`
+  margin: 0 auto;
+  max-width: 1080px;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  text-align: center;
+`
+
 const FlexContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: row-reverse; */
-  justify-content: space-around;
+  justify-content: center;
   padding: 0.6rem;
   margin: 90px;
 
-  div {
-    padding-bottom: 160px;
-  }
-
   li {
     list-style-type: none;
+    padding: 10px;
   }
 
   h2 {
@@ -124,6 +128,10 @@ const FlexContainer = styled.ul`
     font-size: 20px;
     text-align: center;
     margin-top: 15px;
+    text-align: left;
+    padding-bottom: 15px;
+    border-bottom: solid 1px blue;
+    width: 190px;
   }
 
   a {

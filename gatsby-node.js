@@ -54,6 +54,14 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const aluOfferSlidingDoorsTemplate = path.resolve(
     './src/templates/sliding-doors.js'
   )
+
+  // creating pvcoffer windows templates
+  const pvcSchucoWindowsTemplate = path.resolve('./src/templates/pvc-offer.js')
+
+  // creating pvcOfferslidingwindows templates
+  const pvcSlidingDoorsTemplate = path.resolve(
+    './src/templates/pvc-sliding-doors.js'
+  )
   // creating shutters template
   const shuttersTemplate = path.resolve('./src/templates/shutters.js')
   // creating entrance door templates
@@ -175,6 +183,28 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodePvcOfferSchucoWindows {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodePvcOfferSlidingWindows {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
       allNodeShutters {
         edges {
           node {
@@ -268,6 +298,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeAccessories,
     allNodeAluOfferWindows,
     allNodeAluOfferSlidingDoors,
+    allNodePvcOfferSchucoWindows,
+    allNodePvcOfferSlidingWindows,
     allNodeShutters,
     allNodeEntranceDoors,
     allNodeAvidoorAvangardeItems,
@@ -341,15 +373,33 @@ module.exports.createPages = async ({ graphql, actions }) => {
           },
         })
       }),
-      allNodeShutters.edges.forEach(({ node }) => {
+      allNodePvcOfferSchucoWindows.edges.forEach(({ node }) => {
         createPage({
-          component: shuttersTemplate,
-          path: `/shutters/${node.fields.slug}`,
+          component: pvcSchucoWindowsTemplate,
+          path: `/pvc-offer/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      }),
+      allNodePvcOfferSlidingWindows.edges.forEach(({ node }) => {
+        createPage({
+          component: pvcSlidingDoorsTemplate,
+          path: `/pvc-sliding-doors/${node.fields.slug}`,
           context: {
             slug: node.fields.slug,
           },
         })
       })
+    allNodeShutters.edges.forEach(({ node }) => {
+      createPage({
+        component: shuttersTemplate,
+        path: `/shutters/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    })
     allNodeEntranceDoors.edges.forEach(({ node }) => {
       createPage({
         component: entranceDoorsTemplate,
