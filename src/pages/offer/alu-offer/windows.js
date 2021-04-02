@@ -49,7 +49,7 @@ const AluWindows = () => {
       }
     }
   `)
-  console.log(data.nodeAluOfferSubItems, 'grab image here')
+  // console.log(data.nodeAluOfferSubItems, 'grab image here')
   const pageImage =
     data.nodeAluOfferSubItems.relationships.field_alu_offer_sub_items_image
       .localFile.childImageSharp.fluid

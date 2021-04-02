@@ -20,7 +20,6 @@ export const query = graphql`
 `
 
 const PvcSlidingDoors = ({ data }) => {
-  console.log(data, 'data')
   const videoTitle =
     data.nodePvcOfferSlidingWindows.field_pvc_offer_sliding_windows_[0]?.title
 

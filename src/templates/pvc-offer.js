@@ -22,7 +22,6 @@ export const query = graphql`
 `
 
 const PvcOfferTemplate = ({ data }) => {
-  console.log(data, 'data')
   const littleImages = data.nodePvcOfferSchucoWindows.field_text[0].value
 
   return (

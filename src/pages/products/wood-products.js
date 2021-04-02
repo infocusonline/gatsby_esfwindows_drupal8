@@ -68,7 +68,7 @@ const WoodProducts = () => {
       }
     }
   `)
-  console.log(data.accessoriesDoorsLink, 'our data')
+  // console.log(data.accessoriesDoorsLink, 'our data')
   const title = data.aboutPage.title
 
   const accessoriesDoorsImageLink =
