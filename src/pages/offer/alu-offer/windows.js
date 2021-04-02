@@ -49,6 +49,7 @@ const AluWindows = () => {
       }
     }
   `)
+
   // console.log(data.nodeAluOfferSubItems, 'grab image here')
   const pageImage =
     data.nodeAluOfferSubItems.relationships.field_alu_offer_sub_items_image
@@ -146,6 +147,7 @@ const SetImg = styled(Img)`
   display: block !important;
   flex-grow: 1;
   padding: 149px;
+  /* border: 1px solid red; */
 `
 
 export default AluWindows
