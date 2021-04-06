@@ -1,34 +1,30 @@
 import React from 'react'
-import { graphql, useStaticQuery, Link } from 'gatsby'
-import Layout from '../components/Layout'
-import Img from 'gatsby-image'
-
+import Layout from '../../components/Layout'
 import styled from 'styled-components'
+import Img from 'gatsby-image'
+import { graphql, useStaticQuery, Link } from 'gatsby'
 
-const OfferPage = () => {
+const AluOptions = () => {
   const data = useStaticQuery(graphql`
     query {
-      offerHeaderImage: nodePage(
-        id: { eq: "eeb09020-dd27-5aa3-b9c5-7a54bd934cf5" }
-      ) {
-        id
+      nodeOfferType2(id: { eq: "0aae255e-5015-5ee7-9c3f-1c2156bff489" }) {
         title
         body {
           value
         }
         relationships {
-          field_basic_page_image {
+          field_offer_type_2_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 2000, maxHeight: 680) {
-                  ...GatsbyImageSharpFluid
+                fixed(width: 2000, height: 680) {
+                  ...GatsbyImageSharpFixed
                 }
               }
             }
           }
         }
       }
-      allNodeOfferType(sort: { fields: created }) {
+      allNodeAlucladType(sort: { fields: created }) {
         edges {
           node {
             id
@@ -36,8 +32,11 @@ const OfferPage = () => {
             fields {
               slug
             }
+            path {
+              alias
+            }
             relationships {
-              field_offer_type_image {
+              field_aluclad_type_image {
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 600, maxHeight: 280) {
@@ -52,66 +51,40 @@ const OfferPage = () => {
       }
     }
   `)
-  // console.log('data', data.allNodeOfferType)
-  const headerOfferImage =
-    data.offerHeaderImage.relationships.field_basic_page_image[1].localFile
-      .childImageSharp.fluid
+  const heroImage =
+    data.nodeOfferType2.relationships.field_offer_type_2_image[0]?.localFile
+      ?.childImageSharp?.fixed
+
+  const about = data.nodeOfferType2.body.value
+  console.log(data, 'data')
   return (
     <Layout>
       <Container>
-        <h1>{data.offerHeaderImage.title}</h1>
-        <ContainerImg fluid={headerOfferImage} />
+        <h1>{data.nodeOfferType2.title}</h1>
+        <ContainerImg fixed={heroImage} />
       </Container>
-
-      <Bio
-        dangerouslySetInnerHTML={{ __html: data.offerHeaderImage.body.value }}
-      ></Bio>
+      <Bio dangerouslySetInnerHTML={{ __html: about }}></Bio>
 
       <FlexContainer>
-        {data.allNodeOfferType.edges.map(edge => {
+        {data.allNodeAlucladType.edges.map(edge => {
           const images =
-            edge.node.relationships.field_offer_type_image[0].localFile
-              .childImageSharp.fluid
+            edge.node.relationships.field_aluclad_type_image[0]?.localFile
+              ?.childImageSharp?.fluid
           return (
-            <li key={edge.node.title}>
-              <Link to={`/offer/${edge.node.fields.slug}`}>
-                {images ? (
-                  <div>
-                    <SetImg fluid={images} />
-                    <h2>{edge.node.title}</h2>
-                  </div>
-                ) : (
-                  <div>
-                    <p>Image not available</p>
-                  </div>
-                )}
-              </Link>
-            </li>
+            <div>
+              <li>
+                <Link to={`/products/${edge.node.path.alias}`}>
+                  <SetImg fluid={images} />
+                  <h2>{edge.node.title}</h2>
+                </Link>
+              </li>
+            </div>
           )
         })}
       </FlexContainer>
     </Layout>
   )
 }
-
-// styles
-
-const About = styled.div`
-  margin: 0 auto;
-  width: 95%;
-  padding: 20px;
-  h1 {
-    margin-top: 4rem;
-    padding-top: 1.4rem;
-
-    text-align: center;
-  }
-  p {
-    line-height: 1.6;
-    text-align: center;
-    color: #848484;
-  }
-`
 
 const Container = styled.div`
   display: flex;
@@ -181,4 +154,4 @@ const SetImg = styled(Img)`
   border-radius: 2%;
 `
 
-export default OfferPage
+export default AluOptions

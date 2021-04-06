@@ -88,10 +88,6 @@ const Product = () => {
 
 // styled components
 
-const HeroImg = styled(Img)`
-  margin-top: 4rem;
-`
-
 const Container = styled.div`
   display: flex;
   margin-top: 90px;

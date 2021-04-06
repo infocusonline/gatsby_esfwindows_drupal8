@@ -49,9 +49,7 @@ const WindowContent = () => {
           <div dangerouslySetInnerHTML={{ __html: body }}></div>
 
           <ButtonCenteredFlex>
-            <StyledLink to={`${data.windowLink.fields.slug}`}>
-              Learn More
-            </StyledLink>
+            <StyledLink to={`/offer`}>Learn More</StyledLink>
           </ButtonCenteredFlex>
         </Top>
       </Container>

@@ -86,20 +86,35 @@ const WoodProducts = () => {
           const images =
             edge.node.relationships.field_offer_type_2_image[0]?.localFile
               ?.childImageSharp.fluid
-          return (
-            <li key={edge.node.id}>
-              <Link to={`/products/${edge.node.fields.slug}`}>
-                {images ? (
-                  <div>
-                    <SetImg fluid={images} />
-                  </div>
-                ) : (
-                  <p>no image</p>
-                )}
-                <h2>{edge.node.title}</h2>
-              </Link>
-            </li>
-          )
+
+          const links = <Link to={`/${edge.node.fields.slug}`}></Link>
+          console.log(links.props.to, 'here are th elink')
+
+          if (links.props.to === '/alu-clad-wood') {
+            return (
+              <li>
+                <Link to="/products/alu-options/">
+                  <SetImg fluid={images} />
+                  <h2>{edge.node.title}</h2>
+                </Link>
+              </li>
+            )
+          } else {
+            return (
+              <li key={edge.node.id}>
+                <Link to={`/products/${edge.node.fields.slug}`}>
+                  {images ? (
+                    <div>
+                      <SetImg fluid={images} />
+                    </div>
+                  ) : (
+                    <p>no image</p>
+                  )}
+                  <h2>{edge.node.title}</h2>
+                </Link>
+              </li>
+            )
+          }
         })}
         <li>
           <Link to="/offer/accessories-and-additions">
