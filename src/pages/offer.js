@@ -56,6 +56,8 @@ const OfferPage = () => {
   const headerOfferImage =
     data.offerHeaderImage.relationships.field_basic_page_image[1].localFile
       .childImageSharp.fluid
+
+  const about = data.offerHeaderImage.body?.value
   return (
     <Layout>
       <Container>
@@ -63,9 +65,7 @@ const OfferPage = () => {
         <ContainerImg fluid={headerOfferImage} />
       </Container>
 
-      <Bio
-        dangerouslySetInnerHTML={{ __html: data.offerHeaderImage.body.value }}
-      ></Bio>
+      {about ? <Bio dangerouslySetInnerHTML={{ __html: about }}></Bio> : null}
 
       <FlexContainer>
         {data.allNodeOfferType.edges.map(edge => {

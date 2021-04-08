@@ -12,6 +12,9 @@ export const query = graphql`
       body {
         value
       }
+      field_additional_text {
+        value
+      }
       relationships {
         field_accessories_image {
           localFile {
@@ -55,6 +58,7 @@ export const query = graphql`
 const Accessories = ({ data }) => {
   const title = data.nodeAccessories.title
   const body = data.nodeAccessories.body.value
+  const additionaText = data.nodeAccessories.field_additional_text?.value
   const image =
     data.nodeAccessories.relationships.field_accessories_image[0].localFile
       .childImageSharp.fluid
@@ -66,48 +70,21 @@ const Accessories = ({ data }) => {
   return (
     <Layout>
       <Container>
-        <Img fluid={image} />
-        <About>
+        <div>
           <h1>{title}</h1>
-          <p dangerouslySetInnerHTML={{ __html: body }}></p>
-        </About>
 
-        {/* conditonal statement in reactjs. look up docs if confused. */}
-        {relatedHardwareContent ? (
-          <div>
-            <FlexContainer>
-              {relatedHardwareContent.map(hardware => {
-                {
-                  /* console.log(hardware, 'Mapping over relation data') */
-                }
-                // create variables for each piece of data and display on screen
-                const titleRelatedData = hardware.title
-                const imageRelatedData =
-                  hardware.relationships.field_hardware_image[0].localFile
-                    .childImageSharp.fluid
-                return (
-                  <li>
-                    <Link to={`${hardware.path.alias}`}>
-                      {/* {console.log(hardware.path.alias, '!!!9999')} */}
-                      <h1>{titleRelatedData}</h1>
+          {additionaText ? (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: additionaText,
+              }}
+            ></div>
+          ) : null}
 
-                      <SetImg fluid={imageRelatedData} />
-                    </Link>
-                  </li>
-                )
-              })}
-            </FlexContainer>
-          </div>
-        ) : (
-          <div>
-            <h1>{title}</h1>
-            {/* <Img fluid={image} /> */}
-
-            <RalClassicColours>
-              <p dangerouslySetInnerHTML={{ __html: body }}></p>
-            </RalClassicColours>
-          </div>
-        )}
+          <RalClassicColours>
+            <p dangerouslySetInnerHTML={{ __html: body }}></p>
+          </RalClassicColours>
+        </div>
       </Container>
     </Layout>
   )

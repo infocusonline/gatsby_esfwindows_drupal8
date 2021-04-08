@@ -3,6 +3,7 @@ import Layout from '../components/Layout'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import { Link, useStaticQuery, graphql } from 'gatsby'
+import { Home2 } from '@styled-icons/icomoon'
 
 const Materials = () => {
   const data = useStaticQuery(graphql`
@@ -115,27 +116,38 @@ const Materials = () => {
         <FlexContainer>
           <li>
             <Link to="/offer">
-              <h1>{data.aluminum.title}</h1>
               <SetImg fluid={aluminumImageLink} />
+              <h2>{data.aluminum.title}</h2>
             </Link>
           </li>
           <li>
             <Link to="/offer">
-              <h1>{data.aluminumCladPVC.title}</h1>
               <SetImg fluid={alumiumCladPVC} />
+              <h2>{data.aluminumCladPVC.title}</h2>
             </Link>
           </li>
           {data.allNodeMaterials.edges.map(edge => {
             const images =
               edge.node.relationships.field_materials_images[0].localFile
                 .childImageSharp.fluid
-            const links = <Link to={`/${edge.node.path.alias}`}></Link>
+            const links = <Link to={`/${edge.node.fields.slug}`}></Link>
+
+            // console.log(links.props.to, 'these are the links')
+            if (links.props.to === '/aluminum/wood') {
+              return (
+                <li>
+                  <Link to="/products/wood-products">
+                    <SetImg fluid={images} />
+                    <h2>{edge.node.title}</h2>
+                  </Link>
+                </li>
+              )
+            }
             return (
               <li key={edge.node.title}>
                 <Link to={links.props.to}>
-                  <h1>{edge.node.title}</h1>
-
                   <SetImg fluid={images} />
+                  <h2>{edge.node.title}</h2>
                 </Link>
               </li>
             )
@@ -164,30 +176,34 @@ const About = styled.div`
 `
 
 const FlexContainer = styled.ul`
-  padding: 0.6rem;
   display: flex;
-  /* flex-direction: row; */
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 60px auto;
-
-  h1 {
-    color: #2d385b;
-    font-size: 1.2rem;
-  }
+  /* flex-direction: row-reverse; */
+  justify-content: center;
+  margin: 90px;
 
   li {
-    margin: 1rem;
-
     list-style-type: none;
+    padding: 10px;
+  }
+
+  h2 {
+    color: #2d385b;
+    font-size: 20px;
     text-align: center;
-    font-weight: 30;
-    a {
-      text-decoration: none;
-      color: #000;
-    }
+    margin-top: 15px;
+    text-align: left;
+    padding-bottom: 15px;
+    border-bottom: solid 1px blue;
+    width: 190px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000000;
   }
 `
+
 const SetImg = styled(Img)`
   display: block !important;
   margin: 6px;

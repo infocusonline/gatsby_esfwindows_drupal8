@@ -72,7 +72,7 @@ const Accessories = () => {
                 .childImageSharp.fluid
             return (
               <li key={edge.node.title}>
-                <Link to={`/${edge.node.fields.slug}`}>
+                <Link to={`/accessories/${edge.node.fields.slug}`}>
                   <h2>{edge.node.title} </h2>
 
                   <SetImg fluid={images} />
