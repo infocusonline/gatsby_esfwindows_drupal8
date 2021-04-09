@@ -56,6 +56,7 @@ export const query = graphql`
 `
 
 const Accessories = ({ data }) => {
+  console.log(data, 'hah')
   const title = data.nodeAccessories.title
   const body = data.nodeAccessories.body.value
   const additionaText = data.nodeAccessories.field_additional_text?.value
@@ -81,6 +82,32 @@ const Accessories = ({ data }) => {
             ></div>
           ) : null}
 
+          <div>
+            {relatedHardwareContent ? (
+              <div>
+                <FlexContainer>
+                  {relatedHardwareContent.map(hardware => {
+                    // create variables for each piece of data and display on screen
+                    const titleRelatedData = hardware.title
+                    const imageRelatedData =
+                      hardware.relationships.field_hardware_image[0].localFile
+                        .childImageSharp.fluid
+                    return (
+                      <li>
+                        {/* {console.log(hardware.path.alias, '!!!9999')} */}
+
+                        <Link to={`${hardware.path.alias}`}>
+                          <SetImg fluid={imageRelatedData} />
+                          <h2>{titleRelatedData}</h2>
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </FlexContainer>
+              </div>
+            ) : null}
+          </div>
+
           <RalClassicColours>
             <p dangerouslySetInnerHTML={{ __html: body }}></p>
           </RalClassicColours>
@@ -94,35 +121,32 @@ export default Accessories
 
 // styled components
 const FlexContainer = styled.ul`
-  padding: 0.6rem;
   display: flex;
   flex-wrap: wrap;
-
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 60px auto;
-
-  h1 {
-    color: #2d385b;
-    font-size: 1.2rem;
-  }
+  /* flex-direction: row-reverse; */
+  justify-content: center;
+  padding: 0.6rem;
+  margin: 90px;
 
   li {
-    margin: 1rem;
-
     list-style-type: none;
-    text-align: center;
-    font-weight: 30;
-    a {
-      text-decoration: none;
-      color: #000;
-    }
+    padding: 10px;
+  }
 
-    p {
-      text-align: center;
-      width: 258px;
-      margin: 0 auto;
-    }
+  h2 {
+    color: #2d385b;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
+    text-align: left;
+    padding-bottom: 15px;
+    border-bottom: solid 1px blue;
+    width: 190px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #000000;
   }
 `
 
