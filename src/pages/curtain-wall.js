@@ -4,21 +4,19 @@ import Layout from '../components/Layout'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
-const Product = () => {
+const CurtainWall = () => {
   const data = useStaticQuery(graphql`
     query {
-      allNodeProducts {
+      allNodeCurtainWallType(sort: { fields: created }) {
         edges {
           node {
+            id
             title
-            body {
-              value
-            }
             fields {
               slug
             }
             relationships {
-              field_products_images {
+              field_curtain_type_img {
                 localFile {
                   childImageSharp {
                     fixed(width: 325, height: 325) {
@@ -31,15 +29,13 @@ const Product = () => {
           }
         }
       }
-      productBasicPage: nodePage(
-        id: { eq: "92f28578-015b-5d98-b057-6bb066b3a04a" }
-      ) {
+      nodeProducts(id: { eq: "4b6c6bac-52b6-5b75-bf4d-33cfab334fb6" }) {
         title
         body {
           value
         }
         relationships {
-          field_basic_page_image {
+          field_products_images {
             localFile {
               childImageSharp {
                 fluid(maxWidth: 1080, maxHeight: 450) {
@@ -53,13 +49,14 @@ const Product = () => {
     }
   `)
   const productBasicImage =
-    data.productBasicPage.relationships.field_basic_page_image[0]?.localFile
+    data.nodeProducts.relationships.field_products_images[0]?.localFile
       ?.childImageSharp.fluid
 
+  const about = data.nodeProducts.body?.value
   return (
     <Layout>
       <Container>
-        <h1>{data.productBasicPage.title}</h1>
+        <h1>{data.nodeProducts.title}</h1>
 
         {productBasicImage ? (
           <div>
@@ -67,45 +64,31 @@ const Product = () => {
           </div>
         ) : null}
       </Container>
-      <Bio
-        dangerouslySetInnerHTML={{ __html: data.productBasicPage.body.value }}
-      ></Bio>
+      {about ? (
+        <div>
+          <Bio dangerouslySetInnerHTML={{ __html: about }}></Bio>
+        </div>
+      ) : null}
+
       <FlexContainer>
-        {data.allNodeProducts.edges.map(edge => {
-          const links = <Link to={`/${edge.node.fields.slug}`}></Link>
-
-          const productImages =
-            edge.node.relationships.field_products_images[0].localFile
+        {data.allNodeCurtainWallType.edges.map(edge => {
+          const images =
+            edge.node.relationships.field_curtain_type_img[0].localFile
               .childImageSharp.fixed
-
-          if (links.props.to === '/curtain-walls') {
-            return (
-              <li>
-                <Link to="/curtain-wall">
-                  <SetImg fixed={productImages} />
-                  <h2>{edge.node.title}</h2>
-                </Link>
-              </li>
-            )
-          }
-
           return (
-            <div>
-              <li key={edge.node.title}>
-                <Link to={`/materials/`}>
-                  <SetImg fixed={productImages} />
-                  <h2>{edge.node.title}</h2>
-                </Link>
-              </li>
-            </div>
+            <li>
+              {/* perhaps change from fields.slug to path.alias */}
+              <Link to={`/curtain-wall/${edge.node.fields.slug}`}>
+                <SetImg fixed={images} />
+                <h2>{edge.node.title}</h2>
+              </Link>
+            </li>
           )
         })}
       </FlexContainer>
     </Layout>
   )
 }
-
-// styled components
 
 const Container = styled.div`
   display: flex;
@@ -168,4 +151,4 @@ const SetImg = styled(Img)`
   border-radius: 2%;
 `
 
-export default Product
+export default CurtainWall

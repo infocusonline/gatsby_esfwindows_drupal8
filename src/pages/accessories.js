@@ -58,31 +58,29 @@ const Accessories = () => {
       .localFile.childImageSharp.fluid
   const about = data.accessoriesBasicPageImage.body.value
   return (
-    <div>
-      <Layout>
-        <Img fluid={accessoriesImage} />
-        <About>
-          <h1>{data.accessoriesBasicPageImage.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: about }}></div>
-        </About>
-        <FlexContainer>
-          {data.allNodeAccessories.edges.map(edge => {
-            const images =
-              edge.node.relationships.field_accessories_image[0].localFile
-                .childImageSharp.fluid
-            return (
-              <li key={edge.node.title}>
-                <Link to={`/accessories/${edge.node.fields.slug}`}>
-                  <h2>{edge.node.title} </h2>
+    <Layout>
+      <Img fluid={accessoriesImage} />
+      <About>
+        <h1>{data.accessoriesBasicPageImage.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: about }}></div>
+      </About>
+      <FlexContainer>
+        {data.allNodeAccessories.edges.map(edge => {
+          const images =
+            edge.node.relationships.field_accessories_image[0].localFile
+              .childImageSharp.fluid
+          return (
+            <li key={edge.node.title}>
+              <Link to={`/accessories/${edge.node.fields.slug}`}>
+                <h2>{edge.node.title} </h2>
 
-                  <SetImg fluid={images} />
-                </Link>
-              </li>
-            )
-          })}
-        </FlexContainer>
-      </Layout>
-    </div>
+                <SetImg fluid={images} />
+              </Link>
+            </li>
+          )
+        })}
+      </FlexContainer>
+    </Layout>
   )
 }
 
