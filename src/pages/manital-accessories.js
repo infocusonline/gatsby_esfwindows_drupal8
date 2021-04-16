@@ -1,10 +1,20 @@
-// import React, { useState } from 'react'
-// import { useStaticQuery, Link } from 'gatsby'
-// import { graphql } from 'gatsby'
-// import Img from 'gatsby-image'
+import React, { useState } from 'react'
+import { useStaticQuery, Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
-// import styled from 'styled-components'
-// import Layout from '../components/Layout'
+import styled from 'styled-components'
+import Layout from '../components/Layout'
+
+const Temp = () => {
+  return (
+    <Layout>
+      <p>under constructions</p>
+    </Layout>
+  )
+}
+
+export default Temp
 
 // const ManitalAccessories = () => {
 //   const [hover, setHover] = useState(false)
