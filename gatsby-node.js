@@ -90,6 +90,11 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   const aluronWoodTemplate = path.resolve('./src/templates/alu-clad-wood.js')
 
+  // creating curtainwall alu template
+  const curtainWallAluTemplate = path.resolve(
+    './src/templates/curtain-wall-alu.js'
+  )
+
   const res = await graphql(`
     query {
       allNodeBlog {
@@ -283,6 +288,16 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeCurtainWallTypeAlu {
+        edges {
+          node {
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -307,6 +322,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeAccessoriesAndAdditionsDoors,
     allNodeInnovativeSolutionsSubitems,
     allNodeAlucladWoodSubItems,
+    allNodeCurtainWallTypeAlu,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -453,6 +469,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
           slug: node.fields.slug,
         },
       })
-    })
+    }),
+      allNodeCurtainWallTypeAlu.edges.forEach(({ node }) => {
+        createPage({
+          component: curtainWallAluTemplate,
+          path: `/curtain-wall-alu/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      })
   })
 }

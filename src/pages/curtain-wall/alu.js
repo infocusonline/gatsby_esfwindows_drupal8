@@ -7,11 +7,20 @@ import Img from 'gatsby-image'
 const CurtainWallAlu = () => {
   const data = useStaticQuery(graphql`
     query {
+      # this is the about node from drupal content type
+      nodeCurtainWallType(id: { eq: "899dcd7d-33b6-5dda-8fe8-433e7eba9ff4" }) {
+        body {
+          value
+        }
+      }
       allNodeCurtainWallTypeAlu {
         edges {
           node {
             id
             title
+            fields {
+              slug
+            }
             relationships {
               field_curtain_alu_img {
                 localFile {
@@ -28,8 +37,13 @@ const CurtainWallAlu = () => {
       }
     }
   `)
+  console.log(data.nodeCurtainWallType)
+  const about = data.nodeCurtainWallType.body.value
   return (
     <Layout>
+      <Container></Container>
+
+      <About dangerouslySetInnerHTML={{ __html: about }}></About>
       <FlexContainer>
         {data.allNodeCurtainWallTypeAlu.edges.map(edge => {
           const images =
@@ -37,7 +51,7 @@ const CurtainWallAlu = () => {
               ?.childImageSharp.fixed
           return (
             <li>
-              <Link to="/notfound">
+              <Link to={`/curtain-wall-alu/${edge.node.fields.slug}`}>
                 <SetImg fixed={images} />
                 <h2>{edge.node.title}</h2>
               </Link>
@@ -60,6 +74,21 @@ const Container = styled.div`
     padding-left: 30px;
     margin-left: 20px;
     font-size: 50px;
+  }
+`
+
+const About = styled.div`
+  margin: 0 auto;
+  width: 95%;
+  padding: 20px;
+  h1 {
+    padding-top: 1.4rem;
+
+    text-align: center;
+  }
+  p {
+    line-height: 1.6;
+    text-align: center;
   }
 `
 

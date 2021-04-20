@@ -1,11 +1,13 @@
 import React from 'react'
-import Layout from '../components/Layout'
 import { graphql } from 'gatsby'
+import Layout from '../components/HomePage/Layout'
+import Img from 'gatsby-image'
+import Head from '../components/HomePage/Head'
 import styled from 'styled-components'
 
 export const query = graphql`
   query($slug: String!) {
-    nodeAlucladWoodSubItems(fields: { slug: { eq: $slug } }) {
+    nodeCurtainWallTypeAlu(fields: { slug: { eq: $slug } }) {
       id
       title
       body {
@@ -15,17 +17,11 @@ export const query = graphql`
         slug
       }
       relationships {
-        field_download_file {
-          uri {
-            value
-            url
-          }
-        }
-        field_aluronwood_subitems {
+        field_curtain_alu_img {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 1600, maxHeight: 700) {
-                ...GatsbyImageSharpFluid
+              fixed(width: 300, height: 300) {
+                ...GatsbyImageSharpFixed
               }
             }
           }
@@ -35,13 +31,15 @@ export const query = graphql`
   }
 `
 
-const AluronWood = ({ data }) => {
-  const body = data.nodeAlucladWoodSubItems.body.value
+const CurtainWallAluTemplate = ({ data }) => {
+  console.log(data, 'ljhkhkh')
+  const body = data.nodeCurtainWallTypeAlu.body.value
   return (
     <Layout>
       <Container>
-        <h2>{data.nodeAlucladWoodSubItems.title}</h2>
+        <h2>{data.nodeCurtainWallTypeAlu.title}</h2>
       </Container>
+
       <BodyContainer dangerouslySetInnerHTML={{ __html: body }}></BodyContainer>
     </Layout>
   )
@@ -61,8 +59,27 @@ const Container = styled.div`
 
 const BodyContainer = styled.div`
   max-width: 1030px;
+  padding-top: 150px;
   // padding: 120px;
   margin: 0 auto;
+
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .flex li {
+    list-style-type: none;
+
+    margin: 0 auto;
+  }
+
+  p {
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+  }
 `
 
-export default AluronWood
+export default CurtainWallAluTemplate
