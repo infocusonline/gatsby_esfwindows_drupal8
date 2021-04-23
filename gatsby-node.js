@@ -83,16 +83,26 @@ module.exports.createPages = async ({ graphql, actions }) => {
   )
 
   // Creating innovative solutions page
-
   const innovativeSolutionsTemplate = path.resolve(
     './src/templates/innovative-solutions.js'
   )
 
+  // creating aluron wood tempalte template
   const aluronWoodTemplate = path.resolve('./src/templates/alu-clad-wood.js')
 
-  // creating curtainwall alu template
+  // creating curtainwall ALU template
   const curtainWallAluTemplate = path.resolve(
     './src/templates/curtain-wall-alu.js'
+  )
+
+  // creating curtainwall WOOD template
+  const curtainWallWoodTemplate = path.resolve(
+    './src/templates/curtain-wall-wood.js'
+  )
+
+  // Creating curtain wall steel template
+  const curtainWallSteelTemplate = path.resolve(
+    './src/templates/curtain-wall-steel.js'
   )
 
   const res = await graphql(`
@@ -298,6 +308,28 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeCurtainWallTypeWood {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeCurtainWallTypeSteel {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -323,6 +355,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeInnovativeSolutionsSubitems,
     allNodeAlucladWoodSubItems,
     allNodeCurtainWallTypeAlu,
+    allNodeCurtainWallTypeWood,
+    allNodeCurtainWallTypeSteel,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -474,6 +508,24 @@ module.exports.createPages = async ({ graphql, actions }) => {
         createPage({
           component: curtainWallAluTemplate,
           path: `/curtain-wall-alu/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      }),
+      allNodeCurtainWallTypeWood.edges.forEach(({ node }) => {
+        createPage({
+          component: curtainWallWoodTemplate,
+          path: `/curtain-wall-wood/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      }),
+      allNodeCurtainWallTypeSteel.edges.forEach(({ node }) => {
+        createPage({
+          component: curtainWallSteelTemplate,
+          path: `/curtain-wall-steel/${node.fields.slug}`,
           context: {
             slug: node.fields.slug,
           },

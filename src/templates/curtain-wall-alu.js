@@ -32,7 +32,6 @@ export const query = graphql`
 `
 
 const CurtainWallAluTemplate = ({ data }) => {
-  console.log(data, 'ljhkhkh')
   const body = data.nodeCurtainWallTypeAlu.body.value
   return (
     <Layout>
@@ -59,6 +58,7 @@ const Container = styled.div`
 
 const BodyContainer = styled.div`
   max-width: 1030px;
+
   padding-top: 150px;
   // padding: 120px;
   margin: 0 auto;

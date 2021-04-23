@@ -9,6 +9,7 @@ const CurtainWallAlu = () => {
     query {
       # this is the about node from drupal content type
       nodeCurtainWallType(id: { eq: "899dcd7d-33b6-5dda-8fe8-433e7eba9ff4" }) {
+        title
         body {
           value
         }
@@ -41,7 +42,9 @@ const CurtainWallAlu = () => {
   const about = data.nodeCurtainWallType.body.value
   return (
     <Layout>
-      <Container></Container>
+      <Container>
+        <h1>{data.nodeCurtainWallType.title}</h1>
+      </Container>
 
       <About dangerouslySetInnerHTML={{ __html: about }}></About>
       <FlexContainer>
