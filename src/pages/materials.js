@@ -3,7 +3,6 @@ import Layout from '../components/Layout'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import { Link, useStaticQuery, graphql } from 'gatsby'
-import { Home2 } from '@styled-icons/icomoon'
 
 const Materials = () => {
   const data = useStaticQuery(graphql`
@@ -137,6 +136,16 @@ const Materials = () => {
               return (
                 <li>
                   <Link to="/products/wood-products">
+                    <SetImg fluid={images} />
+                    <h2>{edge.node.title}</h2>
+                  </Link>
+                </li>
+              )
+            }
+            if (links.props.to === '/fiberglass') {
+              return (
+                <li>
+                  <Link to="/materials-fiberglass">
                     <SetImg fluid={images} />
                     <h2>{edge.node.title}</h2>
                   </Link>

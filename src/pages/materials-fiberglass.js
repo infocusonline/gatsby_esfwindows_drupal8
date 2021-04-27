@@ -1,20 +1,13 @@
 import React from 'react'
-import { graphql, Link, useStaticQuery } from 'gatsby'
-import Layout from '../../components/Layout'
-import styled from 'styled-components'
+import Layout from '../components/Layout'
 import Img from 'gatsby-image'
+import styled from 'styled-components'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
-const CurtainWallAluWood = () => {
+const FiberGlass = () => {
   const data = useStaticQuery(graphql`
     query {
-      # this is the about node from drupal content type
-      nodeCurtainWallType(id: { eq: "81c35190-7e99-52ce-aae0-19bded1d2e8e" }) {
-        title
-        body {
-          value
-        }
-      }
-      allNodeCurtainWallTypeWood {
+      allNodeMaterialsFiberglass {
         edges {
           node {
             id
@@ -23,11 +16,11 @@ const CurtainWallAluWood = () => {
               slug
             }
             relationships {
-              field_curtain_wood_img {
+              field_materials_fiberglass_img {
                 localFile {
                   childImageSharp {
-                    fixed(width: 300, height: 300) {
-                      ...GatsbyImageSharpFixed
+                    fluid(maxWidth: 600, maxHeight: 290) {
+                      ...GatsbyImageSharpFluid
                     }
                   }
                 }
@@ -38,23 +31,17 @@ const CurtainWallAluWood = () => {
       }
     }
   `)
-
-  const about = data.nodeCurtainWallType.body.value
   return (
     <Layout>
-      <Container>
-        <h1>{data.nodeCurtainWallType.title}</h1>
-      </Container>
-      <About dangerouslySetInnerHTML={{ __html: about }}></About>
       <FlexContainer>
-        {data.allNodeCurtainWallTypeWood.edges.map(edge => {
-          const image =
-            edge.node.relationships.field_curtain_wood_img[0]?.localFile
-              .childImageSharp.fixed
+        {data.allNodeMaterialsFiberglass.edges.map(edge => {
+          const images =
+            edge.node.relationships.field_materials_fiberglass_img[0]?.localFile
+              ?.childImageSharp.fluid
           return (
-            <li>
-              <Link to={`/curtain-wall-wood/${edge.node.fields.slug}`}>
-                <SetImg fixed={image} />
+            <li key={edge.node.id}>
+              <Link to={`/materials-fiberglass/${edge.node.fields.slug}`}>
+                <SetImg fluid={images} />
                 <h2>{edge.node.title}</h2>
               </Link>
             </li>
@@ -65,20 +52,7 @@ const CurtainWallAluWood = () => {
   )
 }
 
-const Container = styled.div`
-  display: flex;
-  margin-top: 90px;
-  /* height: 500px; */
-  margin-bottom: 80px;
-
-  h1 {
-    margin-top: 90px;
-    padding-left: 30px;
-    margin-left: 20px;
-    font-size: 50px;
-  }
-`
-
+// styled Components
 const About = styled.div`
   margin: 0 auto;
   width: 95%;
@@ -91,6 +65,7 @@ const About = styled.div`
   p {
     line-height: 1.6;
     text-align: center;
+    color: #848484;
   }
 `
 
@@ -99,7 +74,6 @@ const FlexContainer = styled.ul`
   flex-wrap: wrap;
   /* flex-direction: row-reverse; */
   justify-content: center;
-  padding: 0.6rem;
   margin: 90px;
 
   li {
@@ -126,8 +100,10 @@ const FlexContainer = styled.ul`
 
 const SetImg = styled(Img)`
   display: block !important;
-  width: 100%;
-  height: auto;
+  margin: 6px;
+  flex-grow: 1;
+  width: 330px;
+  border-radius: 2%;
 `
 
-export default CurtainWallAluWood
+export default FiberGlass

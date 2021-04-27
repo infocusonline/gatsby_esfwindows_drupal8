@@ -1,14 +1,13 @@
 import React from 'react'
-import { graphql } from 'gatsby'
-import Layout from '../components/HomePage/Layout'
-import Img from 'gatsby-image'
-import Head from '../components/HomePage/Head'
+import Layout from '../components/Layout'
 import styled from 'styled-components'
-import CurtainWallAluWood from '../pages/curtain-wall/wood'
+import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import Form from '../components/forms/Form'
 
 export const query = graphql`
   query($slug: String!) {
-    nodeCurtainWallTypeSteel(fields: { slug: { eq: $slug } }) {
+    nodeMaterialsFiberglass(fields: { slug: { eq: $slug } }) {
       id
       title
       body {
@@ -18,11 +17,11 @@ export const query = graphql`
         slug
       }
       relationships {
-        field_curtain_steel_img {
+        field_materials_fiberglass_img {
           localFile {
             childImageSharp {
-              fixed(width: 300, height: 300) {
-                ...GatsbyImageSharpFixed
+              fluid(maxWidth: 600, maxHeight: 290) {
+                ...GatsbyImageSharpFluid
               }
             }
           }
@@ -32,13 +31,12 @@ export const query = graphql`
   }
 `
 
-const CurtainWallSteelTemplate = ({ data }) => {
-  const body = data.nodeCurtainWallTypeSteel.body.value
-
+const MaterialsFiberglassTemplate = ({ data }) => {
+  const body = data.nodeMaterialsFiberglass.body.value
   return (
     <Layout>
       <Container>
-        <h2>{data.nodeCurtainWallTypeSteel.title}</h2>
+        <h2>{data.nodeMaterialsFiberglass.title}</h2>
       </Container>
 
       <BodyContainer dangerouslySetInnerHTML={{ __html: body }}></BodyContainer>
@@ -84,4 +82,4 @@ const BodyContainer = styled.div`
   }
 `
 
-export default CurtainWallSteelTemplate
+export default MaterialsFiberglassTemplate

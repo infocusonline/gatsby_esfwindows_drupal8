@@ -34,11 +34,15 @@ const SlideShow = () => {
         {data.allNodeHomeSlideshow.edges.map(edge => {
           const images =
             edge.node.relationships.field_slide_show_image[0].localFile
-              .childImageSharp.fluid
+              ?.childImageSharp.fluid
           const title = edge.node.title
           return (
             <div key={edge.node.id}>
-              <Img fluid={images} alt={title} />
+              {images ? (
+                <div>
+                  <Img fluid={images} alt={title} />
+                </div>
+              ) : null}
             </div>
           )
         })}

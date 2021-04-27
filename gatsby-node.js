@@ -105,6 +105,11 @@ module.exports.createPages = async ({ graphql, actions }) => {
     './src/templates/curtain-wall-steel.js'
   )
 
+  // Creeting Fiberglass tempalte
+  const materialFiberglassTemplate = path.resolve(
+    './src/templates/materials-fiberglass.js'
+  )
+
   const res = await graphql(`
     query {
       allNodeBlog {
@@ -330,6 +335,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeMaterialsFiberglass {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -357,6 +373,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeCurtainWallTypeAlu,
     allNodeCurtainWallTypeWood,
     allNodeCurtainWallTypeSteel,
+    allNodeMaterialsFiberglass,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -526,6 +543,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
         createPage({
           component: curtainWallSteelTemplate,
           path: `/curtain-wall-steel/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      }),
+      allNodeMaterialsFiberglass.edges.forEach(({ node }) => {
+        createPage({
+          component: materialFiberglassTemplate,
+          path: `/materials-fiberglass/${node.fields.slug}`,
           context: {
             slug: node.fields.slug,
           },

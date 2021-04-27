@@ -38,7 +38,6 @@ const CurtainWallSteel = () => {
       }
     }
   `)
-  console.log(data, 'kjkj')
   const about = data.nodeCurtainWallType.body.value
   return (
     <Layout>
