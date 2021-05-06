@@ -68,17 +68,14 @@ const WoodProducts = () => {
       }
     }
   `)
-  // console.log(data.accessoriesDoorsLink, 'our data')
+  // console.log(data.aboutPage, 'our data')
   const title = data.aboutPage.title
-
-  const accessoriesDoorsImageLink =
-    data.accessoriesDoorsLink.relationships.field_offer_type_image[0].localFile
-      .childImageSharp.fluid
-  const accessDoorsTitle = data.accessoriesDoorsLink.title
+  const bio = data.aboutPage.body.value
   return (
     <Layout>
       <About>
-        <h1>{data.aboutPage.title}</h1>
+        <h1>{title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: bio }}></div>
       </About>
 
       <FlexContainer>
@@ -88,7 +85,6 @@ const WoodProducts = () => {
               ?.childImageSharp.fluid
 
           const links = <Link to={`/${edge.node.fields.slug}`}></Link>
-          console.log(links.props.to, 'here are th elink')
 
           if (links.props.to === '/alu-clad-wood') {
             return (
@@ -116,12 +112,6 @@ const WoodProducts = () => {
             )
           }
         })}
-        <li>
-          <Link to="/offer/accessories-and-additions">
-            <SetImg fluid={accessoriesDoorsImageLink} />
-            <h2>{accessDoorsTitle}</h2>
-          </Link>
-        </li>
       </FlexContainer>
     </Layout>
   )

@@ -51,8 +51,31 @@ const Accessories = () => {
           }
         }
       }
+      # Creating query to bring content type FROM Offer into this page
+      allNodeOfferType(sort: { fields: created, order: DESC }, limit: 3) {
+        edges {
+          node {
+            title
+            fields {
+              slug
+            }
+            relationships {
+              field_offer_type_image {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 420, maxHeight: 420) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `)
+  // console.log(data.allNodeOfferType)
   const accessoriesImage =
     data.accessoriesBasicPageImage.relationships.field_basic_page_image[0]
       .localFile.childImageSharp.fluid
@@ -72,9 +95,23 @@ const Accessories = () => {
           return (
             <li key={edge.node.title}>
               <Link to={`/accessories/${edge.node.fields.slug}`}>
-                <h2>{edge.node.title} </h2>
-
                 <SetImg fluid={images} />
+                <h2>{edge.node.title} </h2>
+              </Link>
+            </li>
+          )
+        })}
+
+        {data.allNodeOfferType.edges.map(edge => {
+          const offerTypeImages =
+            edge.node.relationships.field_offer_type_image[0]?.localFile
+              .childImageSharp?.fluid
+
+          return (
+            <li key={edge.node.title}>
+              <Link to={`/offer/${edge.node.fields.slug}`}>
+                <SetImg fluid={offerTypeImages} />
+                <h2>{edge.node.title} </h2>
               </Link>
             </li>
           )
@@ -99,22 +136,28 @@ const About = styled.div`
     color: #848484;
   }
 `
-
 const FlexContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   /* flex-direction: row-reverse; */
-  justify-content: space-around;
+  justify-content: center;
   padding: 0.6rem;
-
-  h2 {
-    text-align: center;
-    color: #2d385b;
-  }
+  margin: 90px;
 
   li {
-    margin: 1rem;
     list-style-type: none;
+    padding: 10px;
+  }
+
+  h2 {
+    color: #2d385b;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
+    text-align: left;
+    padding-bottom: 15px;
+    border-bottom: solid 1px blue;
+    width: 190px;
   }
 
   a {
@@ -127,7 +170,7 @@ const SetImg = styled(Img)`
   display: block !important;
   margin: 6px;
   flex-grow: 1;
-  width: 310px;
+  width: 330px;
   border-radius: 2%;
 `
 

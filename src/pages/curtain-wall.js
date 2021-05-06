@@ -58,11 +58,7 @@ const CurtainWall = () => {
       <Container>
         <h1>{data.nodeProducts.title}</h1>
 
-        {productBasicImage ? (
-          <div>
-            <ContainerImg fluid={productBasicImage} />
-          </div>
-        ) : null}
+        {productBasicImage ? <ContainerImg fluid={productBasicImage} /> : null}
       </Container>
       {about ? (
         <div>
@@ -105,7 +101,6 @@ const Container = styled.div`
 `
 const ContainerImg = styled(Img)`
   margin-left: auto;
-  order: 2;
   width: 980px;
   height: 21vw;
   clip-path: polygon(10vw 0, 100% 0, 100% 100%, 0% 100%);

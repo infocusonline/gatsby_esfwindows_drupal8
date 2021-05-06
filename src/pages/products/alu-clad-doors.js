@@ -31,8 +31,6 @@ const AluCladDoors = () => {
   return (
     <div>
       <Layout>
-        <h1>alu clad doors items here</h1>
-
         <FlexContainer>
           {data.allNodeAluCladDoor.edges.map(edge => {
             const images =

@@ -1,38 +1,41 @@
 import React from 'react'
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 import Layout from '../../components/Layout'
 
-const PvcOffer = () => {
+const Wood = () => {
   const data = useStaticQuery(graphql`
     query {
-      nodeOfferType(id: { eq: "085f47b6-a58f-5fb4-89b9-19dbdbd71e01" }) {
+      nodeOfferType2(id: { eq: "a7a08a51-36f2-5757-9623-9cc022c397e8" }) {
         title
         body {
           value
         }
         relationships {
-          field_offer_type_image {
+          field_offer_type_2_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1080, maxHeight: 450) {
-                  ...GatsbyImageSharpFluid
+                fixed(width: 2000, height: 680) {
+                  ...GatsbyImageSharpFixed
                 }
               }
             }
           }
         }
       }
-      allNodePvcOfferSubItems {
+      allNodeWoodWindows {
         edges {
           node {
             title
-            path {
-              alias
+            fields {
+              slug
+            }
+            body {
+              value
             }
             relationships {
-              field_pvc_offer_subitems_image {
+              field_wood_windows_img {
                 localFile {
                   childImageSharp {
                     fluid(maxWidth: 600, maxHeight: 280) {
@@ -47,25 +50,26 @@ const PvcOffer = () => {
       }
     }
   `)
-  const about = data.nodeOfferType.body.value
+  // console.log(data, 'kj')
   const heroImage =
-    data.nodeOfferType.relationships.field_offer_type_image[0]?.localFile
-      .childImageSharp.fluid
+    data.nodeOfferType2.relationships.field_offer_type_2_image[0]?.localFile
+      ?.childImageSharp?.fixed
+  const about = data.nodeOfferType2.body.value
   return (
     <Layout>
       <Container>
-        <h1>{data.nodeOfferType.title}</h1>
-        {heroImage ? <ContainerImg fluid={heroImage} /> : null}
+        <h1>{data.nodeOfferType2.title}</h1>
+        <ContainerImg fixed={heroImage} />
       </Container>
       <Bio dangerouslySetInnerHTML={{ __html: about }}></Bio>
       <FlexContainer>
-        {data.allNodePvcOfferSubItems.edges.map(edge => {
+        {data.allNodeWoodWindows.edges.map(edge => {
           const images =
-            edge.node.relationships.field_pvc_offer_subitems_image[0].localFile
+            edge.node.relationships.field_wood_windows_img?.[0].localFile
               .childImageSharp.fluid
           return (
             <li>
-              <Link to={`/${edge.node.path.alias}`}>
+              <Link to="notyetcreated">
                 <SetImg fluid={images} />
                 <h2>{edge.node.title}</h2>
               </Link>
@@ -90,11 +94,12 @@ const Container = styled.div`
     font-size: 50px;
   }
 `
+
 const ContainerImg = styled(Img)`
   margin-left: auto;
   order: 2;
   width: 980px;
-  height: 21vw;
+  height: 22vw;
   clip-path: polygon(10vw 0, 100% 0, 100% 100%, 0% 100%);
 `
 
@@ -139,9 +144,10 @@ const FlexContainer = styled.ul`
 const SetImg = styled(Img)`
   display: block !important;
   margin: 6px;
+
   flex-grow: 1;
-  width: 310px;
+  width: 330px;
   border-radius: 2%;
 `
 
-export default PvcOffer
+export default Wood

@@ -61,11 +61,7 @@ const Product = () => {
       <Container>
         <h1>{data.productBasicPage.title}</h1>
 
-        {productBasicImage ? (
-          <div>
-            <ContainerImg fluid={productBasicImage} />
-          </div>
-        ) : null}
+        {productBasicImage ? <ContainerImg fluid={productBasicImage} /> : null}
       </Container>
       <Bio
         dangerouslySetInnerHTML={{ __html: data.productBasicPage.body.value }}
@@ -73,6 +69,7 @@ const Product = () => {
       <FlexContainer>
         {data.allNodeProducts.edges.map(edge => {
           const links = <Link to={`/${edge.node.fields.slug}`}></Link>
+          console.log(links, 'links hree')
 
           const productImages =
             edge.node.relationships.field_products_images[0].localFile
@@ -82,6 +79,16 @@ const Product = () => {
             return (
               <li>
                 <Link to="/curtain-wall">
+                  <SetImg fixed={productImages} />
+                  <h2>{edge.node.title}</h2>
+                </Link>
+              </li>
+            )
+          }
+          if (links.props.to === '/accessories') {
+            return (
+              <li>
+                <Link to="/accessories">
                   <SetImg fixed={productImages} />
                   <h2>{edge.node.title}</h2>
                 </Link>

@@ -56,7 +56,7 @@ const AluOptions = () => {
       ?.childImageSharp?.fixed
 
   const about = data.nodeOfferType2.body.value
-  console.log(data, 'data')
+  // console.log(data, 'data')
   return (
     <Layout>
       <Container>
