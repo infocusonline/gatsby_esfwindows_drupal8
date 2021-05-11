@@ -45,7 +45,7 @@ const Blog = () => {
               ?.childImageSharp?.fixed
           return (
             <li key={edge.node.id}>
-              <Link to={`/blog/${edge.node.fields.slug}`}>
+              <Link to={`/portfolio/${edge.node.fields.slug}`}>
                 {blogImage ? (
                   <div>
                     <Img fixed={blogImage} alt={title} title={title} />

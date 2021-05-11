@@ -69,7 +69,7 @@ const Product = () => {
       <FlexContainer>
         {data.allNodeProducts.edges.map(edge => {
           const links = <Link to={`/${edge.node.fields.slug}`}></Link>
-          console.log(links, 'links hree')
+          // console.log(links, 'links hree')
 
           const productImages =
             edge.node.relationships.field_products_images[0].localFile

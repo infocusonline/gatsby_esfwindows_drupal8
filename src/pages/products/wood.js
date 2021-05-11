@@ -69,7 +69,7 @@ const Wood = () => {
               .childImageSharp.fluid
           return (
             <li>
-              <Link to="notyetcreated">
+              <Link to={`/wood-options/${edge.node.fields.slug}`}>
                 <SetImg fluid={images} />
                 <h2>{edge.node.title}</h2>
               </Link>

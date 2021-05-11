@@ -29,26 +29,23 @@ export const query = graphql`
 `
 
 const Blog = ({ data }) => {
+  // console.log(data, 'blog image')
   const post = data.nodeBlog
-  const noImage = data.nodeBlog.relationships.field_blog_image
-  const image = data.nodeBlog.relationships.field_blog_image
+  const image =
+    data.nodeBlog.relationships.field_blog_image[0]?.localFile?.childImageSharp
+      ?.fluid
+  // console.log(image, 'hreer is the image')
   return (
     <Layout>
       <BlogLayout>
         <Head title={data.nodeBlog.title} />
         <h1>{data.nodeBlog.title}</h1>
-
-        {!image ? (
+        {image ? (
           <div>
+            <Img fluid={image} />
             <div dangerouslySetInnerHTML={{ __html: post.body.value }}></div>
-            <h1>No image</h1>
           </div>
-        ) : (
-          <div>
-            <p dangerouslySetInnerHTML={{ __html: post.body.value }}></p>
-            {/* <Img fluid={image.localFile.childImageSharp.fluid} /> */}
-          </div>
-        )}
+        ) : null}
       </BlogLayout>
     </Layout>
   )

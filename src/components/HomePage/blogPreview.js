@@ -78,7 +78,7 @@ const BlogPreview = () => {
               alt={data.nodePage.title}
             />
             <ButtonCenteredFlex>
-              <StyledLink to={`/blog`}>{data.nodePage.title}</StyledLink>
+              <StyledLink to={`/portfolio`}>{data.nodePage.title}</StyledLink>
             </ButtonCenteredFlex>
           </div>
         ) : null}

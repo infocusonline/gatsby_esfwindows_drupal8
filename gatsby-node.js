@@ -39,7 +39,7 @@ module.exports.onCreateNode = ({ node, actions }) => {
 // creating pages
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const blogTemplate = path.resolve('./src/templates/blog.js')
+  const portfolioTemplate = path.resolve('./src/templates/portfolio.js')
   // creating product template
   const productsTemplate = path.resolve('./src/templates/products.js')
   // creating materials template
@@ -109,6 +109,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const materialFiberglassTemplate = path.resolve(
     './src/templates/materials-fiberglass.js'
   )
+  // creating woodwindows template
+  const woodWindowTemplate = path.resolve('./src/templates/wood-options.js')
+
+  const alucladDoorTemplate = path.resolve('./src/templates/alu-clad-doors.js')
 
   const res = await graphql(`
     query {
@@ -117,8 +121,6 @@ module.exports.createPages = async ({ graphql, actions }) => {
           node {
             id
             title
-            field_year
-            field_month
             fields {
               slug
             }
@@ -346,6 +348,28 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeWoodWindows {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeAluCladDoor {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -374,11 +398,13 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeCurtainWallTypeWood,
     allNodeCurtainWallTypeSteel,
     allNodeMaterialsFiberglass,
+    allNodeWoodWindows,
+    allNodeAluCladDoor,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
-      component: blogTemplate,
-      path: `/blog/${node.fields.slug}`,
+      component: portfolioTemplate,
+      path: `/portfolio/${node.fields.slug}`,
       context: {
         slug: node.fields.slug,
       },
@@ -552,6 +578,24 @@ module.exports.createPages = async ({ graphql, actions }) => {
         createPage({
           component: materialFiberglassTemplate,
           path: `/materials-fiberglass/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      }),
+      allNodeWoodWindows.edges.forEach(({ node }) => {
+        createPage({
+          component: woodWindowTemplate,
+          path: `/wood-options/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      }),
+      allNodeAluCladDoor.edges.forEach(({ node }) => {
+        createPage({
+          component: alucladDoorTemplate,
+          path: `/alu-clad-doors/${node.fields.slug}`,
           context: {
             slug: node.fields.slug,
           },
