@@ -17,7 +17,7 @@ export const query = graphql`
         field_blog_image {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 400, quality: 100) {
+              fluid(maxWidth: 1400, quality: 100) {
                 ...GatsbyImageSharpFluid
               }
             }
@@ -29,15 +29,15 @@ export const query = graphql`
 `
 
 const Blog = ({ data }) => {
-  // console.log(data, 'blog image')
+  console.log(data, 'blog image')
   const post = data.nodeBlog
   const image =
     data.nodeBlog.relationships.field_blog_image[0]?.localFile?.childImageSharp
       ?.fluid
-  // console.log(image, 'hreer is the image')
+  console.log(image, 'hreer is the image')
   return (
     <Layout>
-      <BlogLayout>
+      <PortfolioLayout>
         <Head title={data.nodeBlog.title} />
         <h1>{data.nodeBlog.title}</h1>
         {image ? (
@@ -46,12 +46,12 @@ const Blog = ({ data }) => {
             <div dangerouslySetInnerHTML={{ __html: post.body.value }}></div>
           </div>
         ) : null}
-      </BlogLayout>
+      </PortfolioLayout>
     </Layout>
   )
 }
 
-const BlogLayout = styled.div`
+const PortfolioLayout = styled.div`
   max-width: 89 0px;
   /* margin: 0 auto; */
   padding-top: 100px;
