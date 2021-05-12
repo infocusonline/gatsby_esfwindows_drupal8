@@ -29,12 +29,12 @@ export const query = graphql`
 `
 
 const Blog = ({ data }) => {
-  console.log(data, 'blog image')
+  // console.log(data, 'blog image')
   const post = data.nodeBlog
   const image =
     data.nodeBlog.relationships.field_blog_image[0]?.localFile?.childImageSharp
       ?.fluid
-  console.log(image, 'hreer is the image')
+  // console.log(image, 'hreer is the image')
   return (
     <Layout>
       <PortfolioLayout>
