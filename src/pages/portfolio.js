@@ -72,6 +72,7 @@ const BlogPost = styled.ol`
   margin: 0;
   li {
     margin: 1rem 0;
+    border: 1px solid red;
   }
   a {
     /* border: 6px solid #f4f4f4; */

@@ -41,7 +41,7 @@ const Materials = () => {
               field_materials_images {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 420, maxHeight: 240) {
+                    fluid(maxWidth: 520, maxHeight: 340) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -116,9 +116,10 @@ const Materials = () => {
           <li>
             <Link to="/offer">
               <SetImg fluid={aluminumImageLink} />
-              <h2>{data.aluminum.title}</h2>
+              <h2 className="center">{data.aluminum.title}</h2>
             </Link>
           </li>
+
           <li>
             <Link to="/offer">
               <SetImg fluid={alumiumCladPVC} />
@@ -199,12 +200,11 @@ const FlexContainer = styled.ul`
   h2 {
     color: #2d385b;
     font-size: 20px;
-    text-align: center;
     margin-top: 15px;
-    text-align: left;
+    text-align: center;
     padding-bottom: 15px;
     border-bottom: solid 1px blue;
-    width: 190px;
+    width: 240px;
   }
 
   a {
@@ -217,8 +217,9 @@ const SetImg = styled(Img)`
   display: block !important;
   margin: 6px;
   flex-grow: 1;
-  width: 330px;
-  border-radius: 2%;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
 `
 
 export default Materials
