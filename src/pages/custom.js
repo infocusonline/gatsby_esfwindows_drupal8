@@ -84,13 +84,13 @@ const Custom = () => {
                       <>
                         {!customBody || !customImage ? (
                           <div>
-                            <h1>{customTitle}</h1>
                             <SetImg fluid={customImage} />
+                            <h1>{customTitle}</h1>
                           </div>
                         ) : (
                           <div>
-                            <h1>{customTitle}</h1>
                             <SetImg fluid={customImage} />
+                            <h1>{customTitle}</h1>
                           </div>
                         )}
                       </>
@@ -150,8 +150,9 @@ const SetImg = styled(Img)`
   display: block !important;
   margin: 6px;
   flex-grow: 1;
-  width: 330px;
-  border-radius: 2%;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
 `
 
 export default Custom

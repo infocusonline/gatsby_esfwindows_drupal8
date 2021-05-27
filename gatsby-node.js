@@ -114,6 +114,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   const alucladDoorTemplate = path.resolve('./src/templates/alu-clad-doors.js')
 
+  const steelAndSpecialtyMetals = path.resolve(
+    './src/templates/steel-and-specialty-metals.js'
+  )
+
   const res = await graphql(`
     query {
       allNodeBlog {
@@ -370,6 +374,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeSteelAndSpecialityMetals {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
@@ -400,6 +415,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeMaterialsFiberglass,
     allNodeWoodWindows,
     allNodeAluCladDoor,
+    allNodeSteelAndSpecialityMetals,
   } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
@@ -601,5 +617,14 @@ module.exports.createPages = async ({ graphql, actions }) => {
           },
         })
       })
+    allNodeSteelAndSpecialityMetals.edges.forEach(({ node }) => {
+      createPage({
+        component: steelAndSpecialtyMetals,
+        path: `/steel-and-specialty-metals/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    })
   })
 }

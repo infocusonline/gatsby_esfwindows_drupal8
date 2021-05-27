@@ -171,8 +171,9 @@ const FlexContainer = styled.ul`
 `
 const SetImg = styled(Img)`
   margin: 6px;
-  width: 330px;
-  border-radius: 2%;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
 `
 
 export default Product

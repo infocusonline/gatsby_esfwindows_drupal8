@@ -143,6 +143,17 @@ const Materials = () => {
                 </li>
               )
             }
+
+            if (links.props.to === '/aluminum-clad-wood') {
+              return (
+                <li>
+                  <Link to="/offer">
+                    <SetImg fluid={images} />
+                    <h2>{edge.node.title}</h2>
+                  </Link>
+                </li>
+              )
+            }
             if (links.props.to === '/fiberglass') {
               return (
                 <li>
