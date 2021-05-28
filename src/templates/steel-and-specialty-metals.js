@@ -17,7 +17,7 @@ export const query = graphql`
         slug
       }
       relationships {
-        field_steel_and_special_metal {
+        field_steel_and_special_metal_ {
           localFile {
             childImageSharp {
               fluid(maxWidth: 1600, maxHeight: 700) {
@@ -33,15 +33,19 @@ export const query = graphql`
 
 const SteelSpecialtyMetals = ({ data }) => {
   console.log(data, 'this data')
-  const body = data.nodeSteelAndSpecialityMetals.body.value
+  const body = data.nodeSteelAndSpecialityMetals.body?.value
   return (
     <Layout>
       <Container>
         <h2>{data.nodeSteelAndSpecialityMetals.title}</h2>
 
-        <BodyContainer
-          dangerouslySetInnerHTML={{ __html: body }}
-        ></BodyContainer>
+        {body ? (
+          <BodyContainer
+            dangerouslySetInnerHTML={{ __html: body }}
+          ></BodyContainer>
+        ) : (
+          <p>no bio yet</p>
+        )}
       </Container>
     </Layout>
   )

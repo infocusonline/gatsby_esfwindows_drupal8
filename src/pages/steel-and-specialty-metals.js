@@ -33,7 +33,7 @@ const SteelSpecialMetals = () => {
               slug
             }
             relationships {
-              field_steel_and_special_metal {
+              field_steel_and_special_metal_ {
                 localFile {
                   childImageSharp {
                     fixed(height: 360, width: 360) {
@@ -52,6 +52,7 @@ const SteelSpecialMetals = () => {
   const heroImage =
     data.nodeMaterials.relationships.field_materials_images[0]?.localFile
       .childImageSharp.fluid
+  console.log(data.allNodeSteelAndSpecialityMetals, 'grab image')
   return (
     <Layout>
       <About>
@@ -66,8 +67,8 @@ const SteelSpecialMetals = () => {
       <FlexContainer>
         {data.allNodeSteelAndSpecialityMetals.edges.map(edge => {
           const image =
-            edge.node.relationships.field_steel_and_special_metal?.[0].localFile
-              .childImageSharp.fixed
+            edge.node.relationships.field_steel_and_special_metal_?.[0]
+              .localFile.childImageSharp.fixed
           console.log(image)
           return (
             <li key={edge.node.id}>
