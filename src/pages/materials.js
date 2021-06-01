@@ -154,6 +154,16 @@ const Materials = () => {
                 </li>
               )
             }
+            if (links.props.to === '/pvc') {
+              return (
+                <li>
+                  <Link to="/offer">
+                    <SetImg fluid={images} />
+                    <h2>{edge.node.title}</h2>
+                  </Link>
+                </li>
+              )
+            }
             if (links.props.to === '/fiberglass') {
               return (
                 <li>
