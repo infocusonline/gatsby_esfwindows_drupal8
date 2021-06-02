@@ -143,7 +143,6 @@ const Materials = () => {
                 </li>
               )
             }
-
             if (links.props.to === '/aluminum-clad-wood') {
               return (
                 <li>

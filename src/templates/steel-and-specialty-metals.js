@@ -32,7 +32,6 @@ export const query = graphql`
 `
 
 const SteelSpecialtyMetals = ({ data }) => {
-  console.log(data, 'this data')
   const body = data.nodeSteelAndSpecialityMetals.body?.value
   return (
     <Layout>
