@@ -32,7 +32,6 @@ export const query = graphql`
 `
 
 const WoodOptions = ({ data }) => {
-  console.log(data, 'wood window data')
   const image =
     data.nodeWoodWindows.relationships.field_wood_windows_img[0]?.localFile
       ?.childImageSharp?.fluid
