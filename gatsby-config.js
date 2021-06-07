@@ -45,7 +45,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-drupal',
       options: {
-        baseUrl: 'https://dev-esfwindows.pantheonsite.io/',
+        baseUrl: 'https://test-esfwindows.pantheonsite.io/',
       },
     },
     {

@@ -17,7 +17,7 @@ export const query = graphql`
         slug
       }
       relationships {
-        field_steel_and_special_metal_ {
+        field_steel_and_special_metal {
           localFile {
             childImageSharp {
               fluid(maxWidth: 1600, maxHeight: 700) {

@@ -6,7 +6,7 @@ module.exports.onCreateNode = ({ node, actions }) => {
 
   const { createNodeField } = actions
   if (node.internal.owner === 'gatsby-source-drupal') {
-    // console.log(JSON.stringify(node, undefined, 3))
+    // console.log(JSON.stringify(node, undefined, 3, '$$$$$$$$$###@'))
     const oldSlug = node.title
     if (node.title == undefined) {
       return null
@@ -39,6 +39,7 @@ module.exports.onCreateNode = ({ node, actions }) => {
 // creating pages
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
+
   const portfolioTemplate = path.resolve('./src/templates/portfolio.js')
   // creating product template
   const productsTemplate = path.resolve('./src/templates/products.js')
@@ -114,23 +115,12 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   const alucladDoorTemplate = path.resolve('./src/templates/alu-clad-doors.js')
 
-  const steelAndSpecialtyMetals = path.resolve(
+  const steelAndSpecialtyMetalsTemplate = path.resolve(
     './src/templates/steel-and-specialty-metals.js'
   )
 
   const res = await graphql(`
     query {
-      allNodeBlog {
-        edges {
-          node {
-            id
-            title
-            fields {
-              slug
-            }
-          }
-        }
-      }
       allNodeProducts {
         edges {
           node {
@@ -393,7 +383,6 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // console.log(JSON.stringify(res, null, 3))
   // destructuring the queries
   const {
-    allNodeBlog,
     allNodeProducts,
     allNodeMaterials,
     allNodeCustom,
@@ -417,214 +406,206 @@ module.exports.createPages = async ({ graphql, actions }) => {
     allNodeAluCladDoor,
     allNodeSteelAndSpecialityMetals,
   } = res.data
-  allNodeBlog.edges.forEach(({ node }) => {
+
+  // create Products page
+  allNodeProducts.edges.forEach(({ node }) => {
     createPage({
-      component: portfolioTemplate,
-      path: `/portfolio/${node.fields.slug}`,
+      component: productsTemplate,
+      path: `/products/${node.fields.slug}`,
       context: {
         slug: node.fields.slug,
       },
-    }),
-      // create Products page
-      allNodeProducts.edges.forEach(({ node }) => {
-        createPage({
-          component: productsTemplate,
-          path: `/products/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      // creating materials pages
-      allNodeMaterials.edges.forEach(({ node }) => {
-        createPage({
-          component: materialTemplate,
-          path: `/materials/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      // creating custom pages
-      allNodeCustom.edges.forEach(({ node }) => {
-        createPage({
-          component: customTemplate,
-          path: `/custom/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      allNodeAccessories.edges.forEach(({ node }) => {
-        createPage({
-          component: accessoriesTemplate,
-          path: `/accessories/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      })
-    allNodeAluOfferWindows.edges.forEach(({ node }) => {
+    })
+  }),
+    // creating materials pages
+    allNodeMaterials.edges.forEach(({ node }) => {
       createPage({
-        component: aluOfferWindowsTemplate,
-        path: `/alu-offer/${node.fields.slug}`,
+        component: materialTemplate,
+        path: `/materials/${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
         },
       })
     }),
-      allNodeAluOfferSlidingDoors.edges.forEach(({ node }) => {
-        createPage({
-          component: aluOfferSlidingDoorsTemplate,
-          path: `/sliding-doors/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      allNodePvcOfferSchucoWindows.edges.forEach(({ node }) => {
-        createPage({
-          component: pvcSchucoWindowsTemplate,
-          path: `/pvc-offer/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      allNodePvcOfferSlidingWindows.edges.forEach(({ node }) => {
-        createPage({
-          component: pvcSlidingDoorsTemplate,
-          path: `/pvc-sliding-doors/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      })
-    allNodeShutters.edges.forEach(({ node }) => {
+    // creating custom pages
+    allNodeCustom.edges.forEach(({ node }) => {
       createPage({
-        component: shuttersTemplate,
-        path: `/shutters/${node.fields.slug}`,
+        component: customTemplate,
+        path: `/custom/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    }),
+    allNodeAccessories.edges.forEach(({ node }) => {
+      createPage({
+        component: accessoriesTemplate,
+        path: `/accessories/${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
         },
       })
     })
-    allNodeEntranceDoors.edges.forEach(({ node }) => {
+  allNodeAluOfferWindows.edges.forEach(({ node }) => {
+    createPage({
+      component: aluOfferWindowsTemplate,
+      path: `/alu-offer/${node.fields.slug}`,
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  }),
+    allNodeAluOfferSlidingDoors.edges.forEach(({ node }) => {
       createPage({
-        component: entranceDoorsTemplate,
-        path: `/entrance-doors/${node.fields.slug}`,
+        component: aluOfferSlidingDoorsTemplate,
+        path: `/sliding-doors/${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
         },
       })
     }),
-      allNodeAvidoorAvangardeItems.edges.forEach(({ node }) => {
-        createPage({
-          component: avidoorAvangardeTemplate,
-          path: `/avidoor-avangarde/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      allNodeAccessoriesAndAdditionsWindow.edges.forEach(({ node }) => {
-        createPage({
-          component: accessoriesAndAdditionWindowsTemplate,
-          path: `/accessories-and-additions-windows/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      allNodeAccessoriesAndAdditionsDoors.edges.forEach(({ node }) => {
-        createPage({
-          component: accessoriesAndAdditionDoorsTemplate,
-          path: `/accessories-and-additions-doors/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      allNodeInnovativeSolutionsSubitems.edges.forEach(({ node }) => {
-        createPage({
-          component: innovativeSolutionsTemplate,
-          path: `/innovative-solutions/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      })
-    allNodeAlucladWoodSubItems.edges.forEach(({ node }) => {
+    allNodePvcOfferSchucoWindows.edges.forEach(({ node }) => {
       createPage({
-        component: aluronWoodTemplate,
-        path: `/alu-clad-wood/${node.fields.slug}`,
+        component: pvcSchucoWindowsTemplate,
+        path: `/pvc-offer/${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
         },
       })
     }),
-      allNodeCurtainWallTypeAlu.edges.forEach(({ node }) => {
-        createPage({
-          component: curtainWallAluTemplate,
-          path: `/curtain-wall-alu/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      allNodeCurtainWallTypeWood.edges.forEach(({ node }) => {
-        createPage({
-          component: curtainWallWoodTemplate,
-          path: `/curtain-wall-wood/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      allNodeCurtainWallTypeSteel.edges.forEach(({ node }) => {
-        createPage({
-          component: curtainWallSteelTemplate,
-          path: `/curtain-wall-steel/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      allNodeMaterialsFiberglass.edges.forEach(({ node }) => {
-        createPage({
-          component: materialFiberglassTemplate,
-          path: `/materials-fiberglass/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      allNodeWoodWindows.edges.forEach(({ node }) => {
-        createPage({
-          component: woodWindowTemplate,
-          path: `/wood-options/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
-      }),
-      allNodeAluCladDoor.edges.forEach(({ node }) => {
-        createPage({
-          component: alucladDoorTemplate,
-          path: `/alu-clad-doors/${node.fields.slug}`,
-          context: {
-            slug: node.fields.slug,
-          },
-        })
+    allNodePvcOfferSlidingWindows.edges.forEach(({ node }) => {
+      createPage({
+        component: pvcSlidingDoorsTemplate,
+        path: `/pvc-sliding-doors/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
       })
+    })
+  allNodeShutters.edges.forEach(({ node }) => {
+    createPage({
+      component: shuttersTemplate,
+      path: `/shutters/${node.fields.slug}`,
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  })
+  allNodeEntranceDoors.edges.forEach(({ node }) => {
+    createPage({
+      component: entranceDoorsTemplate,
+      path: `/entrance-doors/${node.fields.slug}`,
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  }),
+    allNodeAvidoorAvangardeItems.edges.forEach(({ node }) => {
+      createPage({
+        component: avidoorAvangardeTemplate,
+        path: `/avidoor-avangarde/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    }),
+    allNodeAccessoriesAndAdditionsWindow.edges.forEach(({ node }) => {
+      createPage({
+        component: accessoriesAndAdditionWindowsTemplate,
+        path: `/accessories-and-additions-windows/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    }),
+    allNodeAccessoriesAndAdditionsDoors.edges.forEach(({ node }) => {
+      createPage({
+        component: accessoriesAndAdditionDoorsTemplate,
+        path: `/accessories-and-additions-doors/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    }),
+    allNodeInnovativeSolutionsSubitems.edges.forEach(({ node }) => {
+      createPage({
+        component: innovativeSolutionsTemplate,
+        path: `/innovative-solutions/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    })
+  allNodeAlucladWoodSubItems.edges.forEach(({ node }) => {
+    createPage({
+      component: aluronWoodTemplate,
+      path: `/alu-clad-wood/${node.fields.slug}`,
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  }),
+    allNodeCurtainWallTypeAlu.edges.forEach(({ node }) => {
+      createPage({
+        component: curtainWallAluTemplate,
+        path: `/curtain-wall-alu/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    }),
+    allNodeCurtainWallTypeWood.edges.forEach(({ node }) => {
+      createPage({
+        component: curtainWallWoodTemplate,
+        path: `/curtain-wall-wood/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    }),
+    allNodeCurtainWallTypeSteel.edges.forEach(({ node }) => {
+      createPage({
+        component: curtainWallSteelTemplate,
+        path: `/curtain-wall-steel/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    }),
+    allNodeMaterialsFiberglass.edges.forEach(({ node }) => {
+      createPage({
+        component: materialFiberglassTemplate,
+        path: `/materials-fiberglass/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    }),
+    allNodeWoodWindows.edges.forEach(({ node }) => {
+      createPage({
+        component: woodWindowTemplate,
+        path: `/wood-options/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    }),
+    allNodeAluCladDoor.edges.forEach(({ node }) => {
+      createPage({
+        component: alucladDoorTemplate,
+        path: `/alu-clad-doors/${node.fields.slug}`,
+        context: {
+          slug: node.fields.slug,
+        },
+      })
+    }),
     allNodeSteelAndSpecialityMetals.edges.forEach(({ node }) => {
       createPage({
-        component: steelAndSpecialtyMetals,
+        component: steelAndSpecialtyMetalsTemplate,
         path: `/steel-and-specialty-metals/${node.fields.slug}`,
         context: {
           slug: node.fields.slug,
         },
       })
     })
-  })
 }
