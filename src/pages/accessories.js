@@ -75,7 +75,7 @@ const Accessories = () => {
       }
     }
   `)
-  // console.log(data.allNodeOfferType)
+  console.log(data.allNodeOfferType, '***^^%%%$$$')
   const accessoriesImage =
     data.accessoriesBasicPageImage.relationships.field_basic_page_image[0]
       .localFile.childImageSharp.fluid
