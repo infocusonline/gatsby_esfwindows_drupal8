@@ -72,38 +72,42 @@ const Product = () => {
           // console.log(links, 'links hree')
 
           const productImages =
-            edge.node.relationships.field_products_images[0].localFile
-              .childImageSharp.fixed
+            edge.node.relationships.field_products_images[0]?.localFile
+              ?.childImageSharp.fixed
 
           if (links.props.to === '/curtain-walls') {
             return (
               <li>
-                <Link to="/curtain-wall">
-                  <SetImg fixed={productImages} />
-                  <h2>{edge.node.title}</h2>
-                </Link>
+                {productImages ? (
+                  <Link to="/curtain-wall">
+                    <SetImg fixed={productImages} />
+                    <h2>{edge.node.title}</h2>
+                  </Link>
+                ) : null}
               </li>
             )
           }
           if (links.props.to === '/accessories') {
             return (
               <li>
-                <Link to="/accessories">
-                  <SetImg fixed={productImages} />
-                  <h2>{edge.node.title}</h2>
-                </Link>
+                {productImages ? (
+                  <Link to="/curtain-wall">
+                    <SetImg fixed={productImages} />
+                    <h2>{edge.node.title}</h2>
+                  </Link>
+                ) : null}
               </li>
             )
           }
 
           return (
             <div>
-              <li key={edge.node.title}>
-                <Link to={`/materials/`}>
+              {productImages ? (
+                <Link to="/curtain-wall">
                   <SetImg fixed={productImages} />
                   <h2>{edge.node.title}</h2>
                 </Link>
-              </li>
+              ) : null}
             </div>
           )
         })}
