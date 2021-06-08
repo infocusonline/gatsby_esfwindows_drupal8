@@ -41,7 +41,7 @@ const Blog = () => {
           const date = edge.node.created
           const title = edge.node.title
           const blogImage =
-            edge.node.relationships.field_blog_image[0].localFile
+            edge.node.relationships.field_blog_image[0]?.localFile
               ?.childImageSharp?.fixed
           return (
             <li key={edge.node.id}>
