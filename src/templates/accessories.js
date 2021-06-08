@@ -60,9 +60,6 @@ const Accessories = ({ data }) => {
   const title = data.nodeAccessories.title
   const body = data.nodeAccessories.body.value
   const additionaText = data.nodeAccessories.field_additional_text?.value
-  const image =
-    data.nodeAccessories.relationships.field_accessories_image[0].localFile
-      .childImageSharp.fluid
 
   // GRABBING RELATED DATA FROM DRUPAL
   const relatedHardwareContent =
@@ -72,7 +69,7 @@ const Accessories = ({ data }) => {
     <Layout>
       <Container>
         <div>
-          <h1>{title}</h1>
+          {/* <h1>{title}</h1>
 
           {additionaText ? (
             <div
@@ -80,7 +77,7 @@ const Accessories = ({ data }) => {
                 __html: additionaText,
               }}
             ></div>
-          ) : null}
+          ) : null} */}
 
           <div>
             {relatedHardwareContent ? (
